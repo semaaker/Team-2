@@ -4,9 +4,9 @@ Takım 2
 
 Takım Rolleri:
 
-Sema AKER: Scrum Master
+Sema AKER: Product Owner
 
-John Doe: Product Owner
+Selim UZUNKÖK: Scrum Master
 
 Ürün İsmi:
 
