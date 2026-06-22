@@ -1,36 +1,40 @@
-Takım İsmi
+## Takım İsmi
 Takım 2
 
-Ürün İle İlgili Bilgiler
-Takım Elemanları
-Sema AKER: Product Owner
-Selim UZUNKÖK: Scrum Master
-Taner YILDIRIM: Team Member/Developer
-Samira MAMYSHEVA: Team Member/Developer
-Esmanur YAMAN: Team Member/Developer
-Ürün İsmi
+# Ürün İle İlgili Bilgiler
+## Takım Elemanları
+* Sema AKER: Product Owner
+* Selim UZUNKÖK: Scrum Master
+* Taner YILDIRIM: Team Member/Developer
+* Samira MAMYSHEVA: Team Member/Developer
+* Esmanur YAMAN: Team Member/Developer
+## Ürün İsmi
 --Belirlenmedi--
 
-Ürün Açıklaması
+## Ürün Açıklaması
 --Belirlenmedi--
 
-Ürün Özellikleri
+## Ürün Özellikleri
 --Belirlenmedi--
-Product Backlog URL
+## Product Backlog URL
 [Trello Backlog Board](https://trello.com/b/nBVqbKOj/yzta-bootcamp)
 
-Sprint 1
-Backlog düzeni ve Story seçimleri:
+# Sprint 1
+## Backlog düzeni ve Story seçimleri:
 
-Daily Scrum: Daily Scrum toplantılarının zamansal sebeplerden ötürü günlük toplantılar yerine haftalık 3-4 kez (günler belirlenecek) yapılmasına karar verilmiştir.
+## Daily Scrum:
 
-Sprint board update: Sprint board screenshotları:
+## Sprint board update: 
 
-Ürün Durumu: Ekran görüntüleri:
+## Sprint board screenshotları:
 
-Sprint Review: 
+## Ürün Durumu: 
 
-Sprint Retrospective:
+## Ekran görüntüleri:
 
-Sprint 2
-Sprint 3
+## Sprint Review: 
+
+## Sprint Retrospective:
+
+# Sprint 2
+# Sprint 3
