@@ -1,27 +1,36 @@
-Takım İsmi:
-
+Takım İsmi
 Takım 2
 
-Takım Rolleri:
-
+Ürün İle İlgili Bilgiler
+Takım Elemanları
 Sema AKER: Product Owner
-
 Selim UZUNKÖK: Scrum Master
+Taner YILDIRIM: Team Member/Developer
+Samira MAMYSHEVA: Team Member/Developer
+Esmanur YAMAN: Team Member/Developer
+Ürün İsmi
+--Belirlenmedi--
 
-Ürün İsmi:
+Ürün Açıklaması
+--Belirlenmedi--
 
-Geliştirme süreci devam etmektedir. 
+Ürün Özellikleri
+--Belirlenmedi--
+Product Backlog URL
+[Trello Backlog Board](https://trello.com/b/nBVqbKOj/yzta-bootcamp)
 
-Ürün Açıklaması:
+Sprint 1
+Backlog düzeni ve Story seçimleri:
 
-Geliştirme süreci devam etmektedir. 
+Daily Scrum: Daily Scrum toplantılarının zamansal sebeplerden ötürü günlük toplantılar yerine haftalık 3-4 kez (günler belirlenecek) yapılmasına karar verilmiştir.
 
-Ürün Özellikleri:
+Sprint board update: Sprint board screenshotları:
 
-Geliştirme süreci devam etmektedir. 
+Ürün Durumu: Ekran görüntüleri:
 
-Hedef Kitle:
+Sprint Review: 
 
-Geliştirme süreci devam etmektedir. 
+Sprint Retrospective:
 
-
+Sprint 2
+Sprint 3
