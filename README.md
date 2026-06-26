@@ -3,10 +3,10 @@ Takım 2
 
 # Ürün İle İlgili Bilgiler
 ## Takım Elemanları
-* Sema AKER: Product Owner
+* Samira MAMYSHEVA: Product Owner
 * Selim UZUNKÖK: Scrum Master
 * Taner YILDIRIM: Team Member/Developer
-* Samira MAMYSHEVA: Team Member/Developer
+* Sema AKER: Team Member/Developer
 * Esmanur YAMAN: Team Member/Developer
 ## Ürün İsmi
 --Belirlenmedi--
