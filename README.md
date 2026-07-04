@@ -37,13 +37,17 @@ Ekipteki kişilerin yoğunluğundan ötürü daily scrum yerine minimum 4 kişin
 ## Sprint board update
 <img width="1440" height="797" alt="image" src="https://github.com/user-attachments/assets/c3a4a1c5-b7ad-4c77-8627-66dd5691ad25" />
 
-## Ürün Durumu: --Düzenlenecek--
-
-## Ekran görüntüleri: --Düzenlenecek--
+## Ürün Durumu:
+Sprint 1 kapsamında herhangi bir ürün geliştirmesi yapmak yerine ürünün tüm detaylarının uçtan uca planlanması yapılmıştır
 
 ## Sprint Review: --Düzenlenecek--
 
 ## Sprint Retrospective: --Düzenlenecek--
 
+## Toplantı Notları:
+[Toplantı Notlarına Gider](https://docs.google.com/document/d/1UjDOmqe8fmzPmtQmgfaJw1nOGYruLUpgsJzybb74KDU/edit?tab=t.0#heading=h.t04lbdbm01io)
+
+## Proje Yönentim Belgesi:
+[Proje Yönetim Belgesine Gider](https://docs.google.com/document/d/1wAKTnR_qneUlz4uDvLHaIXYsHWrqGVJs/edit)
 # Sprint 2
 # Sprint 3
