@@ -37,6 +37,9 @@ Ekipteki kişilerin yoğunluğundan ötürü daily scrum yerine minimum 4 kişin
 ## Sprint board update
 <img width="1440" height="797" alt="image" src="https://github.com/user-attachments/assets/c3a4a1c5-b7ad-4c77-8627-66dd5691ad25" />
 
+<img width="1439" height="749" alt="image" src="https://github.com/user-attachments/assets/f2a8e0a3-df95-4534-a847-50b074f2a2ef" />
+
+
 ## Ürün Durumu:
 Sprint 1 kapsamında herhangi bir ürün geliştirmesi yapmak yerine ürünün tüm detaylarının uçtan uca planlanması yapılmıştır
 
