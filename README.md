@@ -43,9 +43,14 @@ Ekipteki kişilerin yoğunluğundan ötürü daily scrum yerine minimum 4 kişin
 ## Ürün Durumu:
 Sprint 1 kapsamında herhangi bir ürün geliştirmesi yapmak yerine ürünün tüm detaylarının uçtan uca planlanması yapılmıştır
 
-## Sprint Review: --Düzenlenecek--
+## Sprint Review:
+- Tamamlanan 5 iş: problem/hedef kitle tanımı, kullanıcı akışları, özellik kapsamı (MoSCoW), gelir modeli, toplantı dokümantasyonu görevleri tamamlanmıştır.
+- Uygulamanın somut bir mimarisi yerine temelleri belirlenmiştir.
+- Sprint 2'de Stitch üzerinden full-stack geliştirmelere başlanacaktır.
 
-## Sprint Retrospective: --Düzenlenecek--
+## Sprint Retrospective:
+İyi giden: Esnek gerçekleştirilen toplantılardan alınan verim, uygulamanın hatlarının oluşturulmuş olması, geliştirme sürecinde izlenecek yolun belirlenmiş olması.
+İyi gitmeyen: Proje seçim süreci, geliştirmeyi nasıl ilerleteceğimizin belirlenmesi gereğinden uzun bir sürece yayıldığından geliştirme süreçlerine doğrudan başlanamamıştır.
 
 ## Toplantı Notları:
 [Toplantı Notlarına Gider](https://docs.google.com/document/d/1UjDOmqe8fmzPmtQmgfaJw1nOGYruLUpgsJzybb74KDU/edit?tab=t.0#heading=h.t04lbdbm01io)
