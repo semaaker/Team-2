@@ -29,7 +29,8 @@ Sağlayanlar: Marka bilinirliğini artırmak, genç kitleye ulaşmak veya niş p
 
 # Sprint 1
 1. Sprint kapsamlı bir yapılacak projeye karar verme ve ardından gerçekleşen websitesinin temellerini atma ile başlamıştır.
-## Backlog düzeni ve Story seçimleri: --Düzenlenecek--
+## Backlog düzeni ve Story seçimleri:
+Backlog toplantıda konuşulan özellikler doğrultusunda ve yapacağımız eylemler doğrultusunda düzenlenmiştir. Storyler kullanıcıların gerçekleştireceği eylemlere ve ekip tarafından yapılacak işlere bölünmüştür. Trello'da göründüğü üzere kırmızı kartlar backlog ve task'leri gösterirken, yeşil kartlar story'leri temsil etmektedir.
 
 ## Daily Scrum
 Ekipteki kişilerin yoğunluğundan ötürü daily scrum yerine minimum 4 kişinin uygun olduğu her akşam proje hakkında toplantılar düzenlenmiştir.
