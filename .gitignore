@@ -1,0 +1,5 @@
+node_modules/
+
+# SQLite'in çalışma anında oluşturduğu geçici dosyalar (asıl veritabanı data/sponsormatch.db repoda kalır)
+data/*.db-shm
+data/*.db-wal
