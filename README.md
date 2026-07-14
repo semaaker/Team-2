@@ -59,4 +59,6 @@ Sprint 1 kapsamında herhangi bir ürün geliştirmesi yapmak yerine ürünün t
 ## Proje Yönentim Belgesi:
 [Proje Yönetim Belgesine Gider](https://docs.google.com/document/d/1wAKTnR_qneUlz4uDvLHaIXYsHWrqGVJs/edit)
 # Sprint 2
+<img width="1440" height="751" alt="image" src="https://github.com/user-attachments/assets/3d563b87-62c9-41d7-8c93-420cfb8b186b" />
+
 # Sprint 3
