@@ -24,7 +24,15 @@ Talep Edenler: Üniversite öğrenci kulüpleri, festival/fuar organizatörleri,
 
 Sağlayanlar: Marka bilinirliğini artırmak, genç kitleye ulaşmak veya niş pazarlara hitap etmek isteyen yerel ve ulusal işletmeler, şirketler.
 
-## Product Backlog URL
+## Product Backlog
+Projede toplam 3 sprint bulunacaktır. Bu kapsamda Backlog dağıtım mantığı toplam 30 görevle tamamlanması planlanarak aşağıda bulunan şekilde 3 sprinte bölünmüştür.
+
+Sprint 1 (19.06 - 05.07) - Fikir: Geliştireceğimiz ürünle ilgili beyin fırtınaları, backlog düzeninin ayarlanması, user story'lerin ayarlanması, hangi yöntemle geliştireceğimiz belirlenir. Amaç: Doğru fikirle yola çıktığımıza emin olup genel proje düzenini yapılandırmak. (8 Görev) 
+
+Sprint 2 (06.07 - 19.07) - Ürün Geliştirme: YZ katmanı hariç ürün tamamlanır. Bu kapsamda ürüne dair UI tasarımları, backend mimarisi kurulur. Amaç: YZ katmanı hariç ürünün tamamlanması. (12 Görev)
+
+Sprint 3 (20.07 - 02.08) - YZ & Teslim: Ürüne YZ entegrasyonu tamamlanır. Ürün teslime hazır bir hale getirilir ve gereken dokümantasyon süreçleri yönetilir. Amaç: Ürünün istenilen biçimde tesliminin sağlanacak hale getirilmesi. (10 Görev)
+
 [Trello Backlog Board](https://trello.com/b/nBVqbKOj/yzta-bootcamp)
 
 # Sprint 1
