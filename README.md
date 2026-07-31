@@ -97,3 +97,32 @@ Katılımcılar: Selim, Taner, Sema, Samira, Esmanur
 - Ekip içerisinde gün-gün çalışma yerine eş zamanlı çalışmanın artırılacağına karar verildi.
 
 # Sprint 3
+## Backlog düzeni ve Story seçimleri:
+Sprint 3, projenin final ve teslim aşaması olduğu için backlog tamamen yapay zeka entegrasyonu (n8n & Claude), son testler (bug fixing), ürünün canlıya alınması ve teslim hazırlıklarına (sunum videosu, GitHub dokümantasyonu) odaklanacak şekilde düzenlenmiştir. Trello'da göründüğü üzere kırmızı kartlar backlog ve task'leri gösterirken, yeşil kartlar story'leri temsil etmektedir. Önceki sprintte kararlaştırılan eş zamanlı çalışma modeli sayesinde "In Progress" kısmında kalan son görevler ve YZ entegrasyon süreçleri hızla "Done" statüsüne çekilmiştir.
+
+## Sprint Board Updates
+<img width="1435" height="748" alt="image" src="https://github.com/user-attachments/assets/6ace17d2-d55c-4dc0-a8f6-fe88be444f0d" />
+
+## Daily Scrum & Toplantılar:
+Teslim haftasının yoğunluğu, bug çözümleri ve video çekim provaları sebebiyle ekip üyeleri iletişim sıklığını artırmıştır. Google Meets üzerinden yapılan toplantılara ek olarak asenkron iletişim WhatsApp üzerinden kesintisiz devam etmiştir. Özellikle yapay zeka eşleştirme algoritmasının n8n üzerinde test edilmesi ve sunum videosunun kurgusu bu toplantılarda karara bağlanmıştır. [Toplantı Notlarına Gider](https://docs.google.com/document/d/1UjDOmqe8fmzPmtQmgfaJw1nOGYruLUpgsJzybb74KDU/edit?tab=t.0#heading=h.t04lbdbm01io)
+<img width="649" height="733" alt="image" src="https://github.com/user-attachments/assets/87a12c73-d9a2-4d95-b683-fcc904417777" />
+<img width="949" height="753" alt="image" src="https://github.com/user-attachments/assets/6f100c13-c6ce-4783-a124-1bbb43133f51" />
+
+
+## Ürün Ekran Görüntüleri
+<img width="461" height="543" alt="image" src="https://github.com/user-attachments/assets/c09f0002-a1c4-48f2-92d4-ea4d975f98c0" />
+<img width="542" height="457" alt="image" src="https://github.com/user-attachments/assets/0b9d7784-49d8-46ea-90de-3a9fabdb2b8e" />
+<img width="710" height="587" alt="image" src="https://github.com/user-attachments/assets/86e46325-cffa-409c-9622-a5cc753240dd" />
+
+## Sprint Review
+Alınan Kararlar:
+Ürünün en kritik katmanı olan YZ (n8n & Claude) entegrasyonu n8n üzerinden başarıyla tamamlanmış ve canlıya alınmıştır. Projenin teslimi için büyük önem taşıyan final sunum/demo videosu tüm ekibin katılımıyla çekilmiş, kurgusu tamamlanmıştır. GitHub üzerindeki README ve kurulum dokümantasyonları bitirilerek proje tam anlamıyla teslime hazır hale getirilmiştir.
+Katılımcılar: Selim, Taner, Sema, Samira, Esmanur
+
+## Sprint Retrospective
+İyi giden: Final teslimi stresine rağmen ekibin video çekimi ve dokümantasyon süreçlerinde harika bir uyum yakalaması. Bir önceki sprintte alınan "eş zamanlı çalışma" kararının meyvelerini vermesi ve hedeflenen teslim tarihi olan 24 Temmuz'a başarıyla yetişilmesi.
+
+İyi gitmeyen: Son entegrasyon testleri sırasında ortaya çıkan arayüz uyuşmazlıklarının (bug'ların) çözümü planlanandan biraz daha fazla vakit aldı. Ayrıca final sunum videosu çekimi için herkesin tam katılım sağlayabileceği ortak bir saat bulmakta zorluklar yaşandı.
+
+Sonuç: Tüm pürüzlere rağmen başlangıçtaki vizyona uygun, YZ destekli SponsorMatch MVP'si başarıyla tamamlanarak harika bir kapanış sprinti gerçekleştirildi.
+
