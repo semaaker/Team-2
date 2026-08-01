@@ -114,6 +114,11 @@ Teslim haftasının yoğunluğu, bug çözümleri ve video çekim provaları seb
 <img width="542" height="457" alt="image" src="https://github.com/user-attachments/assets/0b9d7784-49d8-46ea-90de-3a9fabdb2b8e" />
 <img width="710" height="587" alt="image" src="https://github.com/user-attachments/assets/86e46325-cffa-409c-9622-a5cc753240dd" />
 
+## Yapay Zeka Entegrasyonu (n8n)
+Projede kullanılan YZ eşleştirme senaryoları "workflows/" klasöründe ".json" formatında yer almaktadır. 
+1. n8n arayüzünden **Import from File** seçeneğini kullanarak JSON dosyalarını içeri aktarabilirsiniz.
+2. Kendi API anahtarlarınızı (Claude / Gemini) ve n8n kimlik bilgilerinizi tanımladıktan sonra akışlar aktif hale gelecektir.
+
 ## Sprint Review
 Alınan Kararlar:
 Ürünün en kritik katmanı olan YZ (n8n & Claude) entegrasyonu n8n üzerinden başarıyla tamamlanmış ve canlıya alınmıştır. Projenin teslimi için büyük önem taşıyan final sunum/demo videosu tüm ekibin katılımıyla çekilmiş, kurgusu tamamlanmıştır. GitHub üzerindeki README ve kurulum dokümantasyonları bitirilerek proje tam anlamıyla teslime hazır hale getirilmiştir.
@@ -125,4 +130,3 @@ Katılımcılar: Selim, Taner, Sema, Samira, Esmanur
 İyi gitmeyen: Son entegrasyon testleri sırasında ortaya çıkan arayüz uyuşmazlıklarının (bug'ların) çözümü planlanandan biraz daha fazla vakit aldı. Ayrıca final sunum videosu çekimi için herkesin tam katılım sağlayabileceği ortak bir saat bulmakta zorluklar yaşandı.
 
 Sonuç: Tüm pürüzlere rağmen başlangıçtaki vizyona uygun, YZ destekli SponsorMatch MVP'si başarıyla tamamlanarak harika bir kapanış sprinti gerçekleştirildi.
-
