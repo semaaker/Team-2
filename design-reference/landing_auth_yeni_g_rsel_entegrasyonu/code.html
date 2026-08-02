@@ -1,0 +1,397 @@
+<!DOCTYPE html><html lang="tr" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>SponsorMatch AI - Geleceğin Etkinliklerini Birlikte İnşa Edin</title>
+<!-- Fonts & Icons -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+        .shadow-soft { box-shadow: 0px 4px 20px rgba(0, 31, 63, 0.05); }
+    </style>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "on-primary-container": "#6f88ad",
+                "surface-container-high": "#e8e8e8",
+                "on-primary-fixed": "#001c3a",
+                "secondary-fixed": "#dfe3e7",
+                "on-primary": "#ffffff",
+                "tertiary-fixed": "#d3e4fe",
+                "surface-container-lowest": "#ffffff",
+                "primary-container": "#001f3f",
+                "outline": "#74777f",
+                "primary-fixed-dim": "#afc8f0",
+                "primary-fixed": "#d4e3ff",
+                "on-error": "#ffffff",
+                "on-background": "#1a1c1c",
+                "secondary-container": "#dce0e4",
+                "surface-container-low": "#f3f3f4",
+                "surface-variant": "#e2e2e2",
+                "surface-container": "#eeeeee",
+                "on-tertiary-fixed": "#0b1c30",
+                "on-tertiary-container": "#77879f",
+                "on-tertiary": "#ffffff",
+                "tertiary": "#000511",
+                "background": "#f9f9f9",
+                "surface-tint": "#476083",
+                "on-surface": "#1a1c1c",
+                "surface-bright": "#f9f9f9",
+                "outline-variant": "#c4c6cf",
+                "inverse-primary": "#afc8f0",
+                "inverse-on-surface": "#f0f1f1",
+                "on-secondary-fixed-variant": "#43474b",
+                "on-secondary": "#ffffff",
+                "on-error-container": "#93000a",
+                "secondary": "#5a5f62",
+                "primary": "#000613",
+                "inverse-surface": "#2f3131",
+                "tertiary-fixed-dim": "#b7c8e1",
+                "on-primary-fixed-variant": "#2f486a",
+                "on-secondary-container": "#5e6367",
+                "surface": "#f9f9f9",
+                "on-surface-variant": "#43474e",
+                "secondary-fixed-dim": "#c3c7cb",
+                "on-secondary-fixed": "#171c1f",
+                "on-tertiary-fixed-variant": "#38485d",
+                "error": "#ba1a1a",
+                "surface-container-highest": "#e2e2e2",
+                "error-container": "#ffdad6",
+                "tertiary-container": "#0e1f33",
+                "surface-dim": "#dadada",
+                "success": "#059669",
+                "success-bg": "#d1fae5"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.5rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "2xl": "1rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "base": "8px",
+                "margin-mobile": "16px",
+                "margin-desktop": "40px",
+                "container-max": "1280px",
+                "gutter": "24px"
+        },
+        "fontFamily": {
+                "headline-md": [
+                        "Inter"
+                ],
+                "display-lg": [
+                        "Inter"
+                ],
+                "body-lg": [
+                        "Inter"
+                ],
+                "label-md": [
+                        "Inter"
+                ],
+                "headline-sm": [
+                        "Inter"
+                ],
+                "label-sm": [
+                        "Inter"
+                ],
+                "body-md": [
+                        "Inter"
+                ],
+                "display-lg-mobile": [
+                        "Inter"
+                ]
+        },
+        "fontSize": {
+                "headline-md": [
+                        "24px",
+                        {
+                                "lineHeight": "1.3",
+                                "fontWeight": "600"
+                        }
+                ],
+                "display-lg": [
+                        "48px",
+                        {
+                                "lineHeight": "1.2",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "body-lg": [
+                        "18px",
+                        {
+                                "lineHeight": "1.6",
+                                "fontWeight": "400"
+                        }
+                ],
+                "label-md": [
+                        "14px",
+                        {
+                                "lineHeight": "1.4",
+                                "letterSpacing": "0.01em",
+                                "fontWeight": "500"
+                        }
+                ],
+                "headline-sm": [
+                        "20px",
+                        {
+                                "lineHeight": "1.4",
+                                "fontWeight": "600"
+                        }
+                ],
+                "label-sm": [
+                        "12px",
+                        {
+                                "lineHeight": "1.2",
+                                "fontWeight": "600"
+                        }
+                ],
+                "body-md": [
+                        "16px",
+                        {
+                                "lineHeight": "1.5",
+                                "fontWeight": "400"
+                        }
+                ],
+                "display-lg-mobile": [
+                        "32px",
+                        {
+                                "lineHeight": "1.2",
+                                "fontWeight": "700"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+</head>
+<body class="bg-surface text-on-surface antialiased selection:bg-primary-container selection:text-surface-container-lowest flex flex-col min-h-screen">
+<!-- TopNavBar -->
+<header class="bg-surface border-b border-outline-variant docked full-width top-0 z-50">
+<div class="flex justify-between items-center px-margin-desktop py-4 w-full max-w-container-max mx-auto">
+<!-- Brand -->
+<div class="flex items-center gap-3">
+<img alt="SponsorMatch AI Logo" class="h-8 w-8 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4g_BLI9JVpzrV3D6b77ZIa9zeBDPx5yt2dbBwUBFe4iORMKIKMXIrRbTyhT8bF46hZi4TrECR93N8JZA7h_VcvfI2y4TcNraPDWxXP72ek1pUUKFByVND-TYsZtuPh88ARsMF7CKifgP-Ur5l0IykFiQedi2NvB9bIApduIi7MaoXnG90iDDmEWDJk5qQtDo9WeYmrQ1pUhqOOPpNppzhouVmMjjM4hHVa4MbN-wc08wCXiMDBuaIJbAYlBGwgDUzfpGNZzfuF4fhCA">
+<div class="font-headline-md text-headline-md font-bold text-primary">
+                SponsorMatch AI
+            </div>
+</div>
+<!-- Navigation Links (Desktop) -->
+<nav class="hidden md:flex gap-8 items-center">
+<a class="text-secondary hover:text-primary transition-colors font-body-md text-body-md scale-98 active:opacity-80 transition-all border-b-2 border-transparent hover:border-primary pb-1" href="#">Keşfet</a>
+<a class="text-secondary hover:text-primary transition-colors font-body-md text-body-md scale-98 active:opacity-80 transition-all pb-1" href="#">Organizatör Paneli</a>
+<a class="text-secondary hover:text-primary transition-colors font-body-md text-body-md scale-98 active:opacity-80 transition-all pb-1" href="#">Sponsor Paneli</a>
+</nav>
+<!-- Trailing Action -->
+<div>
+<button class="font-label-md text-label-md bg-transparent border border-primary-container text-primary-container px-5 py-2.5 rounded-lg hover:bg-surface-container-low transition-colors scale-98 active:opacity-80 transition-all">
+                    Giriş Yap
+                </button>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow">
+<!-- Brand Hero Centered Logo -->
+
+<!-- Hero & Auth Split Section -->
+<section class="w-full max-w-container-max mx-auto px-margin-desktop pb-16 md:pb-24 grid md:grid-cols-2 gap-gutter items-center">
+<!-- Hero Content (Left) -->
+<div class="flex flex-col gap-8 pr-0 md:pr-12">
+<div class="inline-flex items-center gap-2 bg-surface-container-low px-3 py-1 rounded-full w-fit">
+<span class="material-symbols-outlined text-[16px] text-primary-container">auto_awesome</span>
+<span class="font-label-sm text-label-sm text-primary-container">Yapay Zeka Destekli B2B Platformu</span>
+</div>
+<h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-primary">
+                    Geleceğin Etkinliklerini Birlikte İnşa Edin
+                </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg">
+                    Organizatörler ve sponsorlar için en gelişmiş B2B pazar yeri platformu. Yapay zeka destekli eşleştirme ile doğru iş ortaklıklarını saniyeler içinde kurun. Markanızın vizyonuna ve ESG hedeflerine en uygun etkinlikleri keşfedin.
+                </p>
+<div class="flex flex-wrap gap-4 mt-4">
+<button class="bg-primary-container text-surface-container-lowest font-label-md text-label-md px-6 py-3 rounded-lg hover:bg-primary transition-colors shadow-sm hover:shadow-md flex items-center gap-2">
+<span class="">Sponsorları Keşfet</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<button class="bg-transparent border border-primary-container text-primary-container font-label-md text-label-md px-6 py-3 rounded-lg hover:bg-surface-container-lowest transition-colors flex items-center gap-2">
+<span class="">Etkinlik Yarat</span>
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+</button>
+</div>
+</div>
+<!-- Auth/Registration Card (Right) -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-2xl p-8 shadow-soft relative overflow-hidden mt-12 md:mt-0">
+<!-- Subtle decorative background element -->
+<div class="absolute -top-16 -right-16 w-40 h-40 bg-surface-container-low rounded-full opacity-50 pointer-events-none"></div>
+<div class="mb-8 relative z-10">
+<h2 class="font-headline-md text-headline-md text-primary mb-2">Hemen Başlayın</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Platforma giriş yapın veya saniyeler içinde ücretsiz hesap oluşturun.</p>
+</div>
+<form class="flex flex-col gap-5 relative z-10">
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-on-surface">E-posta Adresi</label>
+<input class="w-full bg-surface-container-lowest border border-surface-variant rounded-lg px-4 py-3 font-body-md text-body-md text-on-surface focus:border-primary-container focus:ring-2 focus:ring-primary-fixed-dim outline-none transition-all placeholder:text-outline-variant" placeholder="ornek@sirket.com" type="email">
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-center">
+<label class="font-label-md text-label-md text-on-surface">Şifre</label>
+<a class="font-label-sm text-label-sm text-primary-container hover:underline" href="#">Şifremi Unuttum</a>
+</div>
+<input class="w-full bg-surface-container-lowest border border-surface-variant rounded-lg px-4 py-3 font-body-md text-body-md text-on-surface focus:border-primary-container focus:ring-2 focus:ring-primary-fixed-dim outline-none transition-all placeholder:text-outline-variant" placeholder="••••••••" type="password">
+</div>
+<button class="w-full bg-primary-container text-surface-container-lowest font-label-md text-label-md px-6 py-3 rounded-lg hover:bg-primary transition-colors mt-2" type="button">
+                        Giriş Yap
+                    </button>
+<div class="flex items-center gap-4 my-2">
+<div class="h-px bg-surface-variant flex-grow"></div>
+<span class="font-label-sm text-label-sm text-outline">veya</span>
+<div class="h-px bg-surface-variant flex-grow"></div>
+</div>
+<button class="w-full bg-transparent border border-surface-variant text-on-surface font-label-md text-label-md px-6 py-3 rounded-lg hover:bg-surface-container-low transition-colors flex items-center justify-center gap-2" type="button">
+<span class="material-symbols-outlined text-[18px]">corporate_fare</span>
+                        Kurumsal Kayıt Oluştur
+                    </button>
+</form>
+</div>
+</section>
+<!-- Platform Statistics Section -->
+<section class="w-full max-w-container-max mx-auto px-margin-desktop py-12 border-t border-surface-variant">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Stat 1 -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-2xl p-6 shadow-soft flex flex-col items-center text-center">
+<div class="flex items-center gap-2 text-secondary font-label-md text-label-md mb-2">
+<span class="material-symbols-outlined text-primary-container">event</span>
+            Aktif Etkinlikler
+        </div>
+<div class="flex items-baseline gap-3">
+<span class="font-display-lg text-display-lg text-primary">24+</span>
+<span class="text-success font-label-sm text-label-sm flex items-center bg-success-bg px-2 py-1 rounded-full">
+<span class="material-symbols-outlined" style="font-size: 14px;">trending_up</span> Büyüyor
+            </span>
+</div>
+</div>
+<!-- Stat 2 -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-2xl p-6 shadow-soft flex flex-col items-center text-center">
+<div class="flex items-center gap-2 text-secondary font-label-md text-label-md mb-2">
+<span class="material-symbols-outlined text-primary-container">pending_actions</span>
+            Bekleyen Teklifler
+        </div>
+<div class="flex items-baseline gap-3">
+<span class="font-display-lg text-display-lg text-primary">156+</span>
+</div>
+</div>
+<!-- Stat 3 -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-2xl p-6 shadow-soft flex flex-col items-center text-center">
+<div class="flex items-center gap-2 text-secondary font-label-md text-label-md mb-2">
+<span class="material-symbols-outlined text-primary-container">handshake</span>
+            Temastaki Marka Sayısı
+        </div>
+<div class="flex items-baseline gap-3">
+<span class="font-display-lg text-display-lg text-primary">42+</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Value Proposition Bento Grid -->
+<section class="w-full max-w-container-max mx-auto px-margin-desktop py-16 md:py-24">
+<div class="mb-12">
+<h2 class="font-headline-md text-headline-md text-primary mb-2">Neden SponsorMatch AI?</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Profesyoneller için tasarlanmış akıllı özellikler.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Bento Box 1: Large Visual (Span 2) -->
+<div class="md:col-span-2 bg-surface-container-lowest border border-surface-variant rounded-2xl overflow-hidden relative min-h-[300px] group flex flex-col justify-end p-8 shadow-soft hover:shadow-md transition-all">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" data-alt="A high-end corporate networking event in a modern, brightly lit glass-walled convention center. Professionals in sharp modern business attire are conversing. The aesthetic is bright, minimalist, and uses a color palette dominated by pristine whites, cool grays, and deep navy blue accents to convey efficient professionalism and trust." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaL42IOS78W87nQ0Nas2aWqVd7aTlX4sKaHCY68W5hpInJ8KgaZejKmPNA06s7bbSDt_JNjMRiBtAEvBvlun4OzelUPieOn3gMNjCjnZpJHVdWZcZFek8ZVv8y74EqlzPNye9x3veBtJpasC-WOTYEkPMdV8PlTD7ORdMtBnncXL4CerGgTm7THoaTqf2FYCsoL1r-KvALUZC4XzHp11vD2HTe_hXTF9LOM4DkEOtL4Ub2tUmCTi3OElKBAI4rwd4V3zI2LedhgoU">
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-surface/80 to-transparent"></div>
+</div>
+<div class="relative z-10 max-w-md">
+<div class="bg-surface-container-low text-primary-container font-label-sm text-label-sm px-2 py-1 rounded w-fit mb-4">Küresel Ağ</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-2">Geniş Sponsor Ağına Erişin</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Binlerce doğrulanmış marka ve kurumsal sponsor ile anında iletişim kurun. Sektörünüze en uygun partnerleri keşfedin.</p>
+</div>
+</div>
+<!-- Bento Box 2: Feature Insight -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-2xl p-8 shadow-soft hover:shadow-md transition-all flex flex-col">
+<div class="w-12 h-12 bg-surface-container-low rounded-lg flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary-container text-[28px]">smart_toy</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-3">Yapay Zeka Eşleştirme</h3>
+<p class="font-body-md text-body-md text-on-surface-variant flex-grow">Etkinlik metriklerinizi ve marka hedeflerini analiz eden algoritmamız, en yüksek dönüşüm sağlayacak eşleşmeleri otomatik önerir.</p>
+</div>
+<!-- Bento Box 3: Data/Analytics -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-2xl p-8 shadow-soft hover:shadow-md transition-all flex flex-col">
+<div class="w-12 h-12 bg-surface-container-low rounded-lg flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary-container text-[28px]">bar_chart</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-3">Detaylı ROI Analitiği</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Sponsorluk yatırımlarının getirisini gerçek zamanlı paneller üzerinden şeffaf bir şekilde takip edin.</p>
+<div class="mt-auto h-24 rounded-lg bg-surface-container overflow-hidden relative">
+<!-- Abstract representation of a chart using tailwind classes -->
+<div class="absolute bottom-0 left-4 w-6 bg-primary-fixed-dim rounded-t-sm h-1/3"></div>
+<div class="absolute bottom-0 left-14 w-6 bg-primary-container rounded-t-sm h-2/3"></div>
+<div class="absolute bottom-0 left-24 w-6 bg-surface-tint rounded-t-sm h-1/2"></div>
+<div class="absolute bottom-0 left-34 w-6 bg-outline-variant rounded-t-sm h-full"></div>
+</div>
+</div>
+<!-- Bento Box 4: Security (Span 2) -->
+<div class="md:col-span-2 bg-surface-container-lowest border border-surface-variant rounded-2xl p-8 shadow-soft hover:shadow-md transition-all flex items-center gap-8">
+<div class="hidden md:flex w-24 h-24 bg-surface-container-low rounded-full items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary-container text-[40px]">shield_lock</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-2">Kurumsal Düzeyde Güvenlik ve Ödeme</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Tüm anlaşmalar, dijital sözleşmeler ve ödemeler banka seviyesinde şifreleme ile korunur. Sürtünmesiz ve güvenli bir B2B işlem deneyimi yaşayın.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface border-t border-outline-variant full-width bottom mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop py-8 w-full max-w-container-max mx-auto gap-6 md:gap-0">
+<!-- Brand -->
+<div class="font-label-md text-label-md font-bold text-primary flex items-center gap-2">
+<img alt="SponsorMatch AI Logo" class="h-6 w-6 object-contain" src="https://lh3.googleusercontent.com/aida/AP1WRLtJxvoQ95SHck9vEDhYy8IzYnNsj3glSNl-TplENG-JsA0DfOKF3aOK5PqaAFMKIGcf2yKDsf-l2PviBxdJ4DlftXuMPCS-AQENZ1G3dr2m4lVmMjsWvqZxLxbKokxMX-jlrluYVwm8SWuDr1SQfHeXpV_CmOaKIU5VHGFEdKucC9Dx0Imx2tc1riRAvTEzt1PGOFlRh4y_ch1u2mtRCkSBeRtM4YJziSm-AsSjKkitEImvwMQaiac4x4Y">
+    SponsorMatch AI
+</div>
+<!-- Copyright -->
+<div class="font-label-sm text-label-sm text-secondary text-center md:text-left">
+                © 2026 SponsorMatch AI. Tüm hakları saklıdır.
+            </div>
+<!-- Links -->
+<nav class="flex gap-6 items-center">
+<a class="font-label-sm text-label-sm text-secondary hover:text-primary transition-colors opacity-80 transition-opacity" href="#">Gizlilik Politikası</a>
+<a class="font-label-sm text-label-sm text-secondary hover:text-primary transition-colors opacity-80 transition-opacity" href="#">Kullanım Şartları</a>
+<a class="font-label-sm text-label-sm text-secondary hover:text-primary transition-colors opacity-80 transition-opacity" href="#">Destek Merkezi</a>
+</nav>
+</div>
+</footer>
+
+
+
+
+</body></html>

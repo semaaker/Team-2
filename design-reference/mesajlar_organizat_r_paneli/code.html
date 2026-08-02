@@ -1,0 +1,271 @@
+<!DOCTYPE html><html class="light" lang="tr"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>SponsorMatch AI - Mesajlar</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed-variant": "#43474b",
+                        "inverse-surface": "#2f3131",
+                        "on-tertiary": "#ffffff",
+                        "inverse-primary": "#afc8f0",
+                        "primary-fixed": "#d4e3ff",
+                        "on-secondary-fixed": "#171c1f",
+                        "tertiary-fixed-dim": "#b7c8e1",
+                        "tertiary-container": "#0e1f33",
+                        "on-error-container": "#93000a",
+                        "on-background": "#1a1c1c",
+                        "secondary": "#5a5f62",
+                        "on-error": "#ffffff",
+                        "secondary-fixed-dim": "#c3c7cb",
+                        "on-secondary": "#ffffff",
+                        "background": "#f9f9f9",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed-variant": "#2f486a",
+                        "surface": "#f9f9f9",
+                        "on-primary-fixed": "#001c3a",
+                        "tertiary": "#000511",
+                        "secondary-container": "#dce0e4",
+                        "on-secondary-container": "#5e6367",
+                        "error-container": "#ffdad6",
+                        "primary-fixed-dim": "#afc8f0",
+                        "on-tertiary-container": "#77879f",
+                        "surface-bright": "#f9f9f9",
+                        "surface-container-high": "#e8e8e8",
+                        "primary": "#000613",
+                        "on-surface": "#1a1c1c",
+                        "on-primary": "#ffffff",
+                        "surface-container": "#eeeeee",
+                        "on-primary-container": "#6f88ad",
+                        "surface-tint": "#476083",
+                        "surface-container-low": "#f3f3f4",
+                        "primary-container": "#001f3f",
+                        "on-tertiary-fixed-variant": "#38485d",
+                        "on-surface-variant": "#43474e",
+                        "outline": "#74777f",
+                        "inverse-on-surface": "#f0f1f1",
+                        "on-tertiary-fixed": "#0b1c30",
+                        "surface-variant": "#e2e2e2",
+                        "surface-dim": "#dadada",
+                        "surface-container-highest": "#e2e2e2",
+                        "secondary-fixed": "#dfe3e7",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed": "#d3e4fe",
+                        "outline-variant": "#c4c6cf"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "40px",
+                        "container-max": "1280px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for clean look */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background-color: #dce0e4; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md h-screen overflow-hidden flex">
+<!-- SideNavBar (From JSON) -->
+<nav class="docked left-0 h-full w-64 border-r border-outline-variant flat no shadows bg-surface-container-lowest flex flex-col p-4 gap-2 shrink-0">
+<div class="mb-8 px-4"><div class="flex items-center gap-3 mb-1"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCC7Wh6Ou667sTJHYUwDV3Q_4E-7pmhRqRZnEICeWkDAxfOcpqzyMydV3exQP7Z999TZ4bJFJS490SEutlFhVZ6FSnXYtLtDq8l8PP4pBGnudtzCpnqA-doRPSidQ1baQZnFm1nC3kBfnmdatQFOeI5PtNzrGAO9U7MGUgnk4zpqVennWgTRjs-knvkMz0UqZHrX6csvNprN-izwH2mdYllof3O1gfIEuTK6YYrGYDrr6joCr1xgZbh17p8fnm4YqmoyP4HgvdqEKO1Mg" alt="SponsorMatch AI Logo" class="h-8 w-auto"><h1 class="font-headline-sm text-headline-sm font-bold text-primary">SponsorMatch AI</h1></div><p class="font-label-sm text-label-sm text-on-surface-variant">Management Portal</p></div>
+<div class="flex flex-col gap-1">
+<!-- Dashboard (Inactive) -->
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-secondary-fixed transition-colors opacity-90 active:scale-95 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Sayfam</span>
+</a>
+<!-- Events/Sponsorships (Inactive) -->
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-secondary-fixed transition-colors opacity-90 active:scale-95 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="font-label-md text-label-md">Etkinliklerim</span>
+</a>
+<!-- Messages (Active) -->
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary rounded-lg opacity-90 active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="chat" style="font-variation-settings: &quot;FILL&quot; 1;">chat</span>
+<span class="font-label-md text-label-md">Mesajlar</span>
+</a>
+<!-- Settings (Inactive) -->
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-secondary-fixed transition-colors opacity-90 active:scale-95 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Ayarlar</span>
+</a>
+</div>
+</nav>
+<!-- Main Content: Split-screen Messaging -->
+<main class="flex-1 flex h-full bg-surface">
+<!-- Left Pane: Thread List -->
+<section class="w-96 border-r border-outline-variant bg-surface-container-lowest flex flex-col h-full shrink-0">
+<!-- Header & Search -->
+<div class="p-6 border-b border-outline-variant shrink-0">
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-4">Mesajlar</h2>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-10 pr-4 py-2 border border-outline-variant rounded-lg bg-surface text-on-surface font-body-md text-body-md focus:border-primary focus:ring-2 focus:ring-surface-container-high outline-none transition-all" placeholder="Sponsor veya mesaj ara..." type="text">
+</div>
+</div>
+<!-- Thread List -->
+<div class="flex-1 overflow-y-auto">
+<!-- Active Thread -->
+<div class="flex items-start gap-4 p-4 bg-surface-container cursor-pointer border-l-4 border-primary-container">
+<div class="w-12 h-12 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-headline-sm text-headline-sm shrink-0">T</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-1">
+<h3 class="font-label-md text-label-md text-on-surface truncate">TechCorp A.Ş.</h3>
+<span class="font-label-sm text-label-sm text-on-surface-variant shrink-0">10:42</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant truncate">Sözleşme detaylarını inceledik, uygun görünüyor.</p>
+</div>
+</div>
+<!-- Inactive Thread 1 -->
+<div class="flex items-start gap-4 p-4 hover:bg-surface-container-low cursor-pointer transition-colors border-l-4 border-transparent">
+<div class="w-12 h-12 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center font-headline-sm text-headline-sm shrink-0">G</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-1">
+<h3 class="font-label-md text-label-md text-on-surface truncate">Global Finans</h3>
+<span class="font-label-sm text-label-sm text-on-surface-variant shrink-0">Dün</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant truncate">Stand alanı için ekstra priz talebimiz olacak.</p>
+</div>
+</div>
+<!-- Inactive Thread 2 -->
+<div class="flex items-start gap-4 p-4 hover:bg-surface-container-low cursor-pointer transition-colors border-l-4 border-transparent">
+<div class="w-12 h-12 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center font-headline-sm text-headline-sm shrink-0">Y</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-1">
+<h3 class="font-label-md text-label-md text-on-surface truncate">Yenilikçi Çözümler</h3>
+<span class="font-label-sm text-label-sm text-on-surface-variant shrink-0">Pzt</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant truncate">Logomuzun yüksek çözünürlüklü halini ekte iletiyorum.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Pane: Active Chat -->
+<section class="flex-1 flex flex-col h-full bg-surface-container-lowest relative">
+<!-- Chat Header -->
+<div class="px-6 py-4 border-b border-outline-variant flex items-center justify-between bg-surface-container-lowest shrink-0">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-headline-sm text-headline-sm">T</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">TechCorp A.Ş.</h2>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-[#10b981]"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Çevrimiçi</span>
+</div>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Messages Area -->
+<div class="flex-1 overflow-y-auto p-6 flex flex-col gap-6 bg-surface-bright">
+<!-- Date Divider -->
+<div class="flex justify-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-surface px-3 py-1 rounded-full border border-outline-variant">Bugün</span>
+</div>
+<!-- Received Message -->
+<div class="flex gap-3 max-w-[80%]">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-label-sm text-label-sm shrink-0 mt-auto">T</div>
+<div class="flex flex-col gap-1">
+<div class="bg-surface-container px-4 py-3 rounded-2xl rounded-bl-sm border border-outline-variant shadow-sm text-on-surface">
+<p class="font-body-md text-body-md">Merhaba, ana sponsorluk paketiyle ilgili gönderdiğiniz taslağı inceledik. Birkaç noktada netleştirme rica ediyoruz.</p>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant ml-1">10:15</span>
+</div>
+</div>
+<!-- Sent Message -->
+<div class="flex gap-3 max-w-[80%] self-end">
+<div class="flex flex-col gap-1 items-end">
+<div class="text-on-primary px-4 py-3 rounded-2xl rounded-br-sm shadow-sm bg-primary-container"><p class="font-body-md text-body-md text-on-primary">Tabii ki, memnuniyetle yardımcı olurum. Hangi maddeler üzerinde durmak istersiniz?</p></div>
+<div class="flex items-center gap-1 mr-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant">10:20</span>
+<span class="material-symbols-outlined text-primary text-[16px]" data-icon="done_all">done_all</span>
+</div>
+</div>
+</div>
+<!-- Received Message (Current/Last) -->
+<div class="flex gap-3 max-w-[80%]">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-label-sm text-label-sm shrink-0 mt-auto">T</div>
+<div class="flex flex-col gap-1">
+<div class="bg-surface-container px-4 py-3 rounded-2xl rounded-bl-sm border border-outline-variant shadow-sm text-on-surface">
+<p class="font-body-md text-body-md">Öncelikle açılış konuşmasındaki süremiz ve logo konumlandırması hakkında. Ayrıca sözleşme detaylarını inceledik, genel olarak uygun görünüyor.</p>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant ml-1">10:42</span>
+</div>
+</div>
+</div>
+<!-- Input Area -->
+<div class="p-4 bg-surface-container-lowest border-t border-outline-variant shrink-0">
+<div class="flex items-center gap-3 bg-surface border border-outline-variant rounded-xl p-2 focus-within:border-primary focus-within:ring-2 focus-within:ring-surface-container-high transition-all">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors shrink-0">
+<span class="material-symbols-outlined" data-icon="attach_file">attach_file</span>
+</button>
+<input class="flex-1 bg-transparent border-none focus:ring-0 font-body-md text-body-md text-on-surface placeholder:text-on-surface-variant" placeholder="Bir mesaj yazın..." type="text">
+<button class="px-4 py-2 bg-primary-container text-on-primary rounded-lg font-label-md text-label-md hover:bg-primary transition-colors shrink-0 flex items-center gap-2">
+<span class="">Gönder</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="send">send</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+
+
+
+
+
+
+
+
+
+
+</body></html>

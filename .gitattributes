@@ -1,0 +1,26 @@
+# Depoda satır sonları daima LF olarak saklanır; Windows'ta çalışırken
+# checkout sırasında yerel biçime dönüştürülür. Bu olmadan Windows/macOS
+# arasında geçen katkılarda tüm dosya değişmiş gibi görünür.
+* text=auto eol=lf
+
+# Kabuk betikleri LF olmak zorunda (CI'da bash çalıştırır).
+*.sh text eol=lf
+
+# Windows'a özel dosyalar CRLF kalır.
+*.cmd text eol=crlf
+*.bat text eol=crlf
+
+# İkili dosyalar dönüşüme uğramamalı.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.pdf binary
+
+# GitHub dil istatistikleri: tasarım referansları ve üretilmiş dosyalar sayılmasın.
+design-reference/** linguist-documentation
+package-lock.json linguist-generated
+workflows/*.json linguist-generated

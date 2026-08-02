@@ -1,0 +1,393 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet"><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">try{
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "background": "#f9f9f9",
+                      "on-background": "#1a1c1c",
+                      "surface-container-low": "#f3f3f4",
+                      "on-surface-variant": "#43474e",
+                      "on-primary-fixed-variant": "#2f486a",
+                      "surface-container-highest": "#e2e2e2",
+                      "on-tertiary-container": "#77879f",
+                      "on-primary-container": "#6f88ad",
+                      "primary-fixed": "#d4e3ff",
+                      "inverse-primary": "#afc8f0",
+                      "surface-dim": "#dadada",
+                      "on-tertiary-fixed-variant": "#38485d",
+                      "secondary-fixed-dim": "#c3c7cb",
+                      "inverse-on-surface": "#f0f1f1",
+                      "on-primary": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "secondary-fixed": "#dfe3e7",
+                      "inverse-surface": "#2f3131",
+                      "on-tertiary-fixed": "#0b1c30",
+                      "surface-variant": "#e2e2e2",
+                      "surface": "#f9f9f9",
+                      "primary": "#000613",
+                      "error-container": "#ffdad6",
+                      "on-secondary": "#ffffff",
+                      "primary-fixed-dim": "#afc8f0",
+                      "on-secondary-fixed-variant": "#43474b",
+                      "outline": "#74777f",
+                      "tertiary-fixed": "#d3e4fe",
+                      "tertiary-container": "#0e1f33",
+                      "error": "#ba1a1a",
+                      "tertiary-fixed-dim": "#b7c8e1",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary": "#ffffff",
+                      "surface-bright": "#f9f9f9",
+                      "on-primary-fixed": "#001c3a",
+                      "tertiary": "#000511",
+                      "secondary-container": "#dce0e4",
+                      "on-error": "#ffffff",
+                      "primary-container": "#001f3f",
+                      "outline-variant": "#c4c6cf",
+                      "on-surface": "#1a1c1c",
+                      "surface-container-high": "#e8e8e8",
+                      "on-secondary-fixed": "#171c1f",
+                      "secondary": "#5a5f62",
+                      "on-secondary-container": "#5e6367",
+                      "surface-container": "#eeeeee",
+                      "surface-tint": "#476083",
+                      "green-status": "#10b981",
+                      "green-status-bg": "#d1fae5"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px",
+                      "2xl": "1rem"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "margin-desktop": "40px",
+                      "gutter": "24px",
+                      "container-max": "1280px",
+                      "base": "8px"
+              },
+              "fontFamily": {
+                      "label-sm": ["Inter"],
+                      "headline-sm": ["Inter"],
+                      "display-lg-mobile": ["Inter"],
+                      "body-md": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "label-md": ["Inter"]
+              },
+              "fontSize": {
+                      "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                      "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                      "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500"}]
+              }
+            }
+          }
+        }
+    }catch(_e){}</script><meta charset="utf-8"></head><body class="bg-background text-on-background font-body-md min-h-screen flex">
+<!-- SideNavBar -->
+<nav class="h-screen w-64 fixed left-0 top-0 bg-surface border-r border-outline-variant flex flex-col py-gutter px-4 hidden md:flex z-40">
+<div class="mb-8 px-4 mt-4">
+<span class="font-headline-md text-headline-md font-bold text-primary">SponsorMatch AI</span>
+<p class="font-label-sm text-label-sm text-secondary mt-1">Organizer Hub</p>
+</div>
+<ul class="flex flex-col gap-2 flex-grow">
+<li class="">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-secondary hover:bg-surface-container-low hover:text-primary transition-colors duration-200 group" href="#">
+<span class="material-symbols-outlined text-secondary group-hover:text-primary transition-colors" data-original-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Sayfam</span>
+</a>
+</li>
+<li class="">
+<!-- Active State -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary-container text-on-primary font-bold transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-on-primary icon-fill">event</span>
+<span class="font-label-md text-label-md">Etkinliklerim</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-secondary hover:bg-surface-container-low hover:text-primary transition-colors duration-200 group" href="#">
+<span class="material-symbols-outlined text-secondary group-hover:text-primary transition-colors">chat</span>
+<span class="font-label-md text-label-md">Mesajlar</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-secondary hover:bg-surface-container-low hover:text-primary transition-colors duration-200 group" href="#">
+<span class="material-symbols-outlined text-secondary group-hover:text-primary transition-colors">settings</span>
+<span class="font-label-md text-label-md">Ayarlar</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Wrapper -->
+<div class="flex-1 flex flex-col md:ml-64 w-full">
+<!-- TopNavBar -->
+<header class="docked full-width top-0 sticky z-50 bg-surface border-b border-outline-variant flex justify-between items-center w-full px-margin-desktop h-16 md:px-margin-desktop px-margin-mobile">
+<div class="flex items-center md:hidden">
+<span class="font-headline-md text-headline-md font-bold text-primary">SponsorMatch AI</span>
+</div>
+<div class="hidden md:flex items-center gap-6">
+<nav class="flex gap-6">
+<a class="text-secondary hover:text-primary font-label-md text-label-md hover:text-on-primary-container transition-colors" href="#">Kılavuzlar</a>
+<a class="text-secondary hover:text-primary font-label-md text-label-md hover:text-on-primary-container transition-colors" href="#">Sponsorlar</a>
+<a class="text-secondary hover:text-primary font-label-md text-label-md hover:text-on-primary-container transition-colors" href="#">Hakkımızda</a>
+</nav>
+</div>
+</header>
+<!-- Page Content -->
+<main class="flex-1 overflow-y-auto p-margin-mobile md:p-margin-desktop bg-background max-w-[1280px] w-full mx-auto">
+<!-- Breadcrumb -->
+<div class="flex items-center gap-2 text-secondary mb-6">
+<a class="hover:text-primary font-label-sm text-label-sm transition-colors" href="#">Etkinliklerim</a>
+<span class="material-symbols-outlined text-[16px]" data-original-icon="chevron_right">chevron_right</span>
+<span class="text-on-background font-label-sm text-label-sm">Web3 Zirvesi 2024</span>
+</div>
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+<div>
+<h1 class="font-display-lg text-display-lg text-primary mb-2">Web3 Zirvesi 2024</h1>
+<div class="inline-flex items-center gap-1.5 bg-green-status-bg text-green-status px-3 py-1 rounded-full">
+<span class="w-2 h-2 rounded-full bg-green-status"></span>
+<span class="font-label-sm text-label-sm">Aktif Sponsor Arayışı</span>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="border border-outline bg-surface text-primary px-4 py-2 rounded-lg font-label-md text-label-md hover:bg-surface-container-low transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+                        Düzenle
+                    </button>
+<button class="bg-primary-container text-on-primary px-4 py-2 rounded-lg font-label-md text-label-md hover:bg-primary transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">share</span>
+                        Paylaş
+                    </button>
+</div>
+</div>
+<!-- Summary Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-12">
+<!-- Card 1 -->
+<div class="bg-surface border border-surface-variant rounded-2xl p-6 soft-shadow flex items-start gap-4 hover:shadow-md transition-shadow">
+<div class="p-3 bg-surface-container-low rounded-lg text-primary">
+<span class="material-symbols-outlined icon-fill" data-original-icon="calendar_today">calendar_today</span>
+</div>
+<div class="">
+<p class="font-label-sm text-label-sm text-secondary mb-1">Tarih &amp; Konum</p>
+<p class="font-headline-sm text-headline-sm text-primary">15-16 Kasım 2024</p>
+<p class="font-body-md text-body-md text-secondary mt-1">İstanbul</p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface border border-surface-variant rounded-2xl p-6 soft-shadow flex items-start gap-4 hover:shadow-md transition-shadow">
+<div class="p-3 bg-surface-container-low rounded-lg text-primary">
+<span class="material-symbols-outlined icon-fill">groups</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-secondary mb-1">Beklenen Katılımcı</p>
+<p class="font-headline-sm text-headline-sm text-primary">5.000+</p>
+<p class="font-body-md text-body-md text-secondary mt-1">Katılımcı</p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface border border-surface-variant rounded-2xl p-6 soft-shadow flex items-start gap-4 hover:shadow-md transition-shadow">
+<div class="p-3 bg-surface-container-low rounded-lg text-primary">
+<span class="material-symbols-outlined icon-fill">description</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-secondary mb-1">Toplam Teklif</p>
+<p class="font-headline-sm text-headline-sm text-primary">12</p>
+<p class="font-body-md text-body-md text-secondary mt-1">Teklif</p>
+</div>
+</div>
+</div>
+<!-- Main Table Section -->
+<div class="mb-6">
+<h2 class="font-headline-md text-headline-md text-primary mb-6">Bu Etkinliğe Gelen Sponsorluk Teklifleri</h2>
+<div class="bg-surface border border-surface-variant rounded-2xl overflow-hidden soft-shadow">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-[#F0F4F8] border-b border-surface-variant">
+<th class="py-4 px-6 font-label-sm text-label-sm text-secondary font-semibold">Sponsor Adı</th>
+<th class="py-4 px-6 font-label-sm text-label-sm text-secondary font-semibold">Sektör</th>
+<th class="py-4 px-6 font-label-sm text-label-sm text-secondary font-semibold">Teklif Bütçesi</th>
+<th class="py-4 px-6 font-label-sm text-label-sm text-secondary font-semibold">AI Uyum Skoru</th>
+<th class="py-4 px-6 font-label-sm text-label-sm text-secondary font-semibold">Durum</th>
+<th class="py-4 px-6 font-label-sm text-label-sm text-secondary font-semibold text-right">İşlem</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md">
+<!-- Row 1 -->
+<tr class="border-b border-surface-variant table-row-hover transition-colors">
+<td class="py-4 px-6 text-primary font-medium flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-container-high border border-outline-variant flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-secondary text-[16px]">domain</span>
+</div>
+                                        TechCorp A.Ş.
+                                    </td>
+<td class="py-4 px-6">
+<span class="bg-[#F0F4F8] text-primary px-2 py-1 rounded font-label-sm text-label-sm">Teknoloji</span>
+</td>
+<td class="py-4 px-6 font-medium">₺150.000</td>
+<td class="py-4 px-6">
+<div class="inline-flex items-center gap-1.5 bg-[#e0f2fe] text-[#0284c7] px-2.5 py-1 rounded-full font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">auto_awesome</span>
+                                            %98 Uyum
+                                        </div>
+</td>
+<td class="py-4 px-6"><select class="bg-surface border border-outline-variant rounded-lg px-2 py-1 font-label-sm text-label-sm text-secondary focus:border-primary focus:ring-0 transition-colors cursor-pointer">
+<option selected="" value="beklemede">Beklemede</option>
+<option value="onaylandi">Onaylandı</option>
+<option value="iptal">İptal</option>
+</select></td>
+<td class="py-4 px-6 text-right">
+<button class="text-secondary hover:text-primary transition-colors p-1" title="Detayı Gör">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="text-secondary hover:text-primary transition-colors p-1 ml-2" title="Mesaj Gönder">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="border-b border-surface-variant table-row-hover transition-colors">
+<td class="py-4 px-6 text-primary font-medium flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-container-high border border-outline-variant flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-secondary text-[16px]">domain</span>
+</div>
+                                        Global Finans
+                                    </td>
+<td class="py-4 px-6">
+<span class="bg-[#F0F4F8] text-primary px-2 py-1 rounded font-label-sm text-label-sm">Finans</span>
+</td>
+<td class="py-4 px-6 font-medium">₺250.000</td>
+<td class="py-4 px-6">
+<div class="inline-flex items-center gap-1.5 bg-green-status-bg text-green-status px-2.5 py-1 rounded-full font-label-sm text-label-sm"><span class="material-symbols-outlined text-[14px]">auto_awesome</span>%98 Uyum</div>
+</td>
+<td class="py-4 px-6"><select class="bg-surface border border-outline-variant rounded-lg px-2 py-1 font-label-sm text-label-sm text-green-status font-medium focus:border-primary focus:ring-0 transition-colors cursor-pointer">
+<option selected="" value="onaylandi">Onaylandı</option>
+<option value="beklemede">Beklemede</option>
+<option value="iptal">İptal</option>
+</select></td>
+<td class="py-4 px-6 text-right">
+<button class="text-secondary hover:text-primary transition-colors p-1" title="Detayı Gör">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="text-secondary hover:text-primary transition-colors p-1 ml-2" title="Mesaj Gönder">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="border-b border-surface-variant table-row-hover transition-colors">
+<td class="py-4 px-6 text-primary font-medium flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-container-high border border-outline-variant flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-secondary text-[16px]">domain</span>
+</div>
+                                        CryptoPay
+                                    </td>
+<td class="py-4 px-6">
+<span class="bg-[#F0F4F8] text-primary px-2 py-1 rounded font-label-sm text-label-sm">Blokzincir</span>
+</td>
+<td class="py-4 px-6 font-medium">₺100.000</td>
+<td class="py-4 px-6">
+<div class="inline-flex items-center gap-1.5 bg-[#fef08a] text-[#854d0e] px-2.5 py-1 rounded-full font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">auto_awesome</span>
+                                            %75 Uyum
+                                        </div>
+</td>
+<td class="py-4 px-6"><select class="bg-surface border border-outline-variant rounded-lg px-2 py-1 font-label-sm text-label-sm text-[#ca8a04] focus:border-primary focus:ring-0 transition-colors cursor-pointer">
+<option selected="" value="beklemede">Beklemede</option>
+<option value="onaylandi">Onaylandı</option>
+<option value="iptal">İptal</option>
+</select></td>
+<td class="py-4 px-6 text-right">
+<button class="text-secondary hover:text-primary transition-colors p-1" title="Detayı Gör">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="text-secondary hover:text-primary transition-colors p-1 ml-2" title="Mesaj Gönder">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="table-row-hover transition-colors">
+<td class="py-4 px-6 text-primary font-medium flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-container-high border border-outline-variant flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-secondary text-[16px]">domain</span>
+</div>
+                                        Innovate Soft
+                                    </td>
+<td class="py-4 px-6">
+<span class="bg-[#F0F4F8] text-primary px-2 py-1 rounded font-label-sm text-label-sm">Yazılım</span>
+</td>
+<td class="py-4 px-6 font-medium">₺180.000</td>
+<td class="py-4 px-6">
+<div class="inline-flex items-center gap-1.5 bg-[#e0f2fe] text-[#0284c7] px-2.5 py-1 rounded-full font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">auto_awesome</span>
+                                            %95 Uyum
+                                        </div>
+</td>
+<td class="py-4 px-6"><select class="bg-surface border border-outline-variant rounded-lg px-2 py-1 font-label-sm text-label-sm text-secondary focus:border-primary focus:ring-0 transition-colors cursor-pointer">
+<option selected="" value="beklemede">Beklemede</option>
+<option value="onaylandi">Onaylandı</option>
+<option value="iptal">İptal</option>
+</select></td>
+<td class="py-4 px-6 text-right">
+<button class="text-secondary hover:text-primary transition-colors p-1" title="Detayı Gör">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="text-secondary hover:text-primary transition-colors p-1 ml-2" title="Mesaj Gönder">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</div>
+<script>
+  (function() {
+    const params = new URLSearchParams(window.location.search);
+    const eventName = params.get('Etkinlik_Adi');
+    const eventDate = params.get('Tarih');
+    const participantCount = params.get('Katilimci_Sayisi');
+    const eventDetails = params.get('Etkinlik_Detaylari');
+
+    if (eventName) {
+      const titleEl = document.querySelector('h1');
+      if (titleEl) titleEl.textContent = eventName;
+      
+      const breadcrumbEl = document.querySelector('div.flex.items-center.gap-2.text-secondary.mb-6 > span.text-on-background');
+      if (breadcrumbEl) breadcrumbEl.textContent = eventName;
+    }
+
+    if (eventDate) {
+      const dateEl = document.querySelector('div.grid-cols-1.md\\:grid-cols-3 > div:nth-child(1) p.font-headline-sm');
+      if (dateEl) dateEl.textContent = eventDate;
+    }
+
+    if (participantCount) {
+      const countEl = document.querySelector('div.grid-cols-1.md\\:grid-cols-3 > div:nth-child(2) p.font-headline-sm');
+      if (countEl) countEl.textContent = participantCount;
+    }
+
+    if (eventDetails) {
+      const headerSection = document.querySelector('div.flex.flex-col.md\\:flex-row.md\\:items-center.justify-between.gap-4.mb-8');
+      if (headerSection) {
+        const detailsDiv = document.createElement('div');
+        detailsDiv.className = 'mt-4 p-4 bg-surface-container-low rounded-lg text-secondary font-body-md';
+        detailsDiv.textContent = eventDetails;
+        headerSection.after(detailsDiv);
+      }
+    }
+  })();
+</script></body></html>

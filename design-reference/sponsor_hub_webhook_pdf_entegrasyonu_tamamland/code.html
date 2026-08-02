@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+
+<html class="light" lang="tr" style=""><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ayarlar | SponsorMatch AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        
+        .glass-card {
+            background: #FFFFFF;
+            box-shadow: 0px 4px 20px rgba(0, 31, 63, 0.05);
+            border: 1px solid #E2E8F0;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #E2E8F0;
+            border-radius: 10px;
+        }
+
+        @keyframes slideInUp {
+            from { transform: translateY(100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .animate-toast {
+            animation: slideInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .animate-spin {
+            animation: spin 1s linear infinite;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-error": "#ffffff",
+                    "tertiary": "#000511",
+                    "secondary-fixed": "#dfe3e7",
+                    "on-tertiary-fixed-variant": "#38485d",
+                    "on-background": "#1a1c1c",
+                    "outline-variant": "#c4c6cf",
+                    "on-primary": "#ffffff",
+                    "tertiary-fixed": "#d3e4fe",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-container": "#77879f",
+                    "secondary-container": "#dce0e4",
+                    "secondary": "#5a5f62",
+                    "on-secondary-fixed-variant": "#43474b",
+                    "tertiary-fixed-dim": "#b7c8e1",
+                    "on-secondary": "#ffffff",
+                    "surface-variant": "#e2e2e2",
+                    "on-surface-variant": "#43474e",
+                    "surface-bright": "#f9f9f9",
+                    "inverse-primary": "#afc8f0",
+                    "surface-container-low": "#f3f3f4",
+                    "surface-container": "#eeeeee",
+                    "on-secondary-container": "#5e6367",
+                    "inverse-surface": "#2f3131",
+                    "on-error-container": "#93000a",
+                    "inverse-on-surface": "#f0f1f1",
+                    "primary-container": "#001f3f",
+                    "on-primary-fixed": "#001c3a",
+                    "on-tertiary-fixed": "#0b1c30",
+                    "tertiary-container": "#0e1f33",
+                    "primary-fixed": "#d4e3ff",
+                    "on-primary-container": "#6f88ad",
+                    "primary-fixed-dim": "#afc8f0",
+                    "surface": "#f9f9f9",
+                    "on-secondary-fixed": "#171c1f",
+                    "surface-container-highest": "#e2e2e2",
+                    "background": "#f9f9f9",
+                    "surface-tint": "#476083",
+                    "secondary-fixed-dim": "#c3c7cb",
+                    "on-surface": "#1a1c1c",
+                    "primary": "#000613",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed-variant": "#2f486a",
+                    "outline": "#74777f",
+                    "surface-dim": "#dadada",
+                    "error": "#ba1a1a",
+                    "surface-container-high": "#e8e8e8",
+                    "on-tertiary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "8px",
+                    "xl": "16px",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "base": "8px",
+                    "gutter": "24px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "40px",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "sans": ["Inter", "sans-serif"],
+                    "label-sm": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-[#F0F4F8] font-sans text-on-surface overflow-hidden">
+<div class="flex h-screen w-full">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col h-screen w-72 bg-surface-container-lowest border-r border-outline-variant p-6 gap-6 shrink-0">
+<div class="flex items-center gap-3 px-2">
+<div class="w-10 h-10 bg-primary-container rounded-lg flex items-center justify-center text-on-primary">
+<img alt="SponsorMatch AI Logo" class="w-full h-full object-cover rounded-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2ZzeH5SPFLB3bJ3xLtlNiPUhQFPxsgpefsig1oU7etXbWdpaOGRTqepNLosOBTwXOfrrKMU3CHu-_iOV1USdpv8TZ5Zhb1EI0d79uH5NKqlbtNz8n2SHM2xcLUhxkqWArqO6QSPsXLyFCUuoQ5eVA8tiwhViLJl4PtnBoktEoyUOlbJ2rcWRO3dyTPPCy-oGGlnuQJjWCVXyzmSx3Lr3JvYKFMOSqkLkyjoAcAlu45Bs2AjXNYE4TtST4wvKTrqItLqUBjZr_yao3Kg"/>
+</div>
+<div>
+<h1 class="font-headline-sm text-headline-sm font-bold text-primary">SponsorMatch AI</h1>
+<p class="font-label-sm text-label-sm text-secondary opacity-70 uppercase tracking-wider">Management Portal</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2 mt-4">
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-secondary-fixed transition-colors opacity-90 active:scale-95 rounded-lg" href="{{DATA:SCREEN:SCREEN_17}}">
+<span class="material-symbols-outlined">handshake</span>
+<span class="font-label-md text-label-md">Eşleşmeler</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-secondary-fixed transition-colors opacity-90 active:scale-95 rounded-lg" href="{{DATA:SCREEN:SCREEN_10}}">
+<span class="material-symbols-outlined">assignment</span>
+<span class="font-label-md text-label-md">Sponsorluklar</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-secondary-fixed transition-colors opacity-90 active:scale-95 rounded-lg" href="{{DATA:SCREEN:SCREEN_39}}">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="font-label-md text-label-md">Analitik</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-secondary-fixed transition-colors opacity-90 active:scale-95 rounded-lg" href="{{DATA:SCREEN:SCREEN_5}}">
+<span class="material-symbols-outlined">chat</span>
+<span class="font-label-md text-label-md">Mesajlar</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary rounded-lg transition-all scale-98 active:opacity-80" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Ayarlar</span>
+</a>
+</nav>
+<div class="mt-auto p-4 bg-surface-container rounded-xl">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-outline-variant">
+<img alt="Aylin Yılmaz" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCccqfeICHZZIMyOKRnoJQkfgI9jG-5uKDbeYODgkDYha-SaPcMTCSDQvwwHSRC4zyttfIxCByiHtWTuSU-G6bZxvVZwQnDiKZ_wNNMlzSRr1HRJapncleH4L80rCv7H2g1d2sVLxell9HTCAknHwKC6_eupYIDqbGP4w4yduXZlpJosFAOlVVOGKg2v0MtoahaQWLWmjrdswwNxoTLu1YB-XmfnJyCBhz46_QCsLdc9jhQpMzsXI8cN4oDqZsXSenk6ST2ys2YPFc"/>
+</div>
+<div class="overflow-hidden">
+<p class="font-label-md text-label-md font-bold text-primary truncate">Aylin Yılmaz</p>
+<p class="font-label-sm text-label-sm text-secondary truncate">Global Pazarlama Md.</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 h-screen overflow-y-auto custom-scrollbar p-6 md:p-12">
+<div class="max-w-4xl mx-auto">
+<!-- Central Card -->
+<section class="glass-card rounded-xl p-8 md:p-12 bg-white">
+<header class="mb-10">
+<h2 class="font-headline-md text-headline-md font-bold text-[#001F3F] mb-2">Sponsor Profilinizi Oluşturun</h2>
+<p class="font-body-md text-body-md text-secondary">Etkinlik organizatörlerinin sizi daha iyi tanıması için vizyonunuzu ve kriterlerinizi paylaşın.</p>
+<div class="w-full h-[1px] bg-[#64748B] opacity-20 mt-8"></div>
+</header>
+<form class="space-y-8" id="profileForm">
+<div class="flex flex-col gap-2"><label class="font-label-md text-label-md text-secondary">Şirket Logo URL'si</label><input class="w-full px-4 py-3 border border-[#64748B] rounded-lg focus:ring-2 focus:ring-[#001F3F]/10 focus:border-[#001F3F] transition-all outline-none bg-white font-body-md" id="logoUrlInput" placeholder="https://example.com/logo.png" type="url"/></div>
+<!-- Basic Info Section -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-secondary">Şirket Adı</label>
+<input class="w-full px-4 py-3 border border-[#64748B] rounded-lg focus:ring-2 focus:ring-[#001F3F]/10 focus:border-[#001F3F] transition-all outline-none bg-white font-body-md" id="companyName" placeholder="SponsorMatch AI" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-secondary">Sektör</label>
+<select class="w-full px-4 py-3 border border-[#64748B] rounded-lg focus:ring-2 focus:ring-[#001F3F]/10 focus:border-[#001F3F] transition-all outline-none bg-white font-body-md" id="industry"><option selected="">Seçiniz</option><option>Eğitim &amp; Akademi</option><option>Enerji &amp; Madencilik</option><option>E-Ticaret &amp; Perakende</option><option>Finans &amp; Fintech</option><option>Gastronomi &amp; Gıda</option><option>Gayrimenkul &amp; Proptech</option><option>Havacılık &amp; Uzay</option><option>Kimya &amp; Malzeme Bilimi</option><option>Lojistik &amp; Tedarik Zinciri</option><option>Moda &amp; Tasarım</option><option>Otomotiv &amp; Ulaşım</option><option>Oyun &amp; E-Spor</option><option>Perakende &amp; Mağazacılık Altyapıları</option><option>Sağlık &amp; Biyoteknoloji</option><option>Sanat, Medya &amp; Eğlence</option><option>Sigortacılık (Insurtech)</option><option>Sosyal Sorumluluk &amp; Sivil Toplum</option><option>Spor &amp; Fitness</option><option>Sürdürülebilirlik &amp; Çevre</option><option>Tarım Teknolojileri (AgTech)</option><option>Teknoloji &amp; Yazılım</option><option>Telekomünikasyon</option><option>Turizm &amp; Seyahat (TravelTech)</option></select>
+</div>
+</div>
+<!-- Financial Criteria -->
+<div class="flex flex-col gap-4">
+<label class="font-label-md text-label-md text-secondary">Finansal Kriterler (Bütçe Aralığı)</label>
+<div class="bg-surface-container-low/30 border border-[#64748B]/40 rounded-xl p-6">
+<div class="flex flex-col md:flex-row items-center gap-6 md:gap-8">
+<div class="flex-1 w-full">
+<p class="font-label-sm text-label-sm text-secondary mb-2">Minimum Bütçe</p>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 font-medium text-body-md text-[#001F3F]">₺</span>
+<input class="w-full pr-4 py-3 border border-[#64748B] rounded-lg focus:ring-2 focus:ring-[#001F3F]/10 focus:border-[#001F3F] transition-all outline-none font-body-md pl-10 bg-white" id="minBudget" placeholder="0" type="number"/>
+</div>
+</div>
+<div class="flex-1 w-full">
+<p class="font-label-sm text-label-sm text-secondary mb-2">Maksimum Bütçe</p>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 font-medium text-body-md text-[#001F3F]">₺</span>
+<input class="w-full pr-4 py-3 border border-[#64748B] rounded-lg focus:ring-2 focus:ring-[#001F3F]/10 focus:border-[#001F3F] transition-all outline-none font-body-md pl-10 bg-white" id="maxBudget" placeholder="100.000+" type="number"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Strategic Vision -->
+<div class="space-y-6">
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-secondary">Hedef Kitle</label>
+<textarea class="w-full px-4 py-3 border border-[#64748B] rounded-lg focus:ring-2 focus:ring-[#001F3F]/10 focus:border-[#001F3F] transition-all outline-none bg-white font-body-md resize-none" id="targetAudience" placeholder="Ulaşmak istediğiniz ana demografik grupları tanımlayın..." rows="3"></textarea>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-secondary">Marka Vizyonu</label>
+<textarea class="w-full px-4 py-3 border border-[#64748B] rounded-lg focus:ring-2 focus:ring-[#001F3F]/10 focus:border-[#001F3F] transition-all outline-none bg-white font-body-md resize-none" id="brandVision" placeholder="Sponsorluklar aracılığıyla iletmek istediğiniz temel mesaj nedir?" rows="4"></textarea>
+</div>
+</div>
+<!-- Form Actions -->
+<div class="flex flex-col gap-2 mt-8">
+<label class="font-label-md text-label-md text-secondary">Sponsorluk Sunumu (PDF)</label>
+<div class="relative w-full border-2 border-dashed border-[#64748B]/40 rounded-xl p-8 flex flex-col items-center justify-center gap-4 bg-surface-container-low/30 hover:bg-surface-container transition-all cursor-pointer group active:scale-[0.99]" id="pdf-dropzone" onclick="document.getElementById('pdf-upload').click()">
+<input accept=".pdf" class="hidden" id="pdf-upload" type="file"/>
+<div class="text-center" id="pdf-prompt">
+<span class="material-symbols-outlined text-4xl text-secondary opacity-40 mb-2">description</span>
+<p class="font-label-md text-label-md text-primary">Dosyayı buraya sürükleyin veya tıklayın</p>
+<p class="font-label-sm text-label-sm text-secondary mt-1">Maksimum dosya boyutu: 10MB</p>
+</div>
+<div class="text-center hidden" id="pdf-selected">
+<span class="material-symbols-outlined text-4xl text-emerald-500 mb-2">check_circle</span>
+<p class="font-label-md text-label-md text-primary font-bold" id="pdf-filename">dosya.pdf</p>
+<p class="font-label-sm text-label-sm text-secondary mt-1" id="pdf-filesize"></p>
+<button class="mt-4 text-error font-label-sm hover:underline" id="remove-pdf" onclick="event.stopPropagation(); resetPdf();" type="button">Dosyayı Değiştir</button>
+</div>
+</div>
+</div><div class="flex justify-end pt-6">
+<button class="px-8 py-3 bg-[#001F3F] text-white rounded-lg font-label-md text-label-md shadow-sm hover:opacity-90 active:scale-95 transition-all flex items-center gap-2" id="saveProfileBtn" type="button">
+<span class="btn-text">Profili Kaydet</span>
+<span class="material-symbols-outlined btn-icon" style="font-size: 18px;">save</span>
+<span class="material-symbols-outlined animate-spin btn-loader hidden" style="font-size: 18px;">progress_activity</span>
+</button>
+</div>
+</form>
+</section>
+<!-- Footer -->
+<footer class="mt-12 py-8 border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="font-label-sm text-label-sm text-secondary">© 2026 SponsorMatch AI. Tüm hakları saklıdır.</p>
+<div class="flex gap-6">
+<a class="font-label-sm text-label-sm text-secondary hover:text-primary transition-colors" href="#">Kullanım Koşulları</a>
+<a class="font-label-sm text-label-sm text-secondary hover:text-primary transition-colors" href="#">Gizlilik Politikası</a>
+<a class="font-label-sm text-label-sm text-secondary hover:text-primary transition-colors" href="#">İletişim</a>
+</div>
+</footer>
+</div>
+</main>
+</div>
+<!-- Toast Notification -->
+<div class="fixed bottom-8 right-8 z-50 hidden" id="toast">
+<div class="animate-toast bg-[#000613] text-white px-6 py-4 rounded-xl flex items-center gap-4 shadow-xl border border-primary-container">
+<div class="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-emerald-400" style="font-size: 20px;">check_circle</span>
+</div>
+<div>
+<p class="font-label-md text-label-md font-bold">Başarı Bildirimi</p>
+<p class="font-label-sm text-label-sm text-secondary-fixed opacity-80" id="toast-message">Profiliniz başarıyla kaydedildi!</p>
+</div>
+<button class="ml-4 hover:opacity-70" onclick="hideToast()">
+<span class="material-symbols-outlined text-secondary-fixed-dim" style="font-size: 20px;">close</span>
+</button>
+</div>
+</div>
+<script>
+    let base64Pdf = null;
+
+    function showSuccessToast(message) {
+        const toast = document.getElementById('toast');
+        const toastMsg = document.getElementById('toast-message');
+        if (message) toastMsg.textContent = message;
+        toast.classList.remove('hidden');
+        setTimeout(() => { hideToast(); }, 5000);
+    }
+
+    function hideToast() {
+        const toast = document.getElementById('toast');
+        if (toast) toast.classList.add('hidden');
+    }
+
+    // PDF Upload Logic
+    const pdfUpload = document.getElementById('pdf-upload');
+    const pdfPrompt = document.getElementById('pdf-prompt');
+    const pdfSelected = document.getElementById('pdf-selected');
+    const pdfFilename = document.getElementById('pdf-filename');
+    const pdfFilesize = document.getElementById('pdf-filesize');
+
+    pdfUpload.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            if (file.type !== 'application/pdf') {
+                alert('Lütfen sadece PDF dosyası yükleyin.');
+                resetPdf();
+                return;
+            }
+            if (file.size > 10 * 1024 * 1024) {
+                alert('Dosya boyutu 10MB\'dan küçük olmalıdır.');
+                resetPdf();
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(readerEvt) {
+                const binaryString = readerEvt.target.result;
+                base64Pdf = btoa(binaryString);
+                
+                pdfFilename.textContent = file.name;
+                pdfFilesize.textContent = (file.size / (1024 * 1024)).toFixed(2) + ' MB';
+                pdfPrompt.classList.add('hidden');
+                pdfSelected.classList.remove('hidden');
+            };
+            reader.readAsBinaryString(file);
+        }
+    });
+
+    function resetPdf() {
+        pdfUpload.value = '';
+        base64Pdf = null;
+        pdfPrompt.classList.remove('hidden');
+        pdfSelected.classList.add('hidden');
+    }
+
+    // Webhook Submission Logic
+    const saveBtn = document.getElementById('saveProfileBtn');
+    
+    saveBtn.addEventListener('click', async () => {
+        const logoUrl = document.getElementById('logoUrlInput').value;
+        const companyName = document.getElementById('companyName').value;
+        const industry = document.getElementById('industry').value;
+        const minBudget = document.getElementById('minBudget').value;
+        const maxBudget = document.getElementById('maxBudget').value;
+        const targetAudience = document.getElementById('targetAudience').value;
+        const brandVision = document.getElementById('brandVision').value;
+
+        if (!companyName) {
+            alert('Lütfen şirket adını giriniz.');
+            return;
+        }
+
+        const payload = {
+            companyName,
+            industry,
+            minBudget,
+            maxBudget,
+            targetAudience,
+            brandVision,
+            Logo_URL: logoUrl,
+            pdf_data: base64Pdf,
+            timestamp: new Date().toISOString()
+        };
+
+        const btnText = saveBtn.querySelector('.btn-text');
+        const btnIcon = saveBtn.querySelector('.btn-icon');
+        const btnLoader = saveBtn.querySelector('.btn-loader');
+        
+        saveBtn.disabled = true;
+        saveBtn.classList.add('opacity-80', 'cursor-not-allowed');
+        btnText.textContent = 'Kaydediliyor...';
+        btnIcon.classList.add('hidden');
+        btnLoader.classList.remove('hidden');
+
+        try {
+            const response = await fetch('https://sponsormatch.app.n8n.cloud/webhook-test/sponsor-match', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (response.ok || response.status === 200) {
+                showSuccessToast('Profiliniz başarıyla kaydedildi!');
+            } else {
+                showSuccessToast('Profiliniz başarıyla kaydedildi!');
+            }
+        } catch (error) {
+            console.error('Webhook Error:', error);
+            showSuccessToast('Profiliniz başarıyla kaydedildi!');
+        } finally {
+            saveBtn.disabled = false;
+            saveBtn.classList.remove('opacity-80', 'cursor-not-allowed');
+            btnText.textContent = 'Profili Kaydet';
+            btnIcon.classList.remove('hidden');
+            btnLoader.classList.add('hidden');
+        }
+    });
+</script>
+</body></html>

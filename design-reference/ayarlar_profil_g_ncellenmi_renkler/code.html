@@ -1,0 +1,366 @@
+<!DOCTYPE html><html class="light" lang="tr"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>SponsorMatch AI - Ayarlar</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed-variant": "#43474b",
+                        "inverse-surface": "#2f3131",
+                        "on-tertiary": "#ffffff",
+                        "inverse-primary": "#afc8f0",
+                        "primary-fixed": "#d4e3ff",
+                        "on-secondary-fixed": "#171c1f",
+                        "tertiary-fixed-dim": "#b7c8e1",
+                        "tertiary-container": "#0e1f33",
+                        "on-error-container": "#93000a",
+                        "on-background": "#1a1c1c",
+                        "secondary": "#5a5f62",
+                        "on-error": "#ffffff",
+                        "secondary-fixed-dim": "#c3c7cb",
+                        "on-secondary": "#ffffff",
+                        "background": "#f9f9f9",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed-variant": "#2f486a",
+                        "surface": "#f9f9f9",
+                        "on-primary-fixed": "#001c3a",
+                        "tertiary": "#000511",
+                        "secondary-container": "#dce0e4",
+                        "on-secondary-container": "#5e6367",
+                        "error-container": "#ffdad6",
+                        "primary-fixed-dim": "#afc8f0",
+                        "on-tertiary-container": "#77879f",
+                        "surface-bright": "#f9f9f9",
+                        "surface-container-high": "#e8e8e8",
+                        "primary": "#000613",
+                        "on-surface": "#1a1c1c",
+                        "on-primary": "#ffffff",
+                        "surface-container": "#eeeeee",
+                        "on-primary-container": "#6f88ad",
+                        "surface-tint": "#476083",
+                        "surface-container-low": "#f3f3f4",
+                        "primary-container": "#001f3f",
+                        "on-tertiary-fixed-variant": "#38485d",
+                        "on-surface-variant": "#43474e",
+                        "outline": "#74777f",
+                        "inverse-on-surface": "#f0f1f1",
+                        "on-tertiary-fixed": "#0b1c30",
+                        "surface-variant": "#e2e2e2",
+                        "surface-dim": "#dadada",
+                        "surface-container-highest": "#e2e2e2",
+                        "secondary-fixed": "#dfe3e7",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed": "#d3e4fe",
+                        "outline-variant": "#c4c6cf"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "40px",
+                        "container-max": "1280px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "headline-sm": ["20px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex">
+<!-- SideNavBar -->
+<nav class="docked left-0 h-full w-64 border-r border-outline-variant bg-surface-container-lowest text-primary font-label-md hidden md:flex flex-col h-screen p-4 gap-2">
+<div class="mb-8 px-4">
+<h1 class="font-headline-sm text-headline-sm font-bold text-primary">SponsorMatch AI</h1>
+<p class="text-secondary font-label-sm text-label-sm mt-1">Yönetim Portalı</p>
+</div>
+<ul class="flex flex-col gap-1 w-full flex-grow">
+<li class="">
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-secondary-fixed transition-colors opacity-90 active:scale-95 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                Sayfam
+            </a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-secondary-fixed transition-colors opacity-90 active:scale-95 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+                Etkinliklerim
+            </a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-secondary-fixed transition-colors opacity-90 active:scale-95 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="chat">chat</span>
+                Mesajlar
+            </a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary rounded-lg opacity-90 active:scale-95 transition-all shadow-sm" href="#" style="background-color: #001f3f; color: #ffffff;">
+<span class="material-symbols-outlined" data-icon="settings" style="font-variation-settings: 'FILL' 1;">settings</span>
+                Ayarlar
+            </a>
+</li>
+</ul>
+</nav>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col h-screen overflow-y-auto bg-background">
+<!-- Mobile Header (Visible only on mobile) -->
+<header class="md:hidden bg-surface border-b border-outline-variant px-margin-mobile py-4 flex items-center justify-between">
+<h1 class="font-headline-sm text-headline-sm font-bold text-primary">SponsorMatch AI</h1>
+<button class="text-secondary p-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</header>
+<div class="max-w-container-max mx-auto w-full px-margin-mobile md:px-margin-desktop py-8 md:py-12 flex-1">
+<header class="mb-10">
+<h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-2">Ayarlar</h2>
+<p class="font-body-lg text-body-lg text-secondary">Hesap tercihlerinizi ve profil bilgilerinizi yönetin.</p>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-4 gap-gutter">
+<!-- Settings Tabs Navigation -->
+<div class="lg:col-span-1">
+<nav class="flex flex-row lg:flex-col gap-2 overflow-x-auto pb-4 lg:pb-0 scrollbar-hide">
+<button class="flex items-center gap-3 px-4 py-3 bg-surface-container-low text-primary font-label-md text-label-md rounded-lg whitespace-nowrap transition-colors w-full text-left font-semibold" id="tab-profile" style="background-color: #001f3f; color: #ffffff;">
+<span class="material-symbols-outlined text-lg">person</span>
+                        Profil
+                    </button>
+<button class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-low hover:text-primary font-label-md text-label-md rounded-lg whitespace-nowrap transition-colors w-full text-left" id="tab-security">
+<span class="material-symbols-outlined text-lg">lock</span>
+                        Güvenlik
+                    </button>
+<button class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-low hover:text-primary font-label-md text-label-md rounded-lg whitespace-nowrap transition-colors w-full text-left" id="tab-notifications">
+<span class="material-symbols-outlined text-lg">notifications</span>
+                        Bildirimler
+                    </button>
+</nav>
+</div>
+<!-- Settings Content Area -->
+<div class="lg:col-span-3 bg-surface border border-outline-variant rounded-[16px] p-6 md:p-8 shadow-sm">
+<!-- Profile Tab Content -->
+<div class="space-y-8 block" id="content-profile">
+<div>
+<h3 class="font-headline-md text-headline-md text-primary mb-1">Profil Bilgileri</h3>
+<p class="font-body-md text-body-md text-secondary mb-6">Organizatör profilinizde görünecek temel bilgileri güncelleyin.</p>
+</div>
+<div class="flex flex-col sm:flex-row items-center gap-6 mb-8 pb-8 border-b border-outline-variant">
+<div class="relative w-24 h-24 rounded-full overflow-hidden border border-outline-variant bg-surface-container-low flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-4xl text-secondary">person</span>
+</div>
+<div class="flex gap-3">
+<button class="bg-primary-container text-on-primary-container px-4 py-2 rounded-lg font-label-md text-label-md transition-colors hover:bg-primary hover:text-on-primary" style="background-color: #001f3f; color: #ffffff;">
+                                Fotoğraf Yükle
+                            </button>
+<button class="bg-transparent border border-outline text-secondary px-4 py-2 rounded-lg font-label-md text-label-md transition-colors hover:bg-surface-container-low hover:text-primary">
+                                Kaldır
+                            </button>
+</div>
+</div>
+<form class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface block">Organizatör Adı</label>
+<input class="w-full bg-surface border border-outline-variant rounded-lg px-4 py-3 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary-fixed-dim transition-all text-on-surface" placeholder="Adınızı girin" type="text" value="TechEvents Global">
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface block">Şirket Adı</label>
+<input class="w-full bg-surface border border-outline-variant rounded-lg px-4 py-3 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary-fixed-dim transition-all text-on-surface" placeholder="Şirket adınızı girin" type="text" value="TechEvents Ltd. Şti.">
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface block">E-posta Adresi</label>
+<input class="w-full bg-surface border border-outline-variant rounded-lg px-4 py-3 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary-fixed-dim transition-all text-on-surface" placeholder="E-posta adresinizi girin" type="email" value="contact@techevents.com">
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface block">Telefon Numarası</label>
+<input class="w-full bg-surface border border-outline-variant rounded-lg px-4 py-3 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary-fixed-dim transition-all text-on-surface" placeholder="Telefon numaranızı girin" type="tel" value="+90 532 123 45 67">
+</div>
+</div>
+<div class="pt-6 border-t border-outline-variant flex justify-end gap-4">
+<button class="bg-transparent text-secondary px-6 py-3 rounded-lg font-label-md text-label-md transition-colors hover:text-primary" type="button">
+                                İptal
+                            </button>
+<button class="bg-primary-container text-on-primary-container px-6 py-3 rounded-lg font-label-md text-label-md transition-colors hover:bg-primary hover:text-on-primary shadow-sm hover:shadow-md" style="background-color: #001f3f; color: #ffffff;" type="button">
+                                Değişiklikleri Kaydet
+                            </button>
+</div>
+</form>
+</div>
+<!-- Security Tab Content -->
+<div class="space-y-8 hidden" id="content-security">
+<div>
+<h3 class="font-headline-md text-headline-md text-primary mb-1">Güvenlik Ayarları</h3>
+<p class="font-body-md text-body-md text-secondary mb-6">Hesap şifrenizi ve güvenlik tercihlerinizi güncelleyin.</p>
+</div>
+<form class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2 col-span-1 md:col-span-2 max-w-md">
+<label class="font-label-md text-label-md text-on-surface block">Mevcut Şifre</label>
+<input class="w-full bg-surface border border-outline-variant rounded-lg px-4 py-3 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary-fixed-dim transition-all text-on-surface" placeholder="••••••••" type="password">
+</div>
+<div class="space-y-2 max-w-md">
+<label class="font-label-md text-label-md text-on-surface block">Yeni Şifre</label>
+<input class="w-full bg-surface border border-outline-variant rounded-lg px-4 py-3 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary-fixed-dim transition-all text-on-surface" placeholder="••••••••" type="password">
+</div>
+<div class="space-y-2 max-w-md">
+<label class="font-label-md text-label-md text-on-surface block">Yeni Şifre Tekrar</label>
+<input class="w-full bg-surface border border-outline-variant rounded-lg px-4 py-3 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary-fixed-dim transition-all text-on-surface" placeholder="••••••••" type="password">
+</div>
+</div>
+<div class="py-4 border-y border-outline-variant">
+<div class="flex items-center justify-between py-2">
+<div class="pr-4">
+<h4 class="font-label-md text-label-md font-semibold text-primary mb-1">İki Adımlı Doğrulama (2FA)</h4>
+<p class="font-label-sm text-label-sm text-secondary">Hesabınızı SMS ile ekstra güvenceye alın.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer shrink-0">
+<input class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</div>
+<div class="pt-2 flex justify-end">
+<button class="bg-primary-container text-on-primary-container px-6 py-3 rounded-lg font-label-md text-label-md transition-colors hover:bg-primary hover:text-on-primary shadow-sm" style="background-color: #001f3f; color: #ffffff;" type="button">
+                                Şifreyi Güncelle
+                            </button>
+</div>
+</form>
+</div>
+<!-- Notifications Tab Content -->
+<div class="space-y-8 hidden" id="content-notifications">
+<div>
+<h3 class="font-headline-md text-headline-md text-primary mb-1">Bildirim Tercihleri</h3>
+<p class="font-body-md text-body-md text-secondary mb-6">Hangi durumlarda e-posta veya sistem bildirimi alacağınızı seçin.</p>
+</div>
+<div class="space-y-4">
+<!-- Toggle Item 1 -->
+<div class="flex items-center justify-between p-4 border border-outline-variant rounded-lg hover:shadow-sm transition-shadow">
+<div class="pr-4">
+<h4 class="font-label-md text-label-md font-semibold text-primary">Yeni bir sponsorluk teklifi geldiğinde</h4>
+</div>
+<label class="relative inline-flex items-center cursor-pointer shrink-0">
+<input checked="" class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<!-- Toggle Item 2 -->
+<div class="flex items-center justify-between p-4 border border-outline-variant rounded-lg hover:shadow-sm transition-shadow">
+<div class="pr-4">
+<h4 class="font-label-md text-label-md font-semibold text-primary">AI eşleşme skoru güncellendiğinde</h4>
+</div>
+<label class="relative inline-flex items-center cursor-pointer shrink-0">
+<input checked="" class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<!-- Toggle Item 3 -->
+<div class="flex items-center justify-between p-4 border border-outline-variant rounded-lg hover:shadow-sm transition-shadow">
+<div class="pr-4">
+<h4 class="font-label-md text-label-md font-semibold text-primary">Mesaj kutuma yeni bir mesaj düştüğünde</h4>
+</div>
+<label class="relative inline-flex items-center cursor-pointer shrink-0">
+<input checked="" class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<div class="pt-6 border-t border-outline-variant flex justify-end">
+<button class="bg-primary-container text-on-primary-container px-6 py-3 rounded-lg font-label-md text-label-md transition-colors hover:bg-primary hover:text-on-primary shadow-sm hover:shadow-md" style="background-color: #001f3f; color: #ffffff;" type="button">
+                                Tercihleri Kaydet
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<script>
+    // Tab Switching Logic
+    document.addEventListener('DOMContentLoaded', () => {
+        const tabs = ['profile', 'security', 'notifications'];
+        
+        tabs.forEach(tab => {
+            const tabButton = document.getElementById(`tab-${tab}`);
+            if(tabButton) {
+                tabButton.addEventListener('click', () => {
+                    // Reset all tabs
+                    tabs.forEach(t => {
+                        const btn = document.getElementById(`tab-${t}`);
+                        const content = document.getElementById(`content-${t}`);
+                        
+                        // Reset button styling
+                        btn.classList.remove('bg-surface-container-low', 'text-primary', 'font-semibold');
+                        btn.classList.add('text-secondary');
+                        
+                        // Hide content
+                        if (content) {
+                            content.classList.add('hidden');
+                            content.classList.remove('block');
+                        }
+                    });
+                    
+                    // Set active tab styling
+                    tabButton.classList.remove('text-secondary');
+                    tabButton.classList.add('bg-surface-container-low', 'text-primary', 'font-semibold');
+                    
+                    // Show active content
+                    const activeContent = document.getElementById(`content-${tab}`);
+                    if (activeContent) {
+                        activeContent.classList.remove('hidden');
+                        activeContent.classList.add('block');
+                    }
+                });
+            }
+        });
+    });
+</script>
+</body></html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html><html class="light" lang="tr"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Şifremi Unuttum - SponsorMatch AI</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Inter & Material Symbols -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet">
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-dim": "#dadada",
+                    "on-tertiary-container": "#77879f",
+                    "inverse-on-surface": "#f0f1f1",
+                    "on-error-container": "#93000a",
+                    "on-primary-fixed-variant": "#2f486a",
+                    "surface-container": "#eeeeee",
+                    "on-secondary-fixed-variant": "#43474b",
+                    "tertiary": "#000511",
+                    "secondary-fixed-dim": "#c3c7cb",
+                    "on-primary-fixed": "#001c3a",
+                    "tertiary-fixed": "#d3e4fe",
+                    "surface-container-low": "#f3f3f4",
+                    "inverse-surface": "#2f3131",
+                    "on-secondary-container": "#5e6367",
+                    "on-primary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "tertiary-fixed-dim": "#b7c8e1",
+                    "surface-variant": "#e2e2e2",
+                    "primary-fixed-dim": "#afc8f0",
+                    "error": "#ba1a1a",
+                    "on-surface": "#1a1c1c",
+                    "surface-container-highest": "#e2e2e2",
+                    "background": "#f9f9f9",
+                    "on-surface-variant": "#43474e",
+                    "on-secondary": "#ffffff",
+                    "surface-tint": "#476083",
+                    "on-tertiary-fixed-variant": "#38485d",
+                    "tertiary-container": "#0e1f33",
+                    "surface-bright": "#f9f9f9",
+                    "secondary-container": "#dce0e4",
+                    "primary": "#000613",
+                    "on-tertiary-fixed": "#0b1c30",
+                    "surface": "#f9f9f9",
+                    "outline": "#74777f",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed": "#171c1f",
+                    "secondary-fixed": "#dfe3e7",
+                    "primary-fixed": "#d4e3ff",
+                    "outline-variant": "#c4c6cf",
+                    "on-primary-container": "#6f88ad",
+                    "on-background": "#1a1c1c",
+                    "surface-container-high": "#e8e8e8",
+                    "inverse-primary": "#afc8f0",
+                    "primary-container": "#001f3f",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary": "#5a5f62",
+                    "error-container": "#ffdad6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "base": "8px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "40px",
+                    "gutter": "24px",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "display-lg-mobile": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9f9;
+        }
+        .soft-shadow {
+            box-shadow: 0px 4px 20px rgba(0, 31, 63, 0.05);
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- Top Navigation Bar (Simplified for Transactional Flow - Suppressed Nav Links) -->
+<header class="bg-surface-container-lowest border-b border-outline-variant h-20 flex items-center">
+<div class="w-full px-margin-desktop max-w-container-max mx-auto flex justify-between items-center">
+<div class="font-headline-md text-headline-md font-bold text-primary">
+                SponsorMatch AI
+            </div>
+<div class="hidden md:block">
+<a class="text-secondary font-label-md text-label-md hover:text-primary transition-colors" href="#">Yardım Merkezi</a>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-grow flex items-center justify-center px-margin-mobile py-16">
+<!-- Forgot Password Card -->
+<div class="w-full max-w-[480px] bg-surface-container-lowest border border-outline-variant rounded-lg soft-shadow p-12 animate-fade-in">
+<!-- Icon/Visual Header -->
+<div class="mb-8 flex justify-center">
+<div class="w-16 h-16 rounded-full bg-secondary-container flex items-center justify-center text-primary-container"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAp7Zdx6ZeEsUYQzhRTGXA16PCB3N8cGaGTXC9A67s_xwQOYD4bd7enrgfJfc67VjgVk6mjsUX9hWfGBlNKAYAiZypOZvRdfQaOm8rWe-XCZaESTVGiKHMAluP9HnhUCESr_cygwAw0bykXoJqOuvzpK9MVhDXAmvnnuB77rF-8J5ZDU1djig0m6Np82zR5CJTB9LgB5XKj2AjUJmQHSBNYOKm1_IMG40C-oGW6ui8EIJflp6yH0OPlOaQHn2AzsVqFWGB0PNebw7I" alt="SponsorMatch AI Logo" class="w-full h-full rounded-full object-cover"></div>
+</div>
+<!-- Typography Header -->
+<div class="text-center mb-8">
+<h1 class="font-headline-md text-headline-md text-on-surface mb-2">Şifremi Unuttum</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                    Şifrenizi sıfırlamak için kayıtlı e-posta adresinizi girin.
+                </p>
+</div>
+<!-- Form -->
+<form class="space-y-6" id="forgotPasswordForm">
+<div class="space-y-2">
+<label class="block font-label-md text-label-md text-on-surface" for="email">E-posta Adresi</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">mail</span>
+<input class="w-full pl-12 pr-4 py-3 bg-surface-container-lowest border border-outline-variant rounded-lg font-body-md text-body-md focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary-fixed-dim transition-all" id="email" name="email" placeholder="ornek@alanadi.com" required="" type="email">
+</div>
+</div>
+<button class="w-full bg-primary-container text-on-primary py-4 rounded-lg font-label-md text-label-md font-semibold hover:opacity-90 active:scale-[0.98] transition-all flex justify-center items-center gap-2" type="submit">
+                    Şifre Sıfırlama Bağlantısı Gönder
+                    <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</form>
+<!-- Navigation Back -->
+<div class="mt-10 text-center border-t border-outline-variant pt-8">
+<a class="inline-flex items-center gap-1 font-label-md text-label-md text-secondary hover:text-primary transition-colors group" href="#">
+<span class="material-symbols-outlined text-[18px] group-hover:-translate-x-1 transition-transform">chevron_left</span>
+                    Giriş Yap'a Dön
+                </a>
+</div>
+</div>
+</main>
+<!-- Footer (Simplified for Transactional Flow) -->
+<footer class="bg-surface-container-low border-t border-outline-variant">
+<div class="w-full py-12 px-margin-desktop max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-base">
+<p class="font-label-md text-label-md text-on-surface-variant">
+                © 2024 SponsorMatch AI. Tüm hakları saklıdır.
+            </p>
+<div class="flex gap-gutter">
+<a class="font-label-md text-label-md text-on-secondary-container hover:text-primary transition-all" href="#">Gizlilik Politikası</a>
+<a class="font-label-md text-label-md text-on-secondary-container hover:text-primary transition-all" href="#">Kullanım Koşulları</a>
+<a class="font-label-md text-label-md text-on-secondary-container hover:text-primary transition-all" href="#">İletişim</a>
+</div>
+</div>
+</footer>
+<script>
+        // Simple Interaction logic
+        document.getElementById('forgotPasswordForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            const originalContent = btn.innerHTML;
+            
+            // Show Loading State
+            btn.disabled = true;
+            btn.innerHTML = `<span class="animate-spin material-symbols-outlined">progress_activity</span> İşleniyor...`;
+            
+            // Simulate API Call
+            setTimeout(() => {
+                btn.classList.replace('bg-primary-container', 'bg-green-600');
+                btn.innerHTML = `<span class="material-symbols-outlined">check_circle</span> Bağlantı Gönderildi!`;
+                
+                // Add a subtle success message
+                const successMsg = document.createElement('p');
+                successMsg.className = 'text-green-600 text-center mt-4 font-label-sm text-label-sm animate-fade-in';
+                successMsg.innerText = 'E-posta kutunuzu kontrol edin. Birkaç dakika içinde ulaşmazsa spam klasörüne bakın.';
+                e.target.appendChild(successMsg);
+            }, 1500);
+        });
+    </script>
+
+
+</body></html>

@@ -1,0 +1,324 @@
+<!DOCTYPE html><html class="light" lang="tr"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>SponsorMatch AI - Bildirim Ayarları</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container": "#eeeeee",
+                    "on-tertiary-fixed-variant": "#38485d",
+                    "on-primary-fixed": "#001c3a",
+                    "outline-variant": "#c4c6cf",
+                    "on-tertiary-fixed": "#0b1c30",
+                    "tertiary-container": "#0e1f33",
+                    "secondary": "#5a5f62",
+                    "on-background": "#1a1c1c",
+                    "on-secondary-fixed-variant": "#43474b",
+                    "surface-container-highest": "#e2e2e2",
+                    "secondary-container": "#dce0e4",
+                    "primary-fixed": "#d4e3ff",
+                    "tertiary-fixed": "#d3e4fe",
+                    "surface-bright": "#f9f9f9",
+                    "on-secondary-fixed": "#171c1f",
+                    "on-primary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-container": "#001f3f",
+                    "tertiary": "#000511",
+                    "on-secondary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "secondary-fixed": "#dfe3e7",
+                    "primary-fixed-dim": "#afc8f0",
+                    "on-primary-fixed-variant": "#2f486a",
+                    "tertiary-fixed-dim": "#b7c8e1",
+                    "outline": "#74777f",
+                    "surface-tint": "#476083",
+                    "surface-container-high": "#e8e8e8",
+                    "on-primary-container": "#6f88ad",
+                    "error-container": "#ffdad6",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed-dim": "#c3c7cb",
+                    "error": "#ba1a1a",
+                    "inverse-on-surface": "#f0f1f1",
+                    "on-secondary-container": "#5e6367",
+                    "surface-container-low": "#f3f3f4",
+                    "inverse-surface": "#2f3131",
+                    "inverse-primary": "#afc8f0",
+                    "background": "#f9f9f9",
+                    "surface-variant": "#e2e2e2",
+                    "surface-dim": "#dadada",
+                    "surface": "#f9f9f9",
+                    "primary": "#000613",
+                    "on-surface": "#1a1c1c",
+                    "on-surface-variant": "#43474e",
+                    "on-tertiary-container": "#77879f"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "margin-mobile": "16px",
+                    "container-max": "1280px",
+                    "margin-desktop": "40px",
+                    "base": "8px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "display-lg-mobile": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #000613;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #000613;
+        }
+        .bento-card {
+            background: #ffffff;
+            border: 1px solid #E2E8F0;
+            box-shadow: 0px 4px 20px rgba(0, 31, 63, 0.05);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+        .bento-card:hover {
+            box-shadow: 0px 8px 30px rgba(0, 31, 63, 0.08);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+<!-- App Container -->
+<div class="flex min-h-screen">
+<!-- Side Navigation (Predicted Component Map) -->
+<aside class="hidden md:flex flex-col h-screen p-4 gap-2 border-r border-outline-variant bg-surface-container-lowest w-64 fixed left-0 top-0 z-50">
+<div class="mb-8 px-4">
+<h1 class="font-headline-sm text-headline-sm font-bold text-primary">SponsorMatch AI</h1>
+<p class="font-label-md text-label-md text-secondary opacity-70">Yönetim Paneli</p>
+</div>
+<nav class="flex flex-col gap-1">
+<!-- Labels from JSON map: Sayfam (Dashboard), Etkinliklerim (Events), Mesajlar (Messages), Ayarlar (Settings) -->
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-secondary-fixed transition-colors rounded-lg opacity-90 active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Sayfam</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-secondary-fixed transition-colors rounded-lg opacity-90 active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="font-label-md text-label-md">Etkinliklerim</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-secondary-fixed transition-colors rounded-lg opacity-90 active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined">chat</span>
+<span class="font-label-md text-label-md">Mesajlar</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary-container text-primary rounded-lg opacity-90 active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-label-md text-label-md">Ayarlar</span>
+</a>
+</nav>
+<div class="mt-auto p-4 bg-surface-container-low rounded-xl border border-outline-variant/30">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-white font-bold">BK</div>
+<div>
+<p class="font-label-md text-label-md text-primary">Bora Karaca</p>
+<p class="text-[10px] text-secondary">Premium Sponsor</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-64 bg-background">
+<!-- Header (Mobile Specific) -->
+<header class="md:hidden flex items-center justify-between px-margin-mobile py-4 bg-surface border-b border-outline-variant sticky top-0 z-40">
+<span class="font-headline-sm text-headline-sm font-bold text-primary">SponsorMatch AI</span>
+<button class="p-2 text-primary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</header>
+<div class="max-w-container-max mx-auto px-4 md:px-margin-desktop py-8 md:py-12">
+<div class="flex flex-col lg:flex-row gap-8">
+<!-- Sub-navigation (Inner Settings Nav) -->
+<div class="w-full lg:w-64 flex flex-col gap-2">
+<h2 class="px-4 mb-4 font-headline-sm text-headline-sm text-primary">Ayarlar</h2>
+<div class="flex flex-row lg:flex-col gap-1 overflow-x-auto pb-2 lg:pb-0 scrollbar-hide">
+<a class="whitespace-nowrap flex items-center gap-3 px-4 py-3 text-secondary hover:text-primary transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-label-md">Profil</span>
+</a>
+<a class="whitespace-nowrap flex items-center gap-3 px-4 py-3 text-secondary hover:text-primary transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">security</span>
+<span class="font-label-md text-label-md">Güvenlik</span>
+</a>
+<a class="whitespace-nowrap flex items-center gap-3 px-4 py-3 bg-primary-container text-white rounded-lg font-bold" href="#"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">notifications</span><span class="font-label-md text-label-md">Bildirimler</span></a>
+</div>
+</div>
+<!-- Right Panel Content -->
+<div class="flex-1">
+<div class="bento-card p-8">
+<!-- Title & Subtitle -->
+<div class="mb-10">
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Bildirim Tercihleri</h3>
+<p class="font-body-md text-body-md text-secondary">Hangi durumlarda e-posta veya sistem bildirimi alacağınızı seçin.</p>
+</div>
+<!-- Notification List -->
+<div class="space-y-0">
+<!-- Item 1 -->
+<div class="flex items-center justify-between py-6 border-b border-outline-variant">
+<div class="flex flex-col gap-1 pr-4">
+<span class="font-label-md text-label-md text-primary">Yeni bir sponsorluk teklifi geldiğinde</span>
+<span class="text-sm text-secondary opacity-80">Potansiyel iş ortakları size ulaştığında anında haberiniz olsun.</span>
+</div>
+<div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-2 border-outline appearance-none cursor-pointer checked:bg-primary checked:border-primary transition-all duration-300 ease-in-out transform checked:translate-x-6" id="toggle1" name="toggle1" type="checkbox">
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-surface-container cursor-pointer transition-colors duration-300" for="toggle1"></label>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center justify-between py-6 border-b border-outline-variant">
+<div class="flex flex-col gap-1 pr-4">
+<span class="font-label-md text-label-md text-primary">AI eşleşme skoru güncellendiğinde</span>
+<span class="text-sm text-secondary opacity-80">Yeni veriler ışığında en iyi eşleşmeleriniz değiştiğinde bildirim alın.</span>
+</div>
+<div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-2 border-outline appearance-none cursor-pointer checked:bg-primary checked:border-primary transition-all duration-300 ease-in-out transform checked:translate-x-6" id="toggle2" name="toggle2" type="checkbox">
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-surface-container cursor-pointer transition-colors duration-300" for="toggle2"></label>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="flex items-center justify-between py-6">
+<div class="flex flex-col gap-1 pr-4">
+<span class="font-label-md text-label-md text-primary">Mesaj kutuma yeni bir mesaj düştüğünde</span>
+<span class="text-sm text-secondary opacity-80">Sponsorlar veya organizatörlerle iletişiminizi aksatmayın.</span>
+</div>
+<div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+<input class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-2 border-outline appearance-none cursor-pointer checked:bg-primary checked:border-primary transition-all duration-300 ease-in-out transform checked:translate-x-6" id="toggle3" name="toggle3" type="checkbox">
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-surface-container cursor-pointer transition-colors duration-300" for="toggle3"></label>
+</div>
+</div>
+</div>
+<!-- Footer Action -->
+<div class="mt-12 pt-8 border-t border-outline-variant flex justify-end">
+<button class="px-8 py-3 bg-primary-container text-white font-label-md text-label-md rounded-lg hover:opacity-90 active:scale-95 transition-all shadow-md">Tercihleri Kaydet</button>
+</div>
+</div>
+<!-- Contextual Visual Card (Bento Style) -->
+<div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="bento-card p-6 flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 bg-tertiary-fixed rounded-xl flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-primary">mail</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-primary mb-2">E-posta Özetleri</h4>
+<p class="font-body-md text-body-md text-secondary">Haftalık performans raporunuzu e-posta olarak almak ister misiniz?</p>
+</div>
+<button class="mt-6 text-primary font-bold flex items-center gap-2 hover:translate-x-1 transition-transform">
+                                    Abonelikleri Yönet <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<div class="relative overflow-hidden rounded-2xl h-full min-h-[200px]">
+<div class="absolute inset-0 z-0 bg-cover bg-center" data-alt="A premium close-up shot of a high-resolution tablet screen displaying colorful data visualization charts and sponsorship matching metrics. The lighting is professional and soft, with a focus on clean typography and vibrant ice-blue and navy corporate colors. The background is a blurred, modern office environment, conveying a sense of sophisticated business technology and data-driven decision making." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCMMC-oqxWGAbet44XnSr_-_iDo2SaRGOz96PUyjpiwFnel36ncRzc75M52BT9atqzafYvj1D7zx5YenFKcphIBYCbnwHNmx5D-hqeyTNnp72JevtdV4f_ULIHGApJsqdX1g5KEyirtQ80NpPZiKTmQ19DeOIwWLhi6EAt4LZHsgsB0d1SpT_OAVKWWsbiS8Tw60NUYEZxKVF3qNAH5Cy5r6MI4_tFjTyuT3ctr6kecwd_fczb107AtBDQ28vCaP31CuiGOeGWST7o')"></div>
+<div class="absolute inset-0 bg-primary/20 backdrop-blur-[2px] z-10"></div>
+<div class="relative z-20 p-6 flex flex-col justify-end h-full">
+<span class="text-white font-headline-sm text-headline-sm font-bold">Profesyonel Görünürlük</span>
+<p class="text-white/80 text-sm mt-2">Profiliniz AI tarafından analiz edilerek en iyi sponsorlarla eşleştiriliyor.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer (Shared Component Map) -->
+<footer class="mt-auto border-t border-outline-variant bg-surface">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop py-8 w-full max-w-container-max mx-auto">
+<div class="flex flex-col items-center md:items-start mb-4 md:mb-0">
+<span class="font-label-md text-label-md font-bold text-primary">SponsorMatch AI</span>
+<p class="font-label-sm text-label-sm text-secondary">© 2024 SponsorMatch AI. Tüm hakları saklıdır.</p>
+</div>
+<div class="flex gap-6">
+<a class="font-label-sm text-label-sm text-secondary hover:text-primary transition-colors" href="#">Gizlilik Politikası</a>
+<a class="font-label-sm text-label-sm text-secondary hover:text-primary transition-colors" href="#">Kullanım Şartları</a>
+<a class="font-label-sm text-label-sm text-secondary hover:text-primary transition-colors" href="#">Destek</a>
+</div>
+</div>
+</footer>
+</main>
+</div>
+<!-- Mobile Bottom Nav (Predicted Component Map) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface border-t border-outline-variant flex justify-around items-center py-3 z-50">
+<a class="flex flex-col items-center text-secondary" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] mt-1">Sayfam</span>
+</a>
+<a class="flex flex-col items-center text-secondary" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="text-[10px] mt-1">Etkinliklerim</span>
+</a>
+<a class="flex flex-col items-center text-secondary" href="#">
+<span class="material-symbols-outlined">chat</span>
+<span class="text-[10px] mt-1">Mesajlar</span>
+</a>
+<a class="flex flex-col items-center text-primary font-bold" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="text-[10px] mt-1">Ayarlar</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for toggles
+        const toggles = document.querySelectorAll('.toggle-checkbox');
+        toggles.forEach(toggle => {
+            toggle.addEventListener('change', function() {
+                const parent = this.closest('.flex.items-center.justify-between');
+                if(this.checked) {
+                    console.log('Notification enabled for:', parent.querySelector('.text-primary').innerText);
+                } else {
+                    console.log('Notification disabled for:', parent.querySelector('.text-primary').innerText);
+                }
+            });
+        });
+
+        // Hover animation for cards
+        const cards = document.querySelectorAll('.bento-card');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-2px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0px)';
+            });
+        });
+    </script>
+
+
+</body></html>

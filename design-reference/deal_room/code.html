@@ -1,0 +1,273 @@
+<!DOCTYPE html><html class="h-full" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>SponsorMatch AI - Deal Room</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-tint": "#476083",
+                      "tertiary": "#000511",
+                      "surface": "#f9f9f9",
+                      "surface-bright": "#f9f9f9",
+                      "primary-fixed-dim": "#afc8f0",
+                      "secondary-fixed-dim": "#c3c7cb",
+                      "on-primary-container": "#6f88ad",
+                      "outline": "#74777f",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary-fixed": "#0b1c30",
+                      "inverse-primary": "#afc8f0",
+                      "inverse-on-surface": "#f0f1f1",
+                      "on-tertiary-fixed-variant": "#38485d",
+                      "on-primary-fixed": "#001c3a",
+                      "error-container": "#ffdad6",
+                      "inverse-surface": "#2f3131",
+                      "surface-variant": "#e2e2e2",
+                      "on-surface-variant": "#43474e",
+                      "surface-container-highest": "#e2e2e2",
+                      "secondary": "#5a5f62",
+                      "tertiary-fixed-dim": "#b7c8e1",
+                      "on-error-container": "#93000a",
+                      "tertiary-container": "#0e1f33",
+                      "error": "#ba1a1a",
+                      "outline-variant": "#c4c6cf",
+                      "primary-container": "#001f3f",
+                      "on-tertiary": "#ffffff",
+                      "tertiary-fixed": "#d3e4fe",
+                      "secondary-container": "#dce0e4",
+                      "secondary-fixed": "#dfe3e7",
+                      "surface-container-high": "#e8e8e8",
+                      "on-secondary": "#ffffff",
+                      "on-primary-fixed-variant": "#2f486a",
+                      "surface-dim": "#dadada",
+                      "on-error": "#ffffff",
+                      "surface-container-low": "#f3f3f4",
+                      "on-tertiary-container": "#77879f",
+                      "primary-fixed": "#d4e3ff",
+                      "background": "#f9f9f9",
+                      "on-primary": "#ffffff",
+                      "on-secondary-container": "#5e6367",
+                      "surface-container": "#eeeeee",
+                      "on-secondary-fixed-variant": "#43474b",
+                      "on-background": "#1a1c1c",
+                      "on-surface": "#1a1c1c",
+                      "primary": "#000613",
+                      "on-secondary-fixed": "#171c1f"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "margin-desktop": "40px",
+                      "base": "8px",
+                      "container-max": "1280px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "body-md": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "display-lg-mobile": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "label-md": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "headline-sm": ["Inter"]
+              },
+              "fontSize": {
+                      "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                      "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                      "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}]
+              }
+            }
+          }
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface h-full flex flex-col antialiased">
+<!-- TopNavBar (Nav Supressed for Transactional/Focused Deal Room - Intent Fallback applied conceptually but hiding nav to prioritize Canvas as per instructions for focused task) -->
+<!-- Applying Shared Component Nav Headers conceptually but suppressing full nav shell for this focused task screen. Will provide a simplified contextual header. -->
+<header class="bg-surface-container-lowest border-b border-surface-variant flex justify-between items-center px-margin-desktop py-4 w-full">
+<div class="flex items-center gap-4">
+<button class="text-secondary hover:text-primary transition-colors flex items-center">
+<span class="material-symbols-outlined mr-2">arrow_back</span>
+<span class="font-label-md text-label-md">Back to Deals</span>
+</button>
+<div class="h-6 w-px bg-surface-variant"></div>
+<div>
+<h1 class="font-headline-sm text-headline-sm text-primary">Global Tech Summit 2024</h1>
+<p class="font-label-sm text-label-sm text-secondary">Negotiation with InnovateCorp</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="px-3 py-1 bg-[#F0F4F8] text-[#000613] rounded-full font-label-sm text-label-sm border border-surface-variant">In Progress</span>
+<button class="bg-primary text-on-primary px-4 py-2 rounded-lg font-label-md text-label-md hover:bg-opacity-90 transition-opacity flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">handshake</span>
+                 Finalize Agreement
+             </button>
+</div>
+</header>
+<main class="flex-1 flex overflow-hidden max-w-container-max mx-auto w-full w-full">
+<!-- Messages Section (Left) -->
+<section class="w-2/3 flex flex-col bg-surface-container-lowest border-r border-surface-variant h-full">
+<div class="p-6 border-b border-surface-variant flex justify-between items-center bg-[#F0F4F8] bg-opacity-30">
+<h2 class="font-headline-sm text-headline-sm text-primary">Discussion Thread</h2>
+<div class="flex gap-2">
+<button class="text-secondary hover:text-primary transition-colors p-2 rounded-full hover:bg-surface-variant">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="text-secondary hover:text-primary transition-colors p-2 rounded-full hover:bg-surface-variant">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto p-6 space-y-6 flex flex-col">
+<!-- Message from Other -->
+<div class="flex gap-4 max-w-[85%]">
+<img class="w-10 h-10 rounded-full object-cover border border-surface-variant" data-alt="A professional headshot of a corporate executive in a modern, well-lit office setting, conveying a sense of efficient professionalism and reliability. The lighting is crisp and the background is slightly blurred." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoz9du61EAPs2rsGs9P-rnlU9CgSzHI59lbDf1LJVY8gOmtAxiSOIA5TCrWVdgbTCa6-1TNKeyX8VxKMO07_f3niQXlLjxpqV6nD-qyLTByCU6l_5WOrX2Dvh0_oK4FDdHGoAq5F53ktWADO5dpq_HCDCj06eTb0hJ8yFqxFfy-J7-aCYibep01rbFcz-IfT7GpTyJrHfciG68UGn6Ba_lBPByrmTZzK-CHYNUZYEe2RwlyNAO9SrOzFlbRr1tYsxqzt4ZITS6Uwg">
+<div class="flex flex-col gap-1">
+<div class="flex items-baseline gap-2">
+<span class="font-label-md text-label-md text-primary">Sarah Jenkins</span>
+<span class="font-label-sm text-label-sm text-secondary">InnovateCorp • 10:42 AM</span>
+</div>
+<div class="bg-[#F0F4F8] text-on-surface p-4 rounded-2xl rounded-tl-sm font-body-md text-body-md border border-surface-variant">
+                            Thanks for sending over the initial proposal for the Title Sponsorship. We're very interested in the main stage branding. Could we discuss adjusting the number of VIP tickets included?
+                        </div>
+</div>
+</div>
+<!-- Message from Self -->
+<div class="flex gap-4 max-w-[85%] self-end flex-row-reverse">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary font-label-md text-label-md border border-primary">
+                        ME
+                    </div>
+<div class="flex flex-col gap-1 items-end">
+<div class="flex items-baseline gap-2 flex-row-reverse">
+<span class="font-label-md text-label-md text-primary">You</span>
+<span class="font-label-sm text-label-sm text-secondary">11:15 AM</span>
+</div>
+<div class="bg-primary text-on-primary p-4 rounded-2xl rounded-tr-sm font-body-md text-body-md">
+                            Hi Sarah, glad to hear you're interested. The current package includes 10 VIP passes. We could potentially increase that to 15 if we adjust the workshop slot duration. How does that sound?
+                        </div>
+</div>
+</div>
+<!-- System Message / Update -->
+<div class="flex justify-center my-4">
+<span class="bg-surface-variant text-on-surface-variant px-4 py-1 rounded-full font-label-sm text-label-sm">
+                         Deal Terms Updated • 11:30 AM
+                     </span>
+</div>
+<!-- Message from Other -->
+<div class="flex gap-4 max-w-[85%]">
+<img class="w-10 h-10 rounded-full object-cover border border-surface-variant" data-alt="A professional headshot of a corporate executive in a modern, well-lit office setting, conveying a sense of efficient professionalism and reliability. The lighting is crisp and the background is slightly blurred." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-4rr-8N-FIgNKZ8UHoOY4NOdzFlfnnbBC7VjNVbAvoCHTYXhmDx_4_-uANhWb72-DiccvgjtaWKNFl15Sm91hfI1dL9-3CfkjUVcrefa4KtKtaSHCcrPzC7ZBtMBxOKqkOD6_QzB2JP7WKVZStog4hRHF4bgrrqP2fgb8nVyTuQh2DpxwMIXvXPwDh5cktDfyIOoPZNzdM8OOEiqlU-3H8gAKKDSOGO4P5vronGqSvPsnigmQCdf5Xe4Jb7yVV9G-iTG5wcfkw7Q">
+<div class="flex flex-col gap-1">
+<div class="flex items-baseline gap-2">
+<span class="font-label-md text-label-md text-primary">Sarah Jenkins</span>
+<span class="font-label-sm text-label-sm text-secondary">InnovateCorp • 11:45 AM</span>
+</div>
+<div class="bg-[#F0F4F8] text-on-surface p-4 rounded-2xl rounded-tl-sm font-body-md text-body-md border border-surface-variant">
+                            That works for us. I see the updated terms on the right. If we can finalize the payment schedule to net-60, we are ready to proceed.
+                        </div>
+</div>
+</div>
+</div>
+<div class="p-6 border-t border-surface-variant bg-surface-container-lowest">
+<div class="relative flex items-center border border-outline rounded-lg bg-surface-container-lowest focus-within:border-primary focus-within:ring-2 focus-within:ring-[#F0F4F8] transition-all">
+<button class="p-3 text-secondary hover:text-primary">
+<span class="material-symbols-outlined">attach_file</span>
+</button>
+<input class="w-full bg-transparent border-none focus:ring-0 font-body-md text-body-md text-primary py-3 placeholder:text-secondary-fixed-dim" placeholder="Type your message..." type="text">
+<button class="p-3 text-primary hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">send</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Deal Terms Section (Right) -->
+<section class="w-1/3 bg-surface-container-lowest h-full overflow-y-auto flex flex-col">
+<div class="p-6 border-b border-surface-variant sticky top-0 bg-surface-container-lowest z-10"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgFy5lYFkk6kkgZLt_VzMkscNhfpa5hIimn51elpWBroyfFGMU66JvlqvKW1Bm4IvHQy2JJFj3vbZbUE6qcMTJLMwB-5FbPPbl4riEEq11fRgMeFe7xZ3Q7_F7Bs_xXiFtGtWi6LvfLdTSzl1cteIrdmjGnVyaTgMVyS3t1cicCi9jYLph5Jehy3Fl1ogli7UuvI1x5R8e8ibUem39UujLyZejSZZWYo91a_RPXq_shAz3FTLGMm-rkft5kmOxqu9BCBxHwYw9Z3o" alt="SponsorMatch AI Logo" class="h-6 w-auto object-cover mb-4">
+<h2 class="font-headline-sm text-headline-sm text-primary mb-2">Deal Summary</h2>
+<div class="flex items-center gap-2 text-secondary font-label-md text-label-md">
+<span class="material-symbols-outlined text-[16px]">business</span>
+<span class="">InnovateCorp Sponsorship</span>
+</div>
+</div>
+<div class="p-6 space-y-8 flex-1">
+<!-- Financials Card -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-[16px] p-[24px] shadow-sm">
+<h3 class="font-label-md text-label-md text-secondary mb-4 uppercase tracking-wider">Financial Terms</h3>
+<div class="flex justify-between items-baseline mb-4">
+<span class="font-body-md text-body-md text-on-surface">Total Value</span>
+<span class="font-headline-md text-headline-md text-primary">$45,000</span>
+</div>
+<div class="h-px w-full bg-surface-variant mb-4"></div>
+<div class="flex justify-between items-center mb-2">
+<span class="font-label-md text-label-md text-secondary">Payment Schedule</span>
+<span class="font-label-md text-label-md text-primary">Net-60</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-label-md text-label-md text-secondary">Deposit Required</span>
+<span class="font-label-md text-label-md text-primary">20% upon signing</span>
+</div>
+</div>
+<!-- Deliverables Card -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-[16px] p-[24px] shadow-sm">
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-label-md text-label-md text-secondary uppercase tracking-wider">Key Deliverables</h3>
+<button class="text-primary hover:underline font-label-sm text-label-sm flex items-center gap-1">
+                             Edit
+                             <span class="material-symbols-outlined text-[14px]">edit</span>
+</button>
+</div>
+<ul class="space-y-4">
+<li class="flex gap-3 items-start">
+<span class="material-symbols-outlined text-primary mt-0.5" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div>
+<span class="block font-label-md text-label-md text-primary">Main Stage Branding</span>
+<span class="block font-label-sm text-label-sm text-secondary">Logo placement on all main stage digital displays.</span>
+</div>
+</li>
+<li class="flex gap-3 items-start">
+<span class="material-symbols-outlined text-primary mt-0.5" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div>
+<span class="block font-label-md text-label-md text-primary">VIP Passes (Updated)</span>
+<span class="block font-label-sm text-label-sm text-secondary">15 All-Access VIP Passes included.</span>
+</div>
+</li>
+<li class="flex gap-3 items-start">
+<span class="material-symbols-outlined text-primary mt-0.5" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div>
+<span class="block font-label-md text-label-md text-primary">Workshop Slot</span>
+<span class="block font-label-sm text-label-sm text-secondary">30-minute speaking slot on Day 2.</span>
+</div>
+</li>
+</ul>
+</div>
+<!-- Action Area -->
+<div class="pt-4 flex flex-col gap-3">
+<button class="w-full bg-surface-container-lowest border border-primary text-primary px-4 py-3 rounded-lg font-label-md text-label-md hover:bg-[#F0F4F8] transition-colors flex justify-center items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                         Download Draft Contract
+                     </button>
+</div>
+</div>
+</section>
+</main>
+
+
+
+
+</body></html>

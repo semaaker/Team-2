@@ -1,0 +1,96 @@
+{
+  "name": "SponsorMatch API — Eşleştirme Skoru",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "sponsormatch-ai/score",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "a1c0f6d2-0f4b-4a1e-9d2c-11a0b3c4d5e6",
+      "name": "Skor İsteği",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [-220, 0],
+      "webhookId": "a1c0f6d2-0f4b-4a1e-9d2c-11a0b3c4d5e6"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Sponsor profili:\n{{ JSON.stringify($json.body.sponsor) }}\n\nDeğerlendirilecek etkinlikler:\n{{ JSON.stringify($json.body.events) }}\n\nHer etkinlik için bir kayıt üret. `eventId` alanını girdideki `id` değeriyle birebir aynı yaz.",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "Sen SponsorMatch AI platformunun eşleştirme motorusun.\n\nSana bir sponsor profili (sektör, odak alanları, marka vizyonu, ESG hedefleri, bütçe aralığı) ve bir etkinlik listesi verilir. Her etkinlik için sponsorun profiliyle uyumu değerlendir.\n\nKurallar:\n- Girdideki HER etkinlik için tam olarak bir sonuç üret; hiçbirini atlama.\n- eventId, girdideki id ile birebir aynı olmalıdır.\n- uyum_orani 0 ile 100 arasında tam sayı olmalıdır.\n- Değerlendirmede sırasıyla şunlara bak: sektör/odak alanı örtüşmesi, marka vizyonu ve ESG hedefleriyle tematik yakınlık, katılımcı ölçeği, sponsorluk paketlerinin bütçe aralığına uygunluğu.\n- yapay_zeka_notu tek cümlelik, kurumsal ve gerekçeli olmalıdır (en fazla 200 karakter).\n- Uydurma bilgi üretme; veri eksikse bunu nota yaz ve skoru düşür.\n- Yalnızca bağlı Structured Output Parser şemasına uygun çıktı üret."
+        }
+      },
+      "id": "b2d1e7c3-1a5c-4b2f-8e3d-22b1c4d5e6f7",
+      "name": "Eşleştirme Ajanı",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [40, 0]
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.5-flash",
+        "options": {}
+      },
+      "id": "c3e2f8d4-2b6d-4c3a-9f4e-33c2d5e6f7a8",
+      "name": "Google Gemini Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1.1,
+      "position": [-40, 208],
+      "credentials": {
+        "googlePalmApi": {
+          "id": "6RJDblLkSjKcO7Xm",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"results\": [\n    {\n      \"eventId\": \"evt_web3\",\n      \"uyum_orani\": 87,\n      \"yapay_zeka_notu\": \"Etkinliğin geliştirici kitlesi, markanın bulut ve yapay zeka odağıyla güçlü örtüşme gösteriyor.\"\n    }\n  ]\n}"
+      },
+      "id": "d4f3a9e5-3c7e-4d4b-8a5f-44d3e6f7a8b9",
+      "name": "Structured Output Parser",
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [160, 208]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json.output) }}",
+        "options": {}
+      },
+      "id": "e5a4b0f6-4d8f-4e5c-9b6a-55e4f7a8b9c0",
+      "name": "Yanıt Döndür",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [320, 0]
+    }
+  ],
+  "connections": {
+    "Skor İsteği": {
+      "main": [[{ "node": "Eşleştirme Ajanı", "type": "main", "index": 0 }]]
+    },
+    "Eşleştirme Ajanı": {
+      "main": [[{ "node": "Yanıt Döndür", "type": "main", "index": 0 }]]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [[{ "node": "Eşleştirme Ajanı", "type": "ai_languageModel", "index": 0 }]]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [[{ "node": "Eşleştirme Ajanı", "type": "ai_outputParser", "index": 0 }]]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "pinData": {},
+  "triggerCount": 1,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  }
+}

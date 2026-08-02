@@ -1,0 +1,123 @@
+{
+  "name": "Etkinlik Eşleştirme Akışı",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "etkinlikleri-getir",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [-320, -32],
+      "id": "851bd82b-1726-47a7-88ca-3cc667c39f87",
+      "name": "Webhook",
+      "webhookId": "d9a88260-d33c-40a0-8596-cb5e1248c513"
+    },
+    {
+      "parameters": {
+        "authentication": "airtableOAuth2Api",
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "appuo1DKXB4dvSPb6",
+          "mode": "list",
+          "cachedResultName": "SponsorMatch AI",
+          "cachedResultUrl": "https://airtable.com/appuo1DKXB4dvSPb6"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblhYIthdZ7KVJlqv",
+          "mode": "list",
+          "cachedResultName": "Etkinlikler",
+          "cachedResultUrl": "https://airtable.com/appuo1DKXB4dvSPb6/tblhYIthdZ7KVJlqv"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.2,
+      "position": [-112, -32],
+      "id": "90ad1173-3d40-4709-9239-113722e44e70",
+      "name": "Search records",
+      "credentials": {
+        "airtableOAuth2Api": {
+          "id": "pUmsGgGJzMNy7uxF",
+          "name": "Airtable OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Sen SponsorMatch AI platformunun akıllı eşleştirme motorusun. Görevin, sana verilen \"Marka Vizyonu\" ile girdi olarak gelen etkinlik verilerini kıyaslayarak her biri için ayrı ayrı matematiksel bir uyum oranı ve markaya özel bir not üretmektir.\n\nSponsor firmanın vizyonu: \"Sürdürülebilir teknoloji, çevre dostu inovasyon, yeşil enerji ve akıllı şehir çözümlerini desteklemek.\"\n\nGirdi olarak gelen etkinliklerin listesi:{{ $json.fields }} \n\nLütfen bu listedeki her bir etkinlik için sırasıyla birer Uyum_Orani ve Yapay_Zeka_Notu üret ve bana sadece temiz bir JSON listesi (array) döndür. Markdown kod blokları (```json ... ```) KULLANMA.",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [96, -32],
+      "id": "84b2fa1b-51ca-438d-8696-f2e81d0d92e4",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1.1,
+      "position": [-48, 176],
+      "id": "e5d37430-3d60-4f42-a4dc-46b950662a46",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "6RJDblLkSjKcO7Xm",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Search records",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search records": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "staticData": null,
+  "pinData": {},
+  "triggerCount": 0,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  }
+}

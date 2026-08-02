@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------------------------------------------------------------------------
+   Temel katman — tasarımdaki gövde tipografisi ve zemin renkleri
+   --------------------------------------------------------------------------- */
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-surface font-sans text-body-md text-on-surface antialiased;
+    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  }
+
+  /* Material Symbols — tasarımda kullanılan ikon fontu */
+  .material-symbols-outlined {
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .material-symbols-outlined.icon-fill {
+    font-variation-settings: 'FILL' 1;
+  }
+
+  ::selection {
+    @apply bg-primary-container text-surface-container-lowest;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Bileşen katmanı — tasarımda inline <style> ile tanımlanmış efektler
+   --------------------------------------------------------------------------- */
+@layer components {
+  /* Elevation Level 2 — yumuşak ortam gölgesi */
+  .shadow-soft {
+    box-shadow: 0px 4px 20px rgba(0, 31, 63, 0.05);
+  }
+
+  /* Giriş ekranlarındaki cam kart yüzeyi */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    box-shadow: 0 10px 40px -10px rgba(0, 31, 63, 0.1);
+  }
+
+  /* Odaklanınca Deep Navy kenarlık + Ice Blue dış hâle */
+  .input-glow:focus {
+    box-shadow:
+      0 0 0 2px rgba(240, 244, 248, 1),
+      0 0 0 4px #001f3f;
+    border-color: #001f3f;
+    outline: none;
+  }
+
+  .input-glow-within:focus-within {
+    box-shadow: 0 0 0 2px #f0f4f8;
+    border-color: #001f3f;
+  }
+
+  /* Birincil butonun hover yükselmesi */
+  .btn-hover-effect {
+    transition: all 0.3s ease;
+  }
+
+  .btn-hover-effect:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 31, 63, 0.2);
+    background-color: #00162d;
+  }
+
+  /* Landing ekranındaki radial arka plan dokusu */
+  .bg-pattern {
+    background-image:
+      radial-gradient(circle at 10% 20%, rgba(0, 31, 63, 0.03) 0%, transparent 20%),
+      radial-gradient(circle at 90% 80%, rgba(0, 31, 63, 0.03) 0%, transparent 20%);
+  }
+
+  /* AI eşleşme kartlarının hover parıltısı */
+  .ai-glow:hover {
+    box-shadow: 0 0 0 1px rgba(0, 31, 63, 0.12);
+  }
+
+  /* Hukuki metin blokları */
+  .prose-legal p {
+    @apply mb-4 text-body-md text-on-surface-variant;
+  }
+
+  .prose-legal ul {
+    @apply mb-4 list-disc space-y-2 pl-6 text-body-md text-on-surface-variant;
+  }
+
+  .prose-legal strong {
+    @apply font-semibold text-primary;
+  }
+}
+
+/* Yükleniyor iskeleti için parlama efekti */
+.skeleton-shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.65), transparent);
+  animation: shimmer 1.6s infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Ince kaydırma çubuğu */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: #c4c6cf;
+  border-radius: 9999px;
+}

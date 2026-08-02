@@ -1,0 +1,608 @@
+<!DOCTYPE html><html lang="tr" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>SponsorMatch AI - Etkinliklerim</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-fixed-variant": "#38485d",
+                      "secondary-container": "#dce0e4",
+                      "on-primary": "#ffffff",
+                      "primary-fixed": "#d4e3ff",
+                      "background": "#f9f9f9",
+                      "on-tertiary-container": "#77879f",
+                      "surface-bright": "#f9f9f9",
+                      "outline": "#74777f",
+                      "surface-tint": "#476083",
+                      "on-secondary-fixed": "#171c1f",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary-container": "#5e6367",
+                      "primary": "#000613",
+                      "surface": "#f9f9f9",
+                      "inverse-surface": "#2f3131",
+                      "primary-container": "#001f3f",
+                      "tertiary-fixed": "#d3e4fe",
+                      "surface-container-low": "#f3f3f4",
+                      "secondary-fixed": "#dfe3e7",
+                      "secondary": "#5a5f62",
+                      "on-primary-fixed-variant": "#2f486a",
+                      "on-error": "#ffffff",
+                      "secondary-fixed-dim": "#c3c7cb",
+                      "on-surface": "#1a1c1c",
+                      "tertiary-container": "#0e1f33",
+                      "on-secondary-fixed-variant": "#43474b",
+                      "tertiary-fixed-dim": "#b7c8e1",
+                      "inverse-primary": "#afc8f0",
+                      "on-secondary": "#ffffff",
+                      "on-tertiary-fixed": "#0b1c30",
+                      "on-background": "#1a1c1c",
+                      "outline-variant": "#c4c6cf",
+                      "on-error-container": "#93000a",
+                      "error": "#ba1a1a",
+                      "surface-variant": "#e2e2e2",
+                      "surface-dim": "#dadada",
+                      "on-tertiary": "#ffffff",
+                      "primary-fixed-dim": "#afc8f0",
+                      "surface-container-highest": "#e2e2e2",
+                      "tertiary": "#000511",
+                      "on-primary-fixed": "#001c3a",
+                      "on-primary-container": "#6f88ad",
+                      "surface-container-high": "#e8e8e8",
+                      "surface-container": "#eeeeee",
+                      "on-surface-variant": "#43474e",
+                      "inverse-on-surface": "#f0f1f1"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px",
+                      "2xl": "1rem"
+              },
+              "spacing": {
+                      "base": "8px",
+                      "margin-mobile": "16px",
+                      "gutter": "24px",
+                      "margin-desktop": "40px",
+                      "container-max": "1280px"
+              },
+              "fontFamily": {
+                      "display-lg": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "display-lg-mobile": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "label-md": ["Inter"],
+                      "headline-sm": ["Inter"],
+                      "body-md": ["Inter"]
+              },
+              "fontSize": {
+                      "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                      "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                      "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        body { background-color: #f9f9f9; }
+        .skeleton {
+            background: linear-gradient(90deg, #f0f1f1 25%, #e2e2e2 50%, #f0f1f1 75%);
+            background-size: 200% 100%;
+            animation: skeleton-loading 1.5s infinite ease-in-out;
+        }
+        @keyframes skeleton-loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased h-screen flex overflow-hidden">
+<!-- SideNavBar (Desktop) -->
+<nav class="hidden md:flex flex-col bg-surface-container-lowest h-full w-64 border-r border-outline-variant flex-shrink-0">
+<div class="p-4 border-b border-outline-variant">
+<div class="flex items-center gap-2 mb-1">
+<img alt="SponsorMatch AI Logo" class="h-8 w-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgw9hTnpMq1727GItmEfr9L8SjSaMmttyUbwy2-bIQ68hk-AQVQkFnaHgCm2E-i_PAUuqCMJi8c58essrSnceCVuw_EBhNCh0OFFsKKsaNHXM9ShFDdrDDLMW0AMNxPhkuIxHczzBBVj-PFWq9Zq64Kz_qucgiOp9Az1TakR6kFYTVK7RKayPH-MgFiAEgzIGrfWtJFS8kRRuXBrKzuXM7zfltpaGgT39XhmwJijWagTjjqmrKiww6Xs9cg1R8bs3-fmV_IdxwpQfLKg">
+<span class="font-headline-sm text-headline-sm font-bold text-primary">SponsorMatch AI</span>
+</div>
+<p class="font-label-sm text-label-sm text-secondary">Yönetim Portalı</p>
+</div>
+<div class="flex flex-col p-4 gap-2 flex-grow overflow-y-auto">
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-secondary-fixed transition-colors rounded-lg font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 0;">dashboard</span>
+<span class="">Sayfam</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary-container text-primary rounded-lg font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">calendar_today</span>
+<span class="">Etkinliklerim</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-secondary-fixed transition-colors rounded-lg font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 0;">chat</span>
+<span class="">Mesajlar</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-secondary-fixed transition-colors rounded-lg font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 0;">settings</span>
+<span class="">Ayarlar</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-grow overflow-y-auto w-full h-full">
+<!-- Top Navigation Area (Mobile) -->
+<header class="md:hidden flex justify-between items-center px-margin-mobile py-4 w-full bg-surface border-b border-outline-variant">
+<div class="flex items-center gap-2">
+<img alt="SponsorMatch AI Logo" class="h-8 w-auto" src="https://lh3.googleusercontent.com/aida/AP1WRLsCZ2dpZ_qrg9x-iE0iF5FmmrlTFeZGoWAJsQcthGo7kCsmGQO9nTwDXdmFoBZeKmTVAhcG_1ydNJZdQc1MsgMlCTEgcYVMSRUcitOSixatzbrcf9nZVu0DSM8VsNgbQUnyvjMtmWUK-O3OSk-pINVU2148wYSNxP2Co8cui8WK2Abu0BOZVTGAmfmhy_1JGHsSoLGlG2hr2THHPbfljI8p4YCKzmvtxfmQySEnjvnth6zt9u40tJaWpKA">
+<span class="font-headline-sm text-headline-sm font-bold text-primary">SponsorMatch AI</span>
+</div>
+<button class="text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</header>
+<div class="px-margin-mobile md:px-margin-desktop py-8 max-w-container-max mx-auto h-full flex flex-col">
+<!-- Page Header & Actions -->
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
+<div>
+<h2 class="font-headline-md text-headline-md font-bold text-primary">Hoş Geldiniz, Organizatör</h2>
+<p class="font-body-md text-body-md text-secondary mt-1">İşte yönetiminizdeki etkinlikler.</p>
+</div>
+<button class="bg-primary text-on-primary font-label-md text-label-md px-6 py-3 rounded-lg flex items-center gap-2 hover:opacity-90 transition-opacity shadow-sm">
+<span class="material-symbols-outlined">add</span>
+<span class="">Yeni Etkinlik Ekle</span>
+</button>
+</div>
+<!-- Events Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 pb-20 md:pb-8" id="events-grid"><div class="bg-surface-container-lowest border border-outline-variant rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col group h-full cursor-pointer">
+                <div class="h-48 w-full relative overflow-hidden bg-surface-container">
+                    <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://images.unsplash.com/photo-1540575861501-7cf05a4b125a?auto=format&amp;fit=crop&amp;q=80&amp;w=800" alt="Yeşil Enerji ve Akıllı Şehirler Kongresi">
+                    <div class="absolute top-4 right-4 bg-surface-container-lowest/90 backdrop-blur-sm px-3 py-1 rounded-full border border-outline-variant">
+                        <span class="font-label-sm text-label-sm text-primary">Sürdürülebilirlik</span>
+                    </div>
+                </div>
+                <div class="p-gutter flex flex-col flex-grow">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-headline-sm text-headline-sm font-semibold text-primary line-clamp-2">Yeşil Enerji ve Akıllı Şehirler Kongresi</h3>
+                    </div>
+                    <div class="space-y-2 mb-6">
+                        <div class="flex items-center gap-2 text-secondary font-label-md">
+                            <span class="material-symbols-outlined text-lg">calendar_month</span>
+                            <span class="">18-20 Eylül 2026</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-secondary font-label-md">
+                            <span class="material-symbols-outlined text-lg">groups</span>
+                            <span class="">3.000+ Katılımcı</span>
+                        </div>
+                    </div>
+                    <div class="mt-auto pt-4 border-t border-surface-variant flex justify-between items-center">
+                        <div class="flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                            <span class="font-label-sm text-label-sm text-primary">Aktif Sponsor Arayışı</span>
+                        </div>
+                        <button class="text-primary hover:bg-secondary-container p-2 rounded-full transition-colors flex items-center justify-center">
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </button>
+                    </div>
+                </div>
+            </div><div class="bg-surface-container-lowest border border-outline-variant rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col group h-full cursor-pointer">
+                <div class="h-48 w-full relative overflow-hidden bg-surface-container">
+                    <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://images.unsplash.com/photo-1540575861501-7cf05a4b125a?auto=format&amp;fit=crop&amp;q=80&amp;w=800" alt="FinTech Evrim Fuarı">
+                    <div class="absolute top-4 right-4 bg-surface-container-lowest/90 backdrop-blur-sm px-3 py-1 rounded-full border border-outline-variant">
+                        <span class="font-label-sm text-label-sm text-primary">Finans</span>
+                    </div>
+                </div>
+                <div class="p-gutter flex flex-col flex-grow">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-headline-sm text-headline-sm font-semibold text-primary line-clamp-2">FinTech Evrim Fuarı</h3>
+                    </div>
+                    <div class="space-y-2 mb-6">
+                        <div class="flex items-center gap-2 text-secondary font-label-md">
+                            <span class="material-symbols-outlined text-lg">calendar_month</span>
+                            <span class="">10-12 Aralık 2026</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-secondary font-label-md">
+                            <span class="material-symbols-outlined text-lg">groups</span>
+                            <span class="">8.500+ Katılımcı</span>
+                        </div>
+                    </div>
+                    <div class="mt-auto pt-4 border-t border-surface-variant flex justify-between items-center">
+                        <div class="flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                            <span class="font-label-sm text-label-sm text-primary">Aktif Sponsor Arayışı</span>
+                        </div>
+                        <button class="text-primary hover:bg-secondary-container p-2 rounded-full transition-colors flex items-center justify-center">
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </button>
+                    </div>
+                </div>
+            </div><div class="bg-surface-container-lowest border border-outline-variant rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col group h-full cursor-pointer">
+                <div class="h-48 w-full relative overflow-hidden bg-surface-container">
+                    <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://images.unsplash.com/photo-1540575861501-7cf05a4b125a?auto=format&amp;fit=crop&amp;q=80&amp;w=800" alt="etggd">
+                    <div class="absolute top-4 right-4 bg-surface-container-lowest/90 backdrop-blur-sm px-3 py-1 rounded-full border border-outline-variant">
+                        <span class="font-label-sm text-label-sm text-primary">Teknoloji</span>
+                    </div>
+                </div>
+                <div class="p-gutter flex flex-col flex-grow">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-headline-sm text-headline-sm font-semibold text-primary line-clamp-2">etggd</h3>
+                    </div>
+                    <div class="space-y-2 mb-6">
+                        <div class="flex items-center gap-2 text-secondary font-label-md">
+                            <span class="material-symbols-outlined text-lg">calendar_month</span>
+                            <span class="">12 nisa</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-secondary font-label-md">
+                            <span class="material-symbols-outlined text-lg">groups</span>
+                            <span class="">1000+ Katılımcı</span>
+                        </div>
+                    </div>
+                    <div class="mt-auto pt-4 border-t border-surface-variant flex justify-between items-center">
+                        <div class="flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                            <span class="font-label-sm text-label-sm text-primary">Aktif Sponsor Arayışı</span>
+                        </div>
+                        <button class="text-primary hover:bg-secondary-container p-2 rounded-full transition-colors flex items-center justify-center">
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </button>
+                    </div>
+                </div>
+            </div><div class="bg-surface-container-lowest border border-outline-variant rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col group h-full cursor-pointer">
+                <div class="h-48 w-full relative overflow-hidden bg-surface-container">
+                    <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://images.unsplash.com/photo-1540575861501-7cf05a4b125a?auto=format&amp;fit=crop&amp;q=80&amp;w=800" alt="kurumsal kongre">
+                    <div class="absolute top-4 right-4 bg-surface-container-lowest/90 backdrop-blur-sm px-3 py-1 rounded-full border border-outline-variant">
+                        <span class="font-label-sm text-label-sm text-primary">Finans</span>
+                    </div>
+                </div>
+                <div class="p-gutter flex flex-col flex-grow">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-headline-sm text-headline-sm font-semibold text-primary line-clamp-2">kurumsal kongre</h3>
+                    </div>
+                    <div class="space-y-2 mb-6">
+                        <div class="flex items-center gap-2 text-secondary font-label-md">
+                            <span class="material-symbols-outlined text-lg">calendar_month</span>
+                            <span class="">19 temmuz</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-secondary font-label-md">
+                            <span class="material-symbols-outlined text-lg">groups</span>
+                            <span class="">10000+ Katılımcı</span>
+                        </div>
+                    </div>
+                    <div class="mt-auto pt-4 border-t border-surface-variant flex justify-between items-center">
+                        <div class="flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                            <span class="font-label-sm text-label-sm text-primary">Aktif Sponsor Arayışı</span>
+                        </div>
+                        <button class="text-primary hover:bg-secondary-container p-2 rounded-full transition-colors flex items-center justify-center">
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </button>
+                    </div>
+                </div>
+            </div><div class="bg-surface-container-lowest border border-outline-variant rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col group h-full cursor-pointer">
+                <div class="h-48 w-full relative overflow-hidden bg-surface-container">
+                    <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://images.unsplash.com/photo-1540575861501-7cf05a4b125a?auto=format&amp;fit=crop&amp;q=80&amp;w=800" alt="Etkinlik">
+                    <div class="absolute top-4 right-4 bg-surface-container-lowest/90 backdrop-blur-sm px-3 py-1 rounded-full border border-outline-variant">
+                        <span class="font-label-sm text-label-sm text-primary">Genel</span>
+                    </div>
+                </div>
+                <div class="p-gutter flex flex-col flex-grow">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-headline-sm text-headline-sm font-semibold text-primary line-clamp-2">İsimsiz Etkinlik</h3>
+                    </div>
+                    <div class="space-y-2 mb-6">
+                        <div class="flex items-center gap-2 text-secondary font-label-md">
+                            <span class="material-symbols-outlined text-lg">calendar_month</span>
+                            <span class="">Tarih Belirtilmedi</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-secondary font-label-md">
+                            <span class="material-symbols-outlined text-lg">groups</span>
+                            <span class="">0 Katılımcı</span>
+                        </div>
+                    </div>
+                    <div class="mt-auto pt-4 border-t border-surface-variant flex justify-between items-center">
+                        <div class="flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                            <span class="font-label-sm text-label-sm text-primary">Aktif Sponsor Arayışı</span>
+                        </div>
+                        <button class="text-primary hover:bg-secondary-container p-2 rounded-full transition-colors flex items-center justify-center">
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </button>
+                    </div>
+                </div>
+            </div><div class="bg-surface-container-lowest border border-outline-variant rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col group h-full cursor-pointer">
+                <div class="h-48 w-full relative overflow-hidden bg-surface-container">
+                    <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://images.unsplash.com/photo-1540575861501-7cf05a4b125a?auto=format&amp;fit=crop&amp;q=80&amp;w=800" alt="slayleyen etkinlik">
+                    <div class="absolute top-4 right-4 bg-surface-container-lowest/90 backdrop-blur-sm px-3 py-1 rounded-full border border-outline-variant">
+                        <span class="font-label-sm text-label-sm text-primary">Genel</span>
+                    </div>
+                </div>
+                <div class="p-gutter flex flex-col flex-grow">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-headline-sm text-headline-sm font-semibold text-primary line-clamp-2">slayleyen etkinlik</h3>
+                    </div>
+                    <div class="space-y-2 mb-6">
+                        <div class="flex items-center gap-2 text-secondary font-label-md">
+                            <span class="material-symbols-outlined text-lg">calendar_month</span>
+                            <span class="">14 ağs</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-secondary font-label-md">
+                            <span class="material-symbols-outlined text-lg">groups</span>
+                            <span class="">0 Katılımcı</span>
+                        </div>
+                    </div>
+                    <div class="mt-auto pt-4 border-t border-surface-variant flex justify-between items-center">
+                        <div class="flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                            <span class="font-label-sm text-label-sm text-primary">Aktif Sponsor Arayışı</span>
+                        </div>
+                        <button class="text-primary hover:bg-secondary-container p-2 rounded-full transition-colors flex items-center justify-center">
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </button>
+                    </div>
+                </div>
+            </div><div class="bg-surface-container-lowest border border-outline-variant rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col group h-full cursor-pointer">
+                <div class="h-48 w-full relative overflow-hidden bg-surface-container">
+                    <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://images.unsplash.com/photo-1540575861501-7cf05a4b125a?auto=format&amp;fit=crop&amp;q=80&amp;w=800" alt="slayleyen etkinlik">
+                    <div class="absolute top-4 right-4 bg-surface-container-lowest/90 backdrop-blur-sm px-3 py-1 rounded-full border border-outline-variant">
+                        <span class="font-label-sm text-label-sm text-primary">Gıda &amp; Tarım</span>
+                    </div>
+                </div>
+                <div class="p-gutter flex flex-col flex-grow">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-headline-sm text-headline-sm font-semibold text-primary line-clamp-2">slayleyen etkinlik</h3>
+                    </div>
+                    <div class="space-y-2 mb-6">
+                        <div class="flex items-center gap-2 text-secondary font-label-md">
+                            <span class="material-symbols-outlined text-lg">calendar_month</span>
+                            <span class="">14 ağs</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-secondary font-label-md">
+                            <span class="material-symbols-outlined text-lg">groups</span>
+                            <span class="">3000+ Katılımcı</span>
+                        </div>
+                    </div>
+                    <div class="mt-auto pt-4 border-t border-surface-variant flex justify-between items-center">
+                        <div class="flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                            <span class="font-label-sm text-label-sm text-primary">Aktif Sponsor Arayışı</span>
+                        </div>
+                        <button class="text-primary hover:bg-secondary-container p-2 rounded-full transition-colors flex items-center justify-center">
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </button>
+                    </div>
+                </div>
+            </div><div class="bg-surface-container-lowest border border-outline-variant rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col group h-full cursor-pointer">
+                <div class="h-48 w-full relative overflow-hidden bg-surface-container">
+                    <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://images.unsplash.com/photo-1540575861501-7cf05a4b125a?auto=format&amp;fit=crop&amp;q=80&amp;w=800" alt="Küresel Teknoloji İnovasyon Zirvesi 2026">
+                    <div class="absolute top-4 right-4 bg-surface-container-lowest/90 backdrop-blur-sm px-3 py-1 rounded-full border border-outline-variant">
+                        <span class="font-label-sm text-label-sm text-primary">Teknoloji</span>
+                    </div>
+                </div>
+                <div class="p-gutter flex flex-col flex-grow">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-headline-sm text-headline-sm font-semibold text-primary line-clamp-2">Küresel Teknoloji İnovasyon Zirvesi 2026</h3>
+                    </div>
+                    <div class="space-y-2 mb-6">
+                        <div class="flex items-center gap-2 text-secondary font-label-md">
+                            <span class="material-symbols-outlined text-lg">calendar_month</span>
+                            <span class="">15-17 Ekim 2026</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-secondary font-label-md">
+                            <span class="material-symbols-outlined text-lg">groups</span>
+                            <span class="">5.000+ Katılımcı</span>
+                        </div>
+                    </div>
+                    <div class="mt-auto pt-4 border-t border-surface-variant flex justify-between items-center">
+                        <div class="flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                            <span class="font-label-sm text-label-sm text-primary">Aktif Sponsor Arayışı</span>
+                        </div>
+                        <button class="text-primary hover:bg-secondary-container p-2 rounded-full transition-colors flex items-center justify-center">
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </button>
+                    </div>
+                </div>
+            </div><div class="bg-surface-container-lowest border border-outline-variant rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col group h-full cursor-pointer">
+                <div class="h-48 w-full relative overflow-hidden bg-surface-container">
+                    <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://images.unsplash.com/photo-1540575861501-7cf05a4b125a?auto=format&amp;fit=crop&amp;q=80&amp;w=800" alt="slayleyen ikinci etkinlik">
+                    <div class="absolute top-4 right-4 bg-surface-container-lowest/90 backdrop-blur-sm px-3 py-1 rounded-full border border-outline-variant">
+                        <span class="font-label-sm text-label-sm text-primary">Gıda &amp; Tarım</span>
+                    </div>
+                </div>
+                <div class="p-gutter flex flex-col flex-grow">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-headline-sm text-headline-sm font-semibold text-primary line-clamp-2">slayleyen ikinci etkinlik</h3>
+                    </div>
+                    <div class="space-y-2 mb-6">
+                        <div class="flex items-center gap-2 text-secondary font-label-md">
+                            <span class="material-symbols-outlined text-lg">calendar_month</span>
+                            <span class="">14 ağs</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-secondary font-label-md">
+                            <span class="material-symbols-outlined text-lg">groups</span>
+                            <span class="">3000+ Katılımcı</span>
+                        </div>
+                    </div>
+                    <div class="mt-auto pt-4 border-t border-surface-variant flex justify-between items-center">
+                        <div class="flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                            <span class="font-label-sm text-label-sm text-primary">Aktif Sponsor Arayışı</span>
+                        </div>
+                        <button class="text-primary hover:bg-secondary-container p-2 rounded-full transition-colors flex items-center justify-center">
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </button>
+                    </div>
+                </div>
+            </div><div class="bg-surface-container-lowest border border-outline-variant rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col group h-full cursor-pointer">
+                <div class="h-48 w-full relative overflow-hidden bg-surface-container">
+                    <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://images.unsplash.com/photo-1540575861501-7cf05a4b125a?auto=format&amp;fit=crop&amp;q=80&amp;w=800" alt="Dijital Sağlığın Geleceği Forumu">
+                    <div class="absolute top-4 right-4 bg-surface-container-lowest/90 backdrop-blur-sm px-3 py-1 rounded-full border border-outline-variant">
+                        <span class="font-label-sm text-label-sm text-primary">Sağlık</span>
+                    </div>
+                </div>
+                <div class="p-gutter flex flex-col flex-grow">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-headline-sm text-headline-sm font-semibold text-primary line-clamp-2">Dijital Sağlığın Geleceği Forumu</h3>
+                    </div>
+                    <div class="space-y-2 mb-6">
+                        <div class="flex items-center gap-2 text-secondary font-label-md">
+                            <span class="material-symbols-outlined text-lg">calendar_month</span>
+                            <span class="">02 Kasım 2026</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-secondary font-label-md">
+                            <span class="material-symbols-outlined text-lg">groups</span>
+                            <span class="">1.200+ Katılımcı</span>
+                        </div>
+                    </div>
+                    <div class="mt-auto pt-4 border-t border-surface-variant flex justify-between items-center">
+                        <div class="flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                            <span class="font-label-sm text-label-sm text-primary">Aktif Sponsor Arayışı</span>
+                        </div>
+                        <button class="text-primary hover:bg-secondary-container p-2 rounded-full transition-colors flex items-center justify-center">
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </button>
+                    </div>
+                </div>
+            </div></div>
+</div>
+</main>
+<!-- Mobile Bottom Navigation -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface border-t border-outline-variant flex justify-around items-center h-16 z-50">
+<a class="flex flex-col items-center gap-1 text-secondary" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-semibold">Sayfam</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary font-bold" href="#">
+<div class="bg-secondary-container px-4 py-1 rounded-full">
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">calendar_today</span>
+</div>
+<span class="text-[10px]">Etkinliklerim</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-secondary" href="#">
+<span class="material-symbols-outlined">chat</span>
+<span class="text-[10px] font-semibold">Mesajlar</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-secondary" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-semibold">Ayarlar</span>
+</a>
+</nav>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+    const grid = document.getElementById('events-grid');
+    const API_URL = 'https://api.airtable.com/v0/appuo1DKXB4dvSPb6/tblhYIthdZ7KVJlqv';
+    const TOKEN = 'patrjb95GFTXeE2mT.c467ac8c4cfd337460ca3457b5066c66fae5e6cd2e092c810a7a659b26e52d92';
+
+    async function fetchEvents() {
+        try {
+            const response = await fetch(API_URL, {
+                headers: { 
+                    'Authorization': `Bearer ${TOKEN}`,
+                    'Content-Type': 'application/json'
+                }
+            });
+            
+            if (!response.ok) {
+                const errorText = await response.text();
+                throw new Error(`Airtable API error: ${response.status} - ${errorText}`);
+            }
+            
+            const data = await response.json();
+            
+            if (!data.records || !Array.isArray(data.records)) {
+                throw new Error('Invalid data format received from Airtable');
+            }
+
+            renderEvents(data.records);
+
+        } catch (error) {
+            console.error('Fetch Error:', error);
+            grid.innerHTML = `
+                <div class="col-span-full py-20 text-center flex flex-col items-center gap-4">
+                    <span class="material-symbols-outlined text-4xl text-error">error</span>
+                    <p class="text-error font-body-md">Etkinlikler yüklenirken bir hata oluştu. Lütfen bağlantınızı kontrol edin.</p>
+                </div>`;
+        }
+    }
+
+    function renderEvents(records) {
+        if (records.length === 0) {
+            grid.innerHTML = `
+                <div class="col-span-full py-20 text-center flex flex-col items-center gap-4">
+                    <span class="material-symbols-outlined text-4xl text-secondary">event_busy</span>
+                    <p class="text-secondary font-body-md">Henüz planlanmış bir etkinlik bulunamadı.</p>
+                </div>`;
+            return;
+        }
+
+        grid.innerHTML = ''; // Clear skeletons
+
+        records.forEach(item => {
+            const fields = item.fields;
+            const recordId = item.id;
+            const card = document.createElement('div');
+            card.className = "bg-surface-container-lowest border border-outline-variant rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col group h-full cursor-pointer";
+            
+            card.innerHTML = `
+                <div class="h-48 w-full relative overflow-hidden bg-surface-container">
+                    <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                         src="https://images.unsplash.com/photo-1540575861501-7cf05a4b125a?auto=format&fit=crop&q=80&w=800" 
+                         alt="${fields.Etkinlik_Adi || 'Etkinlik'}">
+                    <div class="absolute top-4 right-4 bg-surface-container-lowest/90 backdrop-blur-sm px-3 py-1 rounded-full border border-outline-variant">
+                        <span class="font-label-sm text-label-sm text-primary">${fields.Kategori || 'Genel'}</span>
+                    </div>
+                </div>
+                <div class="p-gutter flex flex-col flex-grow">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-headline-sm text-headline-sm font-semibold text-primary line-clamp-2">${fields.Etkinlik_Adi || 'İsimsiz Etkinlik'}</h3>
+                    </div>
+                    <div class="space-y-2 mb-6">
+                        <div class="flex items-center gap-2 text-secondary font-label-md">
+                            <span class="material-symbols-outlined text-lg">calendar_month</span>
+                            <span>${fields.Tarih || 'Tarih Belirtilmedi'}</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-secondary font-label-md">
+                            <span class="material-symbols-outlined text-lg">groups</span>
+                            <span>${fields.Katilimci_Sayisi || '0'} Katılımcı</span>
+                        </div>
+                    </div>
+                    <div class="mt-auto pt-4 border-t border-surface-variant flex justify-between items-center">
+                        <div class="flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                            <span class="font-label-sm text-label-sm text-primary">Aktif Sponsor Arayışı</span>
+                        </div>
+                        <button class="text-primary hover:bg-secondary-container p-2 rounded-full transition-colors flex items-center justify-center">
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            // Add navigation handler
+            card.addEventListener('click', () => {
+                // In a real environment, this might point to a specific file like event-details.html
+                // Here we use the pattern suggested for navigation with parameters
+                window.location.href = `event-details.html?id=${recordId}`;
+            });
+
+            grid.appendChild(card);
+        });
+    }
+
+    // Execute Fetch
+    fetchEvents();
+});
+</script>
+
+
+</body></html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Giriş Yap - SponsorMatch AI</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#f9f9f9",
+                        "on-tertiary-fixed-variant": "#38485d",
+                        "on-error-container": "#93000a",
+                        "surface-container-high": "#e8e8e8",
+                        "surface-container": "#eeeeee",
+                        "on-primary-fixed": "#001c3a",
+                        "surface-tint": "#476083",
+                        "surface-container-highest": "#e2e2e2",
+                        "primary-fixed-dim": "#afc8f0",
+                        "tertiary-fixed": "#d3e4fe",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#b7c8e1",
+                        "surface": "#f9f9f9",
+                        "on-secondary-fixed": "#171c1f",
+                        "inverse-surface": "#2f3131",
+                        "on-surface-variant": "#43474e",
+                        "tertiary-container": "#0e1f33",
+                        "secondary-fixed": "#dfe3e7",
+                        "error-container": "#ffdad6",
+                        "secondary": "#5a5f62",
+                        "primary": "#000613",
+                        "tertiary": "#000511",
+                        "primary-fixed": "#d4e3ff",
+                        "surface-dim": "#dadada",
+                        "secondary-fixed-dim": "#c3c7cb",
+                        "on-tertiary-fixed": "#0b1c30",
+                        "on-secondary": "#ffffff",
+                        "outline-variant": "#c4c6cf",
+                        "on-error": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-background": "#1a1c1c",
+                        "primary-container": "#001f3f",
+                        "inverse-on-surface": "#f0f1f1",
+                        "on-primary-fixed-variant": "#2f486a",
+                        "on-surface": "#1a1c1c",
+                        "on-primary-container": "#6f88ad",
+                        "surface-container-lowest": "#ffffff",
+                        "background": "#f9f9f9",
+                        "on-secondary-container": "#5e6367",
+                        "secondary-container": "#dce0e4",
+                        "surface-variant": "#e2e2e2",
+                        "outline": "#74777f",
+                        "on-secondary-fixed-variant": "#43474b",
+                        "inverse-primary": "#afc8f0",
+                        "surface-container-low": "#f3f3f4",
+                        "on-tertiary-container": "#77879f",
+                        "on-tertiary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "40px",
+                        "base": "8px",
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg-mobile": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "headline-sm": ["20px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            box-shadow: 0 10px 40px -10px rgba(0, 31, 63, 0.1);
+        }
+        
+        .input-glow:focus {
+            box-shadow: 0 0 0 2px rgba(240, 244, 248, 1), 0 0 0 4px #001f3f;
+            border-color: #001f3f;
+        }
+        
+        .btn-hover-effect {
+            transition: all 0.3s ease;
+        }
+        
+        .btn-hover-effect:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 31, 63, 0.2);
+            background-color: #00162d; /* Slightly darker primary-container */
+        }
+        
+        .bg-pattern {
+            background-image: radial-gradient(circle at 10% 20%, rgba(0, 31, 63, 0.03) 0%, transparent 20%),
+                              radial-gradient(circle at 90% 80%, rgba(0, 31, 63, 0.03) 0%, transparent 20%);
+        }
+    </style>
+</head>
+<body class="bg-surface-bright text-on-surface font-body-md h-screen w-full flex items-center justify-center bg-pattern overflow-hidden">
+<!-- Abstract Decorative Elements -->
+<div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
+<div class="absolute top-[-10%] right-[-5%] w-[40vw] h-[40vw] rounded-full bg-primary-container/5 blur-3xl"></div>
+<div class="absolute bottom-[-15%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-surface-tint/5 blur-3xl"></div>
+</div>
+<!-- Login Container -->
+<div class="w-full max-w-md px-margin-mobile md:px-0 z-10">
+<div class="glass-card rounded-[16px] p-8 md:p-12 w-full flex flex-col items-center">
+<!-- Logo Section -->
+<div class="mb-8 w-24 h-24 rounded-full overflow-hidden flex items-center justify-center bg-surface-container-lowest border border-outline-variant/30 shadow-sm">
+<img alt="SponsorMatch AI Logo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCamCw3slmxOW1uw3_8mfShMPNDChi20t766rd45VQmX6f5lZEo1AdwwQvgtBpLofIMDB5MkEcwN2hzIQtcZKqiz90i4uhO57NidSbWrou6RHCHGmZ_iiJ92bo_iN2Tn9kTY2GZW5M3Roel6nNe53ypERol-UPK3_deQjYU5q6WuvSgG7xOuNiwXp-ZXGjqyIKMciBL8cjAo7aEZUhmi33-hWF__vtqeJCpAYiPiEK_ivyEPDPuO6R1h-1Z3CUzldhcmQ43rD0VU6XxMw">
+</div>
+<!-- Header Section -->
+<div class="text-center mb-8 w-full">
+<h1 class="font-headline-md text-headline-md text-on-surface mb-2 tracking-tight">Giriş Yap</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Devam etmek için e-posta adresinizi girin.</p>
+</div>
+<!-- Form Section -->
+<form action="#" class="w-full flex flex-col gap-6" method="POST">
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-on-surface" for="email">E-posta Adresi</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">mail</span>
+<input class="w-full h-12 pl-10 pr-4 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface font-body-md text-body-md focus:outline-none input-glow transition-all duration-200" id="email" name="email" placeholder="ornek@sirket.com" required="" type="email">
+</div>
+</div>
+<button class="w-full h-12 mt-2 bg-primary-container text-on-primary rounded-lg font-label-md text-label-md flex items-center justify-center gap-2 btn-hover-effect" type="submit">
+                    Devam Et
+                    <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</form>
+<!-- Footer Section -->
+<div class="mt-8 text-center w-full pt-6 border-t border-surface-container-high">
+<p class="font-body-md text-body-md text-on-surface-variant">
+                    Hesabın yok mu? 
+                    <a class="text-primary-container font-semibold hover:underline transition-all" href="#">Hesap Oluştur</a>
+</p>
+</div>
+</div>
+<!-- System Footer -->
+<div class="mt-8 text-center">
+<p class="font-label-sm text-label-sm text-outline">
+                © 2024 SponsorMatch AI. Tüm hakları saklıdır.
+            </p>
+</div>
+</div>
+
+
+</body></html>

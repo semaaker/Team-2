@@ -1,0 +1,351 @@
+<!DOCTYPE html><html class="light" lang="tr" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Keşfet - Yapay Zeka Destekli Sponsorluk Paneli</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        [v-cloak] { display: none; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#000613",
+                        "tertiary-container": "#0e1f33",
+                        "surface-variant": "#e2e2e2",
+                        "surface-bright": "#f9f9f9",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#eeeeee",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed-variant": "#2f486a",
+                        "on-tertiary-fixed-variant": "#38485d",
+                        "on-secondary-fixed": "#171c1f",
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#f0f1f1",
+                        "tertiary-fixed-dim": "#b7c8e1",
+                        "on-tertiary-fixed": "#0b1c30",
+                        "secondary-fixed-dim": "#c3c7cb",
+                        "on-secondary-container": "#5e6367",
+                        "background": "#f9f9f9",
+                        "on-surface-variant": "#43474e",
+                        "primary-fixed-dim": "#afc8f0",
+                        "secondary-fixed": "#dfe3e7",
+                        "outline-variant": "#c4c6cf",
+                        "surface-tint": "#476083",
+                        "on-tertiary-container": "#77879f",
+                        "on-surface": "#1a1c1c",
+                        "on-primary-fixed": "#001c3a",
+                        "surface-container-low": "#f3f3f4",
+                        "on-background": "#1a1c1c",
+                        "secondary": "#5a5f62",
+                        "surface": "#f9f9f9",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed-variant": "#43474b",
+                        "surface-dim": "#dadada",
+                        "on-primary-container": "#6f88ad",
+                        "surface-container-high": "#e8e8e8",
+                        "inverse-primary": "#afc8f0",
+                        "tertiary": "#000511",
+                        "surface-container-highest": "#e2e2e2",
+                        "tertiary-fixed": "#d3e4fe",
+                        "secondary-container": "#dce0e4",
+                        "outline": "#74777f",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#d4e3ff",
+                        "primary-container": "#001f3f",
+                        "on-primary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "inverse-surface": "#2f3131"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.5rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "margin-desktop": "40px",
+                        "gutter": "24px",
+                        "base": "8px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "headline-sm": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "display-lg-mobile": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="bg-surface sticky top-0 z-50 border-b border-outline-variant">
+<div class="flex justify-between items-center px-margin-desktop py-4 w-full max-w-container-max mx-auto">
+<div class="font-headline-md text-headline-md font-bold text-primary cursor-pointer" onclick="showMain()"><div class="flex items-center gap-2"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA49rvhVuoYpIVpUifow9YIwBZIeoWT_gTW24_cOgGS4PATVZU583TeNzHG_8nEH5D8HkQ4Rop-uHJ1n9uBb6ckRTcF3VUw5c8J53E_jWpqRKwxi3QTScgQ5A9hFSR-flUN-GfBDfFeL17IN2gEK6BtSxvOzdNxScJ807rMl8zLAacatHH1D-M58bV_ZTEpr8xwDmMBU4iEdCngel-CZUN_ERHakeSHGDIhk3lKn-WLhVUoUgNeJAdKTbFmMgiC2zLE95h3qe8ph83aAw" alt="SponsorMatch AI Logo" class="h-8 w-auto"><span class="">SponsorMatch AI</span></div></div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-primary font-bold border-b-2 border-primary pb-1 transition-all font-body-md text-body-md" href="#" onclick="showMain()">Keşfet</a>
+<a class="text-secondary hover:text-primary transition-all font-body-md text-body-md" href="#">Organizatör Paneli</a>
+<a class="text-secondary hover:text-primary transition-all font-body-md text-body-md" href="#">Sponsor Paneli</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="bg-primary text-on-primary font-label-md text-label-md px-5 py-2.5 rounded-lg hover:bg-primary-container hover:text-on-primary-container transition-colors">Giriş Yap</button>
+</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-8 md:py-12" id="main-content">
+<!-- Header & Search Section -->
+<section class="mb-12">
+<h1 class="text-3xl font-bold text-primary mb-4">Etkinlikleri Keşfet</h1>
+<p class="font-body-lg text-body-lg text-secondary mb-8 max-w-2xl">Yapay zeka tarafından markanızın vizyonuna ve ESG hedeflerine en uygun olarak eşleştirilen etkinlikleri inceleyin.</p>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 shadow-[0px_4px_20px_rgba(0,31,63,0.05)] flex flex-col md:flex-row gap-4">
+<div class="flex-grow flex items-center bg-surface border border-outline-variant rounded-lg px-3 focus-within:border-primary transition-all">
+<span class="material-symbols-outlined text-secondary mr-2">search</span>
+<input class="w-full bg-transparent border-none focus:ring-0 font-body-md text-body-md py-3 text-on-surface placeholder:text-secondary" placeholder="Etkinlik adı, sektör veya anahtar kelime ara..." type="text">
+</div>
+<div class="flex items-center gap-2">
+<button class="flex items-center gap-2 bg-surface border border-outline-variant rounded-lg px-4 py-3 font-label-md text-label-md text-on-surface hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">filter_list</span>
+                    Filtrele
+                </button>
+<button class="bg-primary text-on-primary font-label-md text-label-md px-8 py-3 rounded-lg hover:bg-primary-container hover:text-on-primary-container transition-colors">Ara</button>
+</div>
+</div>
+<!-- Quick Filters -->
+<div class="flex flex-wrap gap-2 mt-4">
+<button class="bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm px-4 py-2 rounded-full border border-primary-fixed shadow-sm">Tümü</button>
+<button class="bg-surface-container-low text-on-surface font-label-sm text-label-sm px-4 py-2 rounded-full border border-outline-variant hover:bg-surface-container transition-colors">Teknoloji</button>
+<button class="bg-surface-container-low text-on-surface font-label-sm text-label-sm px-4 py-2 rounded-full border border-outline-variant hover:bg-surface-container transition-colors">Sağlık</button>
+<button class="bg-surface-container-low text-on-surface font-label-sm text-label-sm px-4 py-2 rounded-full border border-outline-variant hover:bg-surface-container transition-colors">Finans</button>
+<button class="bg-surface-container-low text-on-surface font-label-sm text-label-sm px-4 py-2 rounded-full border border-outline-variant hover:bg-surface-container transition-colors">Sürdürülebilirlik</button>
+</div>
+</section>
+<!-- Events Grid -->
+<section>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Card 1 -->
+<article class="event-card group relative bg-surface-container-lowest border border-outline-variant rounded-[16px] overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col">
+<div class="h-48 w-full bg-surface-container relative">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnnFjFN-8ZQTH9k1gARkDo_OqOdch-lp1z2AqN0CKceQ_ZZkhodcBmcZmA5zJhEjrRwkyhfFOwz6s1FCa_M3Te5lZi8FqP2Y0-UYQdffF1_i8rX5EDHXvatdUkFLS9RTiRWpE4gzVH_LFRUskpe5AhRSty4JxA1mraL8PmShRzCcO9hkdYy8z5AtuIKezI9ij13nMKUVGLHIYFd5wqYLJbKOJaTWoJAiRI5PRd-k4l0JnSfg22wurPfgy4kApCCzHiNWofsCavvKo">
+<div class="absolute top-4 left-4 flex gap-2">
+<div class="bg-surface-container-lowest/90 backdrop-blur px-2 py-1 rounded text-primary font-label-sm text-label-sm border border-outline-variant">15-17 Ekim 2024</div>
+<div class="bg-emerald-100 text-emerald-800 px-2 py-1 rounded font-label-sm text-label-sm border border-emerald-200 flex items-center gap-1">
+<span class="">🤖 %94 Uyum</span>
+</div>
+</div>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-2">
+<span class="bg-surface-container-low text-on-surface font-label-sm text-label-sm px-2 py-0.5 rounded border border-outline-variant">Teknoloji</span>
+<span class="material-symbols-outlined text-secondary cursor-pointer hover:text-primary transition-colors">bookmark_border</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-2 line-clamp-2">Küresel Teknoloji İnovasyon Zirvesi 2024</h3>
+<p class="font-body-md text-body-md text-secondary mb-4 line-clamp-2">Yazılım geliştiriciler, BT liderleri ve teknoloji girişimcileri için yapay zeka odaklı en büyük buluşma.</p>
+<div class="mt-auto">
+<div class="flex justify-between items-center mb-2">
+<span class="font-label-md text-label-md text-primary font-semibold">5.000+</span>
+</div>
+<div class="text-[12px] text-secondary/70 font-medium mb-1 mt-6">Paket Türleri:</div><div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-primary-container text-on-primary-container font-label-sm text-label-sm px-2 py-1 rounded">Platin ($50k)</span>
+<span class="bg-surface-container text-on-surface font-label-sm text-label-sm px-2 py-1 rounded">Altın ($25k)</span>
+</div>
+<p class="text-[12px] italic text-secondary/70 border-t border-outline-variant pt-3">
+                            *Yapay Zeka Notu: Bu etkinlik, teknoloji liderliği vizyonunuzla %94 oranında örtüşmektedir.*
+                        </p>
+</div>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="event-card group relative bg-surface-container-lowest border border-outline-variant rounded-[16px] overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col">
+<div class="h-48 w-full bg-surface-container relative">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYmjdvT08g0Ve9sh9Tyo1vUHREsRfDQDwAMzpijvIMDA2pO6cbxnJITkrlDc8xVbFjMaLwhnmI8_ZYXw88-RSxrXJ_67I4yLXIFfa8M1W4EgJZ5adtqS5xauHe96kjLzuHijdWNDy4wueDbqHAoH9b_VQ6VYFiOUDj9StYqLTLnh15zvZlVob6I-TwJg4HctQLQrp68R4h5qIYJvae4PsaYErysGn-5_oXAiD3zif2nwz_rCh9aR_D6-djzdYdLGsUJz6YZt5xOaA">
+<div class="absolute top-4 left-4 flex gap-2">
+<div class="bg-surface-container-lowest/90 backdrop-blur px-2 py-1 rounded text-primary font-label-sm text-label-sm border border-outline-variant">02 Kasım 2024</div>
+<div class="bg-emerald-100 text-emerald-800 px-2 py-1 rounded font-label-sm text-label-sm border border-emerald-200 flex items-center gap-1">
+<span class="">🤖 %88 Uyum</span>
+</div>
+</div>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-2">
+<span class="bg-surface-container-low text-on-surface font-label-sm text-label-sm px-2 py-0.5 rounded border border-outline-variant">Sağlık</span>
+<span class="material-symbols-outlined text-secondary cursor-pointer hover:text-primary transition-colors">bookmark_border</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-2 line-clamp-2">Dijital Sağlığın Geleceği Forumu</h3>
+<p class="font-body-md text-body-md text-secondary mb-4 line-clamp-2">Tıp profesyonellerini ve teknoloji mucitlerini teletıp ve giyilebilir teşhis cihazlarını tartışmak üzere bir araya getiriyor.</p>
+<div class="mt-auto">
+<div class="flex justify-between items-center mb-2">
+<span class="font-label-md text-label-md text-primary font-semibold">1.200+</span>
+</div>
+<div class="text-[12px] text-secondary/70 font-medium mb-1 mt-6">Paket Türleri:</div><div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-primary-container text-on-primary-container font-label-sm text-label-sm px-2 py-1 rounded">Ana Sponsor ($100k)</span>
+<span class="bg-surface-container text-on-surface font-label-sm text-label-sm px-2 py-1 rounded">Oturum ($10k)</span>
+</div>
+<p class="text-[12px] italic text-secondary/70 border-t border-outline-variant pt-3">
+                            *Yapay Zeka Notu: Bu etkinlik, sağlık teknolojileri yatırım stratejinizle yüksek oranda örtüşmektedir.*
+                        </p>
+</div>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="event-card group relative bg-surface-container-lowest border border-outline-variant rounded-[16px] overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col">
+<div class="h-48 w-full bg-surface-container relative">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwwxg-9VrHP_wpcI7bZRfG0Pm_X4ovLg0C_ppoBw8m3ZxVgQkECGsyJtbk9cLchOuOKT_xJt1z7KmrvoLM4fIZpI0Mt9qX7il_E50fjZLY_wZF0p_XZFC6ComlW-xGcqMXRaONpAEhXuiDPnH-V3BS75foetnjU72u9fyOzG0WJFYkBjMHetEd6rf9Nyr35hpuca_KfwfdDu10mSJPAoT7z-TVu1pvKL4ylRZrcSVOmgOPU83CgyHN2pcprNQGOXMT8lzKHaIyj8E">
+<div class="absolute top-4 left-4 flex gap-2">
+<div class="bg-surface-container-lowest/90 backdrop-blur px-2 py-1 rounded text-primary font-label-sm text-label-sm border border-outline-variant">10-12 Aralık 2024</div>
+<div class="bg-blue-100 text-blue-800 px-2 py-1 rounded font-label-sm text-label-sm border border-blue-200 flex items-center gap-1">
+<span class="">🤖 %75 Uyum</span>
+</div>
+</div>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-2">
+<span class="bg-surface-container-low text-on-surface font-label-sm text-label-sm px-2 py-0.5 rounded border border-outline-variant">Finans</span>
+<span class="material-symbols-outlined text-secondary cursor-pointer hover:text-primary transition-colors">bookmark_border</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-2 line-clamp-2">FinTech Evrim Fuarı</h3>
+<p class="font-body-md text-body-md text-secondary mb-4 line-clamp-2">Finansal teknolojilerin yeni dalgasını, blok zinciri altyapısını ve dijital bankacılık çözümlerini keşfedin.</p>
+<div class="mt-auto">
+<div class="flex justify-between items-center mb-2">
+<span class="font-label-md text-label-md text-primary font-semibold">8.500+</span>
+</div>
+<div class="text-[12px] text-secondary/70 font-medium mb-1 mt-6">Paket Türleri:</div><div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-primary-container text-on-primary-container font-label-sm text-label-sm px-2 py-1 rounded">Elmas ($75k)</span>
+<span class="bg-surface-container text-on-surface font-label-sm text-label-sm px-2 py-1 rounded">Stant ($5k)</span>
+</div>
+<p class="text-[12px] italic text-secondary/70 border-t border-outline-variant pt-3">
+                            *Yapay Zeka Notu: Bu etkinlik, sürdürülebilirlik vizyonunuzla orta düzeyde örtüşmektedir.*
+                        </p>
+</div>
+</div>
+</article>
+</div>
+<div class="mt-12 text-center">
+<button class="bg-transparent border border-primary text-primary font-label-md text-label-md px-10 py-3 rounded-lg hover:bg-surface-container-low transition-colors">Daha Fazla Etkinlik Yükle</button>
+</div>
+</section>
+</main>
+<!-- Info Panel (Hidden by default) -->
+<div class="hidden flex-grow flex flex-col md:flex-row w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-8 md:py-12 gap-gutter" id="info-panel">
+<aside class="w-full md:w-64 flex flex-col gap-2">
+<button class="flex items-center gap-2 text-primary font-bold mb-6 hover:translate-x-[-4px] transition-transform" onclick="showMain()">
+<span class="material-symbols-outlined">arrow_back</span>
+            Anasayfaya Dön
+        </button>
+<button class="tab-btn text-left px-4 py-3 rounded-lg bg-surface-container-high text-primary font-semibold" onclick="switchTab('privacy')">Gizlilik Politikası</button>
+<button class="tab-btn text-left px-4 py-3 rounded-lg hover:bg-surface-container text-secondary" onclick="switchTab('terms')">Kullanım Şartları</button>
+<button class="tab-btn text-left px-4 py-3 rounded-lg hover:bg-surface-container text-secondary" onclick="switchTab('support')">Destek Merkezi</button>
+</aside>
+<article class="flex-grow bg-surface-container-lowest border border-outline-variant rounded-xl p-8 shadow-sm">
+<div class="prose max-w-none" id="tab-content">
+<h2 class="text-headline-md font-bold text-primary mb-6" id="tab-title">Gizlilik Politikası</h2>
+<div class="text-body-md text-on-surface-variant space-y-4" id="tab-body">
+<p class="">SponsorMatch AI olarak, verilerinizin güvenliği ve gizliliği bizim için en öncelikli konudur. Bu belge, platformumuzu kullandığınızda verilerinizin nasıl toplandığını ve işlendiğini açıklar.</p>
+<p class="">Yapay zeka modellerimiz, yalnızca anonimleştirilmiş veriler üzerinden eğitilmekte olup, kurumsal stratejileriniz üçüncü taraflarla paylaşılmamaktadır.</p>
+<p class="">Toplanan veriler, yalnızca size en uygun sponsorluk eşleşmelerini sunmak ve kullanıcı deneyimini iyileştirmek amacıyla kullanılır.</p>
+</div>
+</div>
+</article>
+</div>
+<!-- Footer -->
+<footer class="bg-surface border-t border-outline-variant mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop py-8 w-full max-w-container-max mx-auto gap-4">
+<div class="font-label-md text-label-md font-bold text-primary"><div class="flex items-center gap-2"><img src="https://lh3.googleusercontent.com/aida/AP1WRLsCZ2dpZ_qrg9x-iE0iF5FmmrlTFeZGoWAJsQcthGo7kCsmGQO9nTwDXdmFoBZeKmTVAhcG_1ydNJZdQc1MsgMlCTEgcYVMSRUcitOSixatzbrcf9nZVu0DSM8VsNgbQUnyvjMtmWUK-O3OSk-pINVU2148wYSNxP2Co8cui8WK2Abu0BOZVTGAmfmhy_1JGHsSoLGlG2hr2THHPbfljI8p4YCKzmvtxfmQySEnjvnth6zt9u40tJaWpKA" alt="SponsorMatch AI Logo" class="h-6 w-auto"><span class="">SponsorMatch AI</span></div></div>
+<div class="font-label-sm text-label-sm text-secondary">© 2026 SponsorMatch AI. Tüm hakları saklıdır.</div>
+<nav class="flex gap-6">
+<a class="text-secondary hover:text-primary transition-colors font-label-sm text-label-sm" href="javascript:void(0)" onclick="openInfo('privacy')">Gizlilik Politikası</a>
+<a class="text-secondary hover:text-primary transition-colors font-label-sm text-label-sm" href="javascript:void(0)" onclick="openInfo('terms')">Kullanım Şartları</a>
+<a class="text-secondary hover:text-primary transition-colors font-label-sm text-label-sm" href="javascript:void(0)" onclick="openInfo('support')">Destek Merkezi</a>
+</nav>
+</div>
+</footer>
+<script>
+    const tabs = {
+        privacy: {
+            title: "Gizlilik Politikası",
+            body: `<p>SponsorMatch AI olarak, verilerinizin güvenliği ve gizliliği bizim için en öncelikli konudur. Bu belge, platformumuzu kullandığınızda verilerinizin nasıl toplandığını ve işlendiğini açıklar.</p>
+                   <p>Yapay zeka modellerimiz, yalnızca anonimleştirilmiş veriler üzerinden eğitilmekte olup, kurumsal stratejileriniz üçüncü taraflarla paylaşılmamaktadır.</p>
+                   <p>GDPR ve yerel veri koruma yasalarına tam uyum sağlamaktayız. Hesabınızı sildiğinizde, tüm verileriniz sunucularımızdan kalıcı olarak temizlenir.</p>`
+        },
+        terms: {
+            title: "Kullanım Şartları",
+            body: `<p>SponsorMatch AI platformunu kullanarak, aşağıdaki şartları kabul etmiş sayılırsınız:</p>
+                   <p>Platform, etkinlik organizatörleri ve potansiyel sponsorlar arasında bir köprü görevi görür. Eşleşmeler yapay zeka tabanlıdır ve bağlayıcı değildir.</p>
+                   <p>Kullanıcılar, sağladıkları bilgilerin doğruluğundan sorumludur. Yanıltıcı içerik girişi, hesabın askıya alınmasına neden olabilir.</p>`
+        },
+        support: {
+            title: "Destek Merkezi",
+            body: `<p>Size nasıl yardımcı olabiliriz? Destek ekibimiz hafta içi 09:00 - 18:00 saatleri arasında hizmet vermektedir.</p>
+                   <p><strong>E-posta:</strong> destek@sponsormatch.ai</p>
+                   <p><strong>Hızlı Çözümler:</strong></p>
+                   <ul>
+                       <li>Şifremi unuttum</li>
+                       <li>Ödeme yöntemleri</li>
+                       <li>Eşleşme kriterlerini güncelleme</li>
+                   </ul>`
+        }
+    };
+
+    function showMain() {
+        document.getElementById('main-content').classList.remove('hidden');
+        document.getElementById('info-panel').classList.add('hidden');
+        window.scrollTo(0,0);
+    }
+
+    function openInfo(tabId) {
+        document.getElementById('main-content').classList.add('hidden');
+        document.getElementById('info-panel').classList.remove('hidden');
+        switchTab(tabId);
+        window.scrollTo(0,0);
+    }
+
+    function switchTab(tabId) {
+        const tab = tabs[tabId];
+        document.getElementById('tab-title').innerText = tab.title;
+        document.getElementById('tab-body').innerHTML = tab.body;
+
+        // Update active button state
+        const buttons = document.querySelectorAll('.tab-btn');
+        buttons.forEach(btn => {
+            if(btn.innerText === tab.title) {
+                btn.classList.add('bg-surface-container-high', 'font-semibold', 'text-primary');
+                btn.classList.remove('text-secondary', 'hover:bg-surface-container');
+            } else {
+                btn.classList.remove('bg-surface-container-high', 'font-semibold', 'text-primary');
+                btn.classList.add('text-secondary', 'hover:bg-surface-container');
+            }
+        });
+    }
+</script>
+
+
+</body></html>

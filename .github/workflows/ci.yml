@@ -1,0 +1,111 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+# Aynı dal için üst üste tetiklenen çalışmaları iptal et.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: Lint · Tip Kontrolü · Build
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+
+    steps:
+      - name: Depoyu al
+        uses: actions/checkout@v4
+
+      - name: Node.js ${{ matrix.node-version }} kur
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: npm
+
+      - name: Bağımlılıkları kur
+        run: npm ci
+
+      - name: Biçim kontrolü
+        run: npx prettier --check "**/*.{ts,tsx,css,json,md}"
+
+      - name: n8n akış dosyaları geçerli JSON mu
+        run: |
+          for file in workflows/*.json; do
+            node -e "
+              const wf = JSON.parse(require('fs').readFileSync('$file', 'utf8'));
+              if (!wf.name || !Array.isArray(wf.nodes)) throw new Error('$file: geçersiz n8n akışı');
+              console.log('✓ $file →', wf.name, '(' + wf.nodes.length + ' node)');
+            "
+          done
+
+      - name: ESLint
+        run: npm run lint
+
+      - name: TypeScript — istemci
+        run: npx tsc -p tsconfig.json --noEmit
+
+      - name: TypeScript — sunucu
+        run: npx tsc -p server/tsconfig.json --noEmit
+
+      - name: Üretim derlemesi
+        run: npm run build
+
+      - name: API duman testi
+        run: |
+          NODE_ENV=production AUTH_SECRET="ci-test-secret-$(date +%s)" API_LATENCY_MS=0 node dist-server/index.js &
+          SERVER_PID=$!
+
+          # Sunucunun ayağa kalkmasını bekle
+          for i in $(seq 1 20); do
+            if curl -sf http://localhost:4000/api/health > /dev/null; then break; fi
+            sleep 0.5
+          done
+
+          echo "→ Sağlık kontrolü"
+          curl -sf http://localhost:4000/api/health | grep -q '"status":"ok"'
+
+          echo "→ Etkinlik listesi"
+          curl -sf http://localhost:4000/api/events | grep -q '"items"'
+
+          echo "→ Platform metrikleri"
+          curl -sf http://localhost:4000/api/stats/platform | grep -q 'Aktif Etkinlikler'
+
+          echo "→ Hukuki belge"
+          curl -sf http://localhost:4000/api/legal/kvkk | grep -q 'KVKK'
+
+          echo "→ Yetkisiz erişim 401 dönmeli"
+          test "$(curl -s -o /dev/null -w '%{http_code}' http://localhost:4000/api/settings/profile)" = "401"
+
+          echo "→ Yapay zeka motoru bildiriliyor"
+          # AI_WEBHOOK_URL tanımsız olduğu için yerel kural motoru beklenir.
+          curl -sf http://localhost:4000/api/ai/status | grep -q '"provider":"local"'
+
+          echo "→ Yapay zeka eşleştirmesi skor üretiyor"
+          curl -sf -X POST http://localhost:4000/api/ai/matches \
+            -H 'Content-Type: application/json' -d '{"sort":"score"}' \
+            | node -e "
+              let raw = '';
+              process.stdin.on('data', (c) => (raw += c)).on('end', () => {
+                const body = JSON.parse(raw);
+                if (body.meta.source !== 'local') throw new Error('beklenen kaynak: local');
+                if (!body.items.length) throw new Error('eşleşme üretilmedi');
+                const bad = body.items.filter((i) => !Number.isInteger(i.matchScore) || i.matchScore < 0 || i.matchScore > 100);
+                if (bad.length) throw new Error('skor 0-100 aralığı dışında');
+                // Sıralama skora göre azalan olmalı.
+                for (let i = 1; i < body.items.length; i++) {
+                  if (body.items[i - 1].matchScore < body.items[i].matchScore) throw new Error('sıralama bozuk');
+                }
+                console.log('  ' + body.items.length + ' eşleşme, en yüksek skor ' + body.items[0].matchScore);
+              });
+            "
+
+          kill $SERVER_PID
+          echo "Tüm duman testleri geçti."

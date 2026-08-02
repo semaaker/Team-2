@@ -1,0 +1,773 @@
+{
+  "name": "Event Directory Paneli Akışları",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "sponsor-match",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "271a7730-7f99-4ce7-b977-73c66f053e0f",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [-96, 80],
+      "webhookId": "3214cbc2-3e59-48fa-8f38-a74883254c5d"
+    },
+    {
+      "parameters": {
+        "authentication": "airtableOAuth2Api",
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "appuo1DKXB4dvSPb6",
+          "mode": "list",
+          "cachedResultName": "SponsorMatch AI",
+          "cachedResultUrl": "https://airtable.com/appuo1DKXB4dvSPb6"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbly3Ro9ZDpFlVXgk",
+          "mode": "list",
+          "cachedResultName": "Sponsor_Profiles",
+          "cachedResultUrl": "https://airtable.com/appuo1DKXB4dvSPb6/tbly3Ro9ZDpFlVXgk"
+        },
+        "returnAll": false,
+        "limit": 3,
+        "options": {}
+      },
+      "id": "c8d9c0b2-e828-4db4-8bec-591140e11451",
+      "name": "Airtable",
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.2,
+      "position": [432, 192],
+      "retryOnFail": false,
+      "alwaysOutputData": false,
+      "credentials": {
+        "airtableOAuth2Api": {
+          "id": "pUmsGgGJzMNy7uxF",
+          "name": "Airtable OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "allIncomingItems",
+        "options": {}
+      },
+      "id": "8f74aef2-c0b8-4c86-9015-853b6eaaa472",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [1392, 272]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Aşağıdaki şirket bilgilerini analiz et.\n\nŞirket Adı:\n{{ $json.fields[\"Şirket Adı\"] }}\n\nSektör:\n{{ $json.fields[\"Sektör\"] }}\n\nMinimum Bütçe:\n{{ $json.fields[\"Minimum Bütçe\"] }}\n\nMaksimum Bütçe:\n{{ $json.fields[\"Maksimum Bütçe\"] }}\n\nHedef Kitle:\n{{ $json.fields[\"Hedef Kitle\"] }}\n\nMarka Vizyonu:\n{{ $json.fields[\"Marka Vizyonu\"] }}\n\nBu şirket için sponsorluk uygunluğunu değerlendir.\n\nSadece JSON döndür.\n\n{\n  \"Uyum Oranı\": 0-100,\n  \"Yapay Zeka Notu\": \"...\",\n  \"Şirket Özeti\": \"...\"\n}",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "Sen SponsorMatch AI platformunun sponsorluk değerlendirme asistanısın.\n\nSana verilen şirket kaydını sektör, bütçe aralığı, hedef kitle ve marka vizyonuna göre analiz et.\n\nKurallar:\n- uyum_orani alanı 0 ile 100 arasında tam sayı olmalıdır.\n- yapay_zeka_notu kısa, açık ve kurumsal bir değerlendirme olmalıdır.\n- sirket_ozeti şirketin sponsorluk profilini 1-2 cümlede özetlemelidir.\n- Bilgi eksikse bunu açıkça belirt.\n- Uydurma bilgi üretme.\n- Yalnızca bağlı Structured Output Parser şemasına uygun çıktı üret."
+        }
+      },
+      "id": "3f680d36-7759-4e55-bce8-0e1322f849d6",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [880, 304]
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.5-flash",
+        "options": {}
+      },
+      "id": "5770f3ee-f1f6-4571-af35-6db374961304",
+      "name": "Google Gemini Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1.1,
+      "position": [960, 528],
+      "credentials": {
+        "googlePalmApi": {
+          "id": "6RJDblLkSjKcO7Xm",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "airtableOAuth2Api",
+        "operation": "update",
+        "base": {
+          "__rl": true,
+          "value": "appuo1DKXB4dvSPb6",
+          "mode": "list",
+          "cachedResultName": "SponsorMatch AI",
+          "cachedResultUrl": "https://airtable.com/appuo1DKXB4dvSPb6"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbly3Ro9ZDpFlVXgk",
+          "mode": "list",
+          "cachedResultName": "Sponsor_Profiles",
+          "cachedResultUrl": "https://airtable.com/appuo1DKXB4dvSPb6/tbly3Ro9ZDpFlVXgk"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $('Airtable').item.json.id }}",
+            "n8n Uyum Puanı": "={{ $json.output.uyum_orani }}",
+            "n8n Şirket Özeti": "={{ $json.output.sirket_ozeti }}",
+            "n8n Yapay Zeka Notu": "={{ $json.output.yapay_zeka_notu }}"
+          },
+          "matchingColumns": ["id"],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true
+            },
+            {
+              "id": "Şirket Adı",
+              "displayName": "Şirket Adı",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Şirket Logosu",
+              "displayName": "Şirket Logosu",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Sektör",
+              "displayName": "Sektör",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Teknoloji",
+                  "value": "Teknoloji"
+                },
+                {
+                  "name": "Finans",
+                  "value": "Finans"
+                },
+                {
+                  "name": "Sağlık",
+                  "value": "Sağlık"
+                },
+                {
+                  "name": "Gıda",
+                  "value": "Gıda"
+                },
+                {
+                  "name": "FMCG",
+                  "value": "FMCG"
+                },
+                {
+                  "name": "Çevre",
+                  "value": "Çevre"
+                },
+                {
+                  "name": "Spor ve Sağlık",
+                  "value": "Spor ve Sağlık"
+                },
+                {
+                  "name": "Eğitim",
+                  "value": "Eğitim"
+                },
+                {
+                  "name": "Moda",
+                  "value": "Moda"
+                },
+                {
+                  "name": "Otomotiv",
+                  "value": "Otomotiv"
+                },
+                {
+                  "name": "Turizm",
+                  "value": "Turizm"
+                },
+                {
+                  "name": "Ev ve Yaşam",
+                  "value": "Ev ve Yaşam"
+                },
+                {
+                  "name": "Evcil Hayvan",
+                  "value": "Evcil Hayvan"
+                },
+                {
+                  "name": "Sanat ve Kültür",
+                  "value": "Sanat ve Kültür"
+                },
+                {
+                  "name": "İnşaat",
+                  "value": "İnşaat"
+                },
+                {
+                  "name": "Tarım",
+                  "value": "Tarım"
+                },
+                {
+                  "name": "Finans & Bankacılık",
+                  "value": "Finans & Bankacılık"
+                },
+                {
+                  "name": "Gıda & Tarım",
+                  "value": "Gıda & Tarım"
+                },
+                {
+                  "name": "E-ticaret & Perakende",
+                  "value": "E-ticaret & Perakende"
+                },
+                {
+                  "name": "Eğitim & EdTech",
+                  "value": "Eğitim & EdTech"
+                },
+                {
+                  "name": "İnşaat & Gayrimenkul",
+                  "value": "İnşaat & Gayrimenkul"
+                },
+                {
+                  "name": "Sağlık & Medikal",
+                  "value": "Sağlık & Medikal"
+                }
+              ],
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Minimum Bütçe",
+              "displayName": "Minimum Bütçe",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Maksimum Bütçe",
+              "displayName": "Maksimum Bütçe",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Hedef Kitle",
+              "displayName": "Hedef Kitle",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Marka Vizyonu",
+              "displayName": "Marka Vizyonu",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Şirket Özeti (AI)",
+              "displayName": "Şirket Özeti (AI)",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Olası Uyum Puanı (AI)",
+              "displayName": "Olası Uyum Puanı (AI)",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Sponsorluklar",
+              "displayName": "Sponsorluklar",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "n8n Şirket Özeti",
+              "displayName": "n8n Şirket Özeti",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "n8n Uyum Puanı",
+              "displayName": "n8n Uyum Puanı",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "n8n Yapay Zeka Notu",
+              "displayName": "n8n Yapay Zeka Notu",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.2,
+      "position": [1184, 272],
+      "id": "22a63a33-8b1e-4fe4-a5cc-4f36c4c26f2f",
+      "name": "Update record",
+      "retryOnFail": true,
+      "credentials": {
+        "airtableOAuth2Api": {
+          "id": "pUmsGgGJzMNy7uxF",
+          "name": "Airtable OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [208, 192],
+      "id": "182aa387-5d51-4ddd-a62a-97dc9b8d9dbc",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"uyum_orani\": 75,\n  \"yapay_zeka_notu\": \"Şirketin sektörü, bütçesi ve marka vizyonu sponsorluk açısından uygundur.\",\n  \"sirket_ozeti\": \"Şirketin sponsorluk profiline ilişkin kısa özet.\"\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [1056, 512],
+      "id": "15c16cda-6495-4296-88e7-f7464a8a38c8",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "e138127b-3b8c-42da-9f48-fde985ad317e",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [-96, -128],
+      "id": "592eac86-8d75-4acf-80d1-48e6a8d22e8b",
+      "name": "Webhook1",
+      "webhookId": "e138127b-3b8c-42da-9f48-fde985ad317e"
+    },
+    {
+      "parameters": {
+        "authentication": "airtableOAuth2Api",
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "appuo1DKXB4dvSPb6",
+          "mode": "list",
+          "cachedResultName": "SponsorMatch AI",
+          "cachedResultUrl": "https://airtable.com/appuo1DKXB4dvSPb6"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblhYIthdZ7KVJlqv",
+          "mode": "list",
+          "cachedResultName": "Etkinlikler",
+          "cachedResultUrl": "https://airtable.com/appuo1DKXB4dvSPb6/tblhYIthdZ7KVJlqv"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Uyum_Orani": 0,
+            "Etkinlik_Adi": "={{ $('Webhook1').item.json.body.eventName }}",
+            "Kategori": "={{ $('Webhook1').item.json.body.eventCategory }}",
+            "Aciklama": "={{ $('Webhook1').item.json.body.eventDescription }}",
+            "Katilimci_Sayisi": "={{ $('Webhook1').item.json.body.participantCount }}",
+            "Tarih": "={{ $('Webhook1').item.json.body.eventDate }}",
+            "Paket_Turleri": "={{ $('Webhook1').item.json.body.sponsorPackages }}",
+            "PDF Dosya": "=[{\"url\": \"{{ $json.webContentLink }}\"}]"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Etkinlik_Adi",
+              "displayName": "Etkinlik_Adi",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Tarih",
+              "displayName": "Tarih",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Uyum_Orani",
+              "displayName": "Uyum_Orani",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Kategori",
+              "displayName": "Kategori",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Teknoloji",
+                  "value": "Teknoloji"
+                },
+                {
+                  "name": "Sağlık",
+                  "value": "Sağlık"
+                },
+                {
+                  "name": "Finans",
+                  "value": "Finans"
+                },
+                {
+                  "name": "Sürdürülebilirlik",
+                  "value": "Sürdürülebilirlik"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Aciklama",
+              "displayName": "Aciklama",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Katilimci_Sayisi",
+              "displayName": "Katilimci_Sayisi",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Paket_Turleri",
+              "displayName": "Paket_Turleri",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "options": [
+                {
+                  "name": "Platin",
+                  "value": "Platin"
+                },
+                {
+                  "name": "Altın",
+                  "value": "Altın"
+                },
+                {
+                  "name": "Elmas",
+                  "value": "Elmas"
+                },
+                {
+                  "name": "Gümüş",
+                  "value": "Gümüş"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Yapay_Zeka_Notu",
+              "displayName": "Yapay_Zeka_Notu",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Gorsel",
+              "displayName": "Gorsel",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Sponsorluklar",
+              "displayName": "Sponsorluklar",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "PDF Dosya",
+              "displayName": "PDF Dosya",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {
+          "typecast": true
+        }
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.2,
+      "position": [416, -144],
+      "id": "ffd32b54-b76d-4074-96eb-c1445cceb1e5",
+      "name": "Create a record",
+      "alwaysOutputData": false,
+      "executeOnce": false,
+      "credentials": {
+        "airtableOAuth2Api": {
+          "id": "pUmsGgGJzMNy7uxF",
+          "name": "Airtable OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "inputDataFieldName": "sponsorDosyasi",
+        "name": "={{ $json.body.eventName }} - Etkinlik Dosyasi.pdf",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "1xsrV2KTo4d0KI1hKIypKaA3kHE_Kq63d",
+          "mode": "list",
+          "cachedResultName": "SponsorMatch Etkinlik Dosyaları",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1xsrV2KTo4d0KI1hKIypKaA3kHE_Kq63d"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [192, -80],
+      "id": "c634a9dd-3867-41dc-b835-3956a55998a5",
+      "name": "Upload file",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "KklaXHUJRHONuAaK",
+          "name": "Google Drive OAuth2 API"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Airtable",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Airtable": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Update record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Airtable",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update record": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "Upload file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a record": {
+      "main": [[]]
+    },
+    "Upload file": {
+      "main": [
+        [
+          {
+            "node": "Create a record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "staticData": null,
+  "pinData": {},
+  "triggerCount": 1,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  }
+}

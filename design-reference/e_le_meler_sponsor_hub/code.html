@@ -1,0 +1,404 @@
+<!DOCTYPE html><html class="light" lang="tr"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>SponsorMatch AI - Eşleşmeler</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface": "#f9f9f9",
+                    "tertiary": "#000511",
+                    "surface-container-low": "#f3f3f4",
+                    "on-primary": "#ffffff",
+                    "tertiary-container": "#0e1f33",
+                    "on-secondary": "#ffffff",
+                    "primary-fixed": "#d4e3ff",
+                    "outline": "#74777f",
+                    "inverse-primary": "#afc8f0",
+                    "on-tertiary-container": "#77879f",
+                    "secondary-fixed-dim": "#c3c7cb",
+                    "tertiary-fixed-dim": "#b7c8e1",
+                    "secondary-container": "#dce0e4",
+                    "on-surface-variant": "#43474e",
+                    "on-tertiary-fixed-variant": "#38485d",
+                    "on-error": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "outline-variant": "#c4c6cf",
+                    "surface-container-highest": "#e2e2e2",
+                    "primary-container": "#001f3f",
+                    "on-primary-container": "#6f88ad",
+                    "on-tertiary-fixed": "#0b1c30",
+                    "primary": "#000613",
+                    "on-secondary-fixed-variant": "#43474b",
+                    "on-secondary-container": "#5e6367",
+                    "surface-dim": "#dadada",
+                    "on-background": "#1a1c1c",
+                    "surface-bright": "#f9f9f9",
+                    "inverse-on-surface": "#f0f1f1",
+                    "error": "#ba1a1a",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed-variant": "#2f486a",
+                    "on-secondary-fixed": "#171c1f",
+                    "primary-fixed-dim": "#afc8f0",
+                    "on-primary-fixed": "#001c3a",
+                    "tertiary-fixed": "#d3e4fe",
+                    "surface-container-lowest": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "on-surface": "#1a1c1c",
+                    "secondary": "#5a5f62",
+                    "secondary-fixed": "#dfe3e7",
+                    "surface-container-high": "#e8e8e8",
+                    "surface-container": "#eeeeee",
+                    "background": "#f9f9f9",
+                    "surface-variant": "#e2e2e2",
+                    "inverse-surface": "#2f3131",
+                    "surface-tint": "#476083"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max": "1280px",
+                    "gutter": "24px",
+                    "base": "8px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "40px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "display-lg-mobile": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .ai-glow {
+            box-shadow: 0 0 15px rgba(0, 31, 63, 0.08);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-surface-container-low text-primary dark:text-inverse-primary border-b border-outline-variant dark:border-outline flex justify-between items-center w-full px-gutter h-16 sticky top-0 z-40">
+<div class="flex items-center gap-8">
+<span class="font-headline-md text-headline-md font-bold text-tertiary dark:text-tertiary-fixed">SponsorMatch AI</span>
+<div class="hidden md:flex gap-6 items-center">
+<a class="text-primary dark:text-primary-fixed font-bold border-b-2 border-primary font-label-md text-label-md py-5" href="#">Eşleşmeler</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:bg-surface-container-low dark:hover:bg-tertiary-container transition-colors cursor-pointer font-label-md text-label-md py-5" href="{{DATA:SCREEN:SCREEN_33}}">Sponsorluklarım</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:bg-surface-container-low dark:hover:bg-tertiary-container transition-colors cursor-pointer font-label-md text-label-md py-5" href="{{DATA:SCREEN:SCREEN_35}}">Analitik</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-full text-label-md focus:ring-2 focus:ring-primary w-64" placeholder="Etkinlik ara..." type="text">
+</div>
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-low p-2 rounded-full transition-colors active:scale-95">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-low p-2 rounded-full transition-colors active:scale-95">help</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional business avatar of a corporate executive in a crisp navy blue suit, set against a clean, minimalist architectural background with soft daylight. The image is polished and high-end, reflecting a modern corporate identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEnkHrsP0P0Gj9g6etps8ik1nMGftZQxNh4gd_FjvEDl56YGKucpphRFBEzGVviplQQSuPeu2RSoYEp_cTcqOR2BYU6RbnnOCXmJD7r7PpNS2xCPwaI-Pc8cmKBaxldWTUHIOu0JFx-Vs9J3msWiLwZ8znHzlNkpCriG5Z_uRQaAkuKaouTSYEN0UZYbjpaVUIQY_1nDn7CDR1SOg0UOJcQzT7hYx185YnQRoRvylWcMx7CZMR8Q7lkiAegBO8yeBcE4RW9HDOWCY">
+</div>
+</div>
+</header>
+<div class="flex flex-1">
+<!-- SideNavBar -->
+<aside class="hidden lg:flex flex-col h-screen py-8 px-4 bg-surface-container-lowest dark:bg-tertiary-container border-r border-outline-variant dark:border-outline fixed left-0 top-16 w-64 z-30">
+<div class="mb-8 px-2">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 bg-primary-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container">hub</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-tertiary dark:text-tertiary-fixed leading-none font-bold">Sponsor Hub</h2>
+<span class="font-label-sm text-label-sm text-secondary">Premium Tier</span>
+</div>
+</div>
+<button class="w-full py-3 px-4 bg-primary text-on-primary rounded-xl font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                    Yeni Sponsorluk Bul
+                </button>
+</div>
+<nav class="flex-1 space-y-1"><a class="flex items-center gap-3 px-4 py-3 text-primary dark:text-on-primary font-semibold border-r-4 border-primary dark:border-primary-fixed bg-surface-container-low dark:bg-primary-container transition-all font-label-md text-label-md" href="{{DATA:SCREEN:SCREEN_14}}"><span class="material-symbols-outlined">handshake</span>Eşleşmeler</a><a class="flex items-center gap-3 px-4 py-3 text-secondary dark:text-on-tertiary-fixed-variant hover:bg-surface-container dark:hover:bg-tertiary-fixed-dim transition-all font-label-md text-label-md" href="{{DATA:SCREEN:SCREEN_33}}"><span class="material-symbols-outlined">assignment</span>Sponsorluklar</a><a class="flex items-center gap-3 px-4 py-3 text-secondary dark:text-on-tertiary-fixed-variant hover:bg-surface-container dark:hover:bg-tertiary-fixed-dim transition-all font-label-md text-label-md" href="{{DATA:SCREEN:SCREEN_35}}"><span class="material-symbols-outlined">monitoring</span>Analitik</a><a class="flex items-center gap-3 px-4 py-3 text-secondary dark:text-on-tertiary-fixed-variant hover:bg-surface-container dark:hover:bg-tertiary-fixed-dim transition-all font-label-md text-label-md" href="{{DATA:SCREEN:SCREEN_5}}"><span class="material-symbols-outlined">chat</span>Mesajlar</a><a class="flex items-center gap-3 px-4 py-3 text-secondary dark:text-on-tertiary-fixed-variant hover:bg-surface-container dark:hover:bg-tertiary-fixed-dim transition-all font-label-md text-label-md" href="{{DATA:SCREEN:SCREEN_18}}"><span class="material-symbols-outlined">settings</span>Ayarlar</a></nav>
+<div class="mt-auto border-t border-outline-variant pt-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">support_agent</span>
+                    Destek
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">logout</span>
+                    Çıkış Yap
+                </a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 lg:ml-64 p-gutter max-w-container-max mx-auto w-full">
+<!-- Header & Filters -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+<div>
+<h1 class="font-display-lg text-display-lg text-tertiary mb-2">Yapay Zeka Eşleşmeleri</h1>
+<p class="font-body-lg text-body-lg text-secondary max-w-2xl">Marka kriterlerinize en uygun, yüksek dönüşüm potansiyeline sahip etkinlikleri keşfedin.</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 px-5 py-2.5 border border-outline-variant rounded-lg font-label-md text-label-md hover:bg-surface-container-low transition-colors active:scale-95" onclick="alert('Filtreleme seçenekleri açılıyor...')">
+<span class="material-symbols-outlined text-[20px]">filter_list</span>
+                        Filtrele
+                    </button>
+<button class="flex items-center gap-2 px-5 py-2.5 border border-outline-variant rounded-lg font-label-md text-label-md hover:bg-surface-container-low transition-colors active:scale-95">
+<span class="material-symbols-outlined text-[20px]">sort</span>
+                        Sırala
+                    </button>
+</div>
+</div>
+<!-- Bento Grid of Match Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+<!-- Match Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden flex flex-col group hover:ai-glow transition-all duration-300 cursor-pointer hover:shadow-md">
+<div class="relative h-48 overflow-hidden">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="A dynamic, wide-angle shot of a high-tech conference hall filled with professional attendees. Soft blue and white ambient lighting creates a futuristic, modern corporate atmosphere. The focus is on a large stage with minimalist digital displays, conveying an air of innovation and high-level networking." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCNVZk5VfkdcDxIMdALfYAfIon_CfHPDaOzz39WQxv5f5zwc5mKk_mgL2mmtU0bhw8wXXWGdmZM6qi0RP0IJcyt5vNuh01kpmsKpJSq0B84pTonNXKfv910Rar54hJvFLYY8RYx01QyuW36vDMcqyxs5Kaoiz64tQ-PEklHx1EdWWDNT0iBPA7ERZIrwBpxDidwdeyV_xGjjOEA6EAALq2GfTs1ru4ncc4UbpRS-5M19CnPjVsVK6belnfQ51IpvMKXZh1WxVTz4NU')"></div>
+<div class="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-full flex items-center gap-1.5 border border-primary/10">
+<span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-primary">98% AI Match</span>
+</div>
+</div>
+<div class="p-6 flex-1 flex flex-col">
+<div class="mb-4">
+<h3 class="font-headline-sm text-headline-sm text-tertiary mb-1">Global Tech Summit 2026</h3>
+<div class="flex items-center gap-4 text-secondary">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+<span class="text-label-sm">12-14 Ekim</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+<span class="text-label-sm">İstanbul</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 py-4 border-y border-outline-variant mb-4">
+<div class="cursor-pointer hover:shadow-md">
+<span class="block text-secondary text-label-sm uppercase tracking-wider mb-1">Katılımcı</span>
+<span class="font-headline-sm text-headline-sm text-primary">5,000+</span>
+</div>
+<div class="cursor-pointer hover:shadow-md">
+<span class="block text-secondary text-label-sm uppercase tracking-wider mb-1">Sektör</span>
+<span class="font-headline-sm text-headline-sm text-primary">Teknoloji</span>
+</div>
+</div>
+<div class="mb-6">
+<span class="block text-secondary text-label-sm uppercase tracking-wider mb-2">Ana Kategoriler</span>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-surface-container-low text-primary rounded-full text-label-sm">Platinum Sponsor</span>
+<span class="px-3 py-1 bg-surface-container-low text-primary rounded-full text-label-sm">Networking</span>
+<span class="px-3 py-1 bg-surface-container-low text-primary rounded-full text-label-sm">+3 Diğer</span>
+</div>
+</div>
+<button class="w-full py-3 border border-primary text-primary hover:bg-primary hover:text-on-primary transition-all rounded-lg font-label-md text-label-md mt-auto active:scale-95" onclick="alert('Etkinlik detayları yükleniyor...')">
+                            Detayları İncele
+                        </button>
+</div>
+</div>
+<!-- Match Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden flex flex-col group hover:ai-glow transition-all duration-300 cursor-pointer hover:shadow-md">
+<div class="relative h-48 overflow-hidden">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="An elegant outdoor garden gala at dusk with warm fairy lights and modern white lounge furniture. The mood is sophisticated and exclusive, set in a lush green environment with a soft purple twilight sky. High-end branding elements are subtly integrated into the decor, creating a premium networking environment." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBX37JtAJkCmNpLIkRL8juAjstsqrnrJUlLfNizgwcItCFwrxZ5i4Uv3RC4SO4aTCDELmWa9jK4b4xwE0NfC14V9U7K73U48w3Tho_o9CbfWFJcwIdrs4GuTb_Vt3kUjv6uHyuBILEScUkAuOJ0Lyl1_mG82Aj83Aoy3AX6CfofSGi_UYo0PjGeZFq5NA2jiFjipqkgzHrOTk0hgDCjEXFo3Gd9A305fKvrTyBDCnCG1IQ47giZGo81bybR24am-_eH6RT_pX2XCFo')"></div>
+<div class="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-full flex items-center gap-1.5 border border-primary/10">
+<span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-primary">92% AI Match</span>
+</div>
+</div>
+<div class="p-6 flex-1 flex flex-col">
+<div class="mb-4">
+<h3 class="font-headline-sm text-headline-sm text-tertiary mb-1">Sürdürülebilirlik Forumu</h3>
+<div class="flex items-center gap-4 text-secondary">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+<span class="text-label-sm">5 Kasım</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+<span class="text-label-sm">Ankara</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 py-4 border-y border-outline-variant mb-4">
+<div class="cursor-pointer hover:shadow-md">
+<span class="block text-secondary text-label-sm uppercase tracking-wider mb-1">Katılımcı</span>
+<span class="font-headline-sm text-headline-sm text-primary">1,200</span>
+</div>
+<div class="cursor-pointer hover:shadow-md">
+<span class="block text-secondary text-label-sm uppercase tracking-wider mb-1">Sektör</span>
+<span class="font-headline-sm text-headline-sm text-primary">Enerji / Finans</span>
+</div>
+</div>
+<div class="mb-6">
+<span class="block text-secondary text-label-sm uppercase tracking-wider mb-2">Ana Kategoriler</span>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-surface-container-low text-primary rounded-full text-label-sm">Ana Sponsor</span>
+<span class="px-3 py-1 bg-surface-container-low text-primary rounded-full text-label-sm">Panel Oturumu</span>
+</div>
+</div>
+<button class="w-full py-3 border border-primary text-primary hover:bg-primary hover:text-on-primary transition-all rounded-lg font-label-md text-label-md mt-auto active:scale-95" onclick="alert('Etkinlik detayları yükleniyor...')">
+                            Detayları İncele
+                        </button>
+</div>
+</div>
+<!-- Match Card 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden flex flex-col group hover:ai-glow transition-all duration-300 cursor-pointer hover:shadow-md">
+<div class="relative h-48 overflow-hidden">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="A vibrant and energetic urban music festival stage during daytime. Bright colorful banners, large LED screens, and a diverse crowd of young adults. The lighting is sunny and optimistic, with a focus on creative activations and experiential marketing stands. A modern, youthful aesthetic with high energy." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA2Taqs6s2Nn7TD3vRsMubs1OeRNZNTsarqFHC4SKfTjdGDYNAGHsOT8JeLWCt2xI8aneFTPXpSyhBVlqfiKImBWLIo0ulLYiQQYalBvOs5Rk8w0M3Fmj3QuQ9q-HVYgXVBKIjpJzEhkcmVYUjY6XQAAaIoJQNbLETXanfSFGEkutS2sl08kd-h0hMOrTT9fr-mJchqMKHwyOFiA5-cwGsAGjrK8d8p8wLTDS9OjYGvARKZubzs0K3u3f7TvN24hmVA5xze6yhugDU')"></div>
+<div class="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-full flex items-center gap-1.5 border border-primary/10">
+<span class="w-2 h-2 rounded-full bg-yellow-500"></span>
+<span class="font-label-sm text-label-sm text-primary">85% AI Match</span>
+</div>
+</div>
+<div class="p-6 flex-1 flex flex-col">
+<div class="mb-4">
+<h3 class="font-headline-sm text-headline-sm text-tertiary mb-1">Urban Creative Festival</h3>
+<div class="flex items-center gap-4 text-secondary">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+<span class="text-label-sm">28 Eylül</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+<span class="text-label-sm">İzmir</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 py-4 border-y border-outline-variant mb-4">
+<div class="cursor-pointer hover:shadow-md">
+<span class="block text-secondary text-label-sm uppercase tracking-wider mb-1">Katılımcı</span>
+<span class="font-headline-sm text-headline-sm text-primary">15,000+</span>
+</div>
+<div class="cursor-pointer hover:shadow-md">
+<span class="block text-secondary text-label-sm uppercase tracking-wider mb-1">Sektör</span>
+<span class="font-headline-sm text-headline-sm text-primary">Yaratıcı / FMCG</span>
+</div>
+</div>
+<div class="mb-6">
+<span class="block text-secondary text-label-sm uppercase tracking-wider mb-2">Ana Kategoriler</span>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-surface-container-low text-primary rounded-full text-label-sm">Deneyim Alanı</span>
+<span class="px-3 py-1 bg-surface-container-low text-primary rounded-full text-label-sm">Marka Elçisi</span>
+</div>
+</div>
+<button class="w-full py-3 border border-primary text-primary hover:bg-primary hover:text-on-primary transition-all rounded-lg font-label-md text-label-md mt-auto active:scale-95" onclick="alert('Etkinlik detayları yükleniyor...')">
+                            Detayları İncele
+                        </button>
+</div>
+</div>
+<!-- Match Card 4 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden flex flex-col group hover:ai-glow transition-all duration-300 cursor-pointer hover:shadow-md">
+<div class="relative h-48 overflow-hidden">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="A clean, minimalist medical symposium set in a bright white auditorium. Soft clinical lighting, high-definition presentation screens, and professional healthcare experts in discussion. The aesthetic is extremely sterile yet premium, with a focus on knowledge exchange and elite networking." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAFAVGbs-6WTKYcKevEMeLbCRlsOw6fCVFdpDJe4qn0etbmrVGCqzboaQhF9BlT4HZgmcErzhcwMrciHbv-95WtgNd38Eewix4GxggUL_T986o4WbOwJzk8iv2GKNKqofKm3IBzkrSxWCxGpSvpHjZ5KeJAYUzdTAB2pNPh7G-IhOV9LJiCc0kJW3PlUtzSOy_p8e0v5mhaV6f_tc_ylNAIr4pJ4gGDxYmPPEMZQTY0RfL4_4ZrsZK-guVIEALZE1OOS9M3qV-QXDA')"></div>
+<div class="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-full flex items-center gap-1.5 border border-primary/10">
+<span class="w-2 h-2 rounded-full bg-green-500"></span>
+<span class="font-label-sm text-label-sm text-primary">94% AI Match</span>
+</div>
+</div>
+<div class="p-6 flex-1 flex flex-col">
+<div class="mb-4">
+<h3 class="font-headline-sm text-headline-sm text-tertiary mb-1">Tıp Teknolojileri Kongresi</h3>
+<div class="flex items-center gap-4 text-secondary">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+<span class="text-label-sm">15-18 Aralık</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+<span class="text-label-sm">Antalya</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 py-4 border-y border-outline-variant mb-4">
+<div class="cursor-pointer hover:shadow-md">
+<span class="block text-secondary text-label-sm uppercase tracking-wider mb-1">Katılımcı</span>
+<span class="font-headline-sm text-headline-sm text-primary">800</span>
+</div>
+<div class="cursor-pointer hover:shadow-md">
+<span class="block text-secondary text-label-sm uppercase tracking-wider mb-1">Sektör</span>
+<span class="font-headline-sm text-headline-sm text-primary">Sağlık / AR-GE</span>
+</div>
+</div>
+<div class="mb-6">
+<span class="block text-secondary text-label-sm uppercase tracking-wider mb-2">Ana Kategoriler</span>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-surface-container-low text-primary rounded-full text-label-sm">Bilimsel Destek</span>
+<span class="px-3 py-1 bg-surface-container-low text-primary rounded-full text-label-sm">Sergi Alanı</span>
+</div>
+</div>
+<button class="w-full py-3 border border-primary text-primary hover:bg-primary hover:text-on-primary transition-all rounded-lg font-label-md text-label-md mt-auto active:scale-95" onclick="alert('Etkinlik detayları yükleniyor...')">
+                            Detayları İncele
+                        </button>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="bg-surface dark:bg-surface-dim border-t border-outline-variant dark:border-outline w-full py-6 mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center px-gutter max-w-container-max mx-auto gap-4">
+<div class="flex flex-col md:flex-row items-center gap-6">
+<span class="font-label-md text-label-md font-bold text-tertiary">SponsorMatch AI</span>
+<span class="font-label-sm text-label-sm text-on-secondary-fixed-variant dark:text-on-tertiary-fixed-variant">© 2026 SponsorMatch AI. Tüm hakları saklıdır.</span>
+</div>
+<div class="flex items-center gap-8">
+<a class="text-on-secondary-fixed-variant dark:text-on-tertiary-fixed-variant hover:text-primary dark:hover:text-primary-fixed transition-colors font-label-sm text-label-sm" href="#">Kullanım Koşulları</a>
+<a class="text-on-secondary-fixed-variant dark:text-on-tertiary-fixed-variant hover:text-primary dark:hover:text-primary-fixed transition-colors font-label-sm text-label-sm" href="#">Gizlilik Politikası</a>
+<a class="text-on-secondary-fixed-variant dark:text-on-tertiary-fixed-variant hover:text-primary dark:hover:text-primary-fixed transition-colors font-label-sm text-label-sm" href="#">İletişim</a>
+</div>
+</div>
+</footer>
+<script>
+        // Simple Micro-interaction for match scores
+        document.querySelectorAll('.ai-glow').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                const badge = card.querySelector('.animate-pulse');
+                if (badge) badge.classList.remove('animate-pulse');
+            });
+            card.addEventListener('mouseleave', () => {
+                const badge = card.querySelector('.animate-pulse');
+                if (badge) badge.classList.add('animate-pulse');
+            });
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+</body></html>

@@ -1,0 +1,327 @@
+<!DOCTYPE html><html lang="tr" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>SponsorMatch AI - Organizatör Paneli</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-fixed-variant": "#43474b",
+                      "error": "#ba1a1a",
+                      "outline": "#74777f",
+                      "on-error-container": "#93000a",
+                      "on-secondary-container": "#5e6367",
+                      "secondary-fixed": "#dfe3e7",
+                      "surface-container-low": "#f3f3f4",
+                      "on-secondary-fixed": "#171c1f",
+                      "on-primary": "#ffffff",
+                      "inverse-on-surface": "#f0f1f1",
+                      "tertiary-fixed": "#d3e4fe",
+                      "secondary": "#5a5f62",
+                      "surface-tint": "#476083",
+                      "on-tertiary-fixed": "#0b1c30",
+                      "on-surface": "#1a1c1c",
+                      "secondary-container": "#dce0e4",
+                      "surface-dim": "#dadada",
+                      "inverse-surface": "#2f3131",
+                      "tertiary-fixed-dim": "#b7c8e1",
+                      "tertiary-container": "#0e1f33",
+                      "primary-container": "#001f3f",
+                      "on-surface-variant": "#43474e",
+                      "inverse-primary": "#afc8f0",
+                      "surface-bright": "#f9f9f9",
+                      "outline-variant": "#c4c6cf",
+                      "primary-fixed": "#d4e3ff",
+                      "surface-variant": "#e2e2e2",
+                      "on-primary-fixed": "#001c3a",
+                      "tertiary": "#000511",
+                      "surface-container": "#eeeeee",
+                      "primary-fixed-dim": "#afc8f0",
+                      "on-tertiary-fixed-variant": "#38485d",
+                      "on-error": "#ffffff",
+                      "surface-container-lowest": "#ffffff",
+                      "on-primary-container": "#6f88ad",
+                      "primary": "#000613",
+                      "surface-container-highest": "#e2e2e2",
+                      "surface-container-high": "#e8e8e8",
+                      "background": "#f9f9f9",
+                      "surface": "#f9f9f9",
+                      "on-primary-fixed-variant": "#2f486a",
+                      "error-container": "#ffdad6",
+                      "on-background": "#1a1c1c",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "on-tertiary-container": "#77879f",
+                      "secondary-fixed-dim": "#c3c7cb",
+                      
+                      // Semantic Colors
+                      "success": "#059669",
+                      "success-bg": "#d1fae5",
+                      "warning": "#d97706",
+                      "warning-bg": "#fef3c7"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "2xl": "1rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "container-max": "1280px",
+                      "margin-desktop": "40px",
+                      "gutter": "24px",
+                      "margin-mobile": "16px",
+                      "base": "8px"
+              },
+              "fontFamily": {
+                      "headline-md": ["Inter", "sans-serif"],
+                      "display-lg": ["Inter", "sans-serif"],
+                      "headline-sm": ["Inter", "sans-serif"],
+                      "display-lg-mobile": ["Inter", "sans-serif"],
+                      "label-md": ["Inter", "sans-serif"],
+                      "label-sm": ["Inter", "sans-serif"],
+                      "body-md": ["Inter", "sans-serif"],
+                      "body-lg": ["Inter", "sans-serif"]
+              },
+              "fontSize": {
+                      "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                      "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                      "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        body { background-color: #f9f9f9; }
+        .shadow-soft { box-shadow: 0px 4px 20px rgba(0, 31, 63, 0.05); }
+    </style>
+</head>
+<body class="font-body-md text-on-surface bg-background flex h-screen overflow-hidden">
+<!-- SideNavBar (from JSON) -->
+<nav class="hidden md:flex flex-col h-screen p-4 gap-2 bg-surface-container-lowest border-r border-outline-variant docked left-0 w-64 z-10 shrink-0 shadow-soft">
+<div class="px-4 py-6">
+<div class="flex items-center gap-2"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAw0oIv1tnN_-EWCbr2HMY-1gwYj2i1Wt9G4Lu-zyFww-rQ84jzXqKQ9vl9lSCgTKPCO-qD87qvv4XzsQYoiHMZrsgLyeTlygnaj2MGOTBkdfV6ECzp9z9l3sOQJNYca6uf6hOLYTPGK75Prmij9x94ZAyrTQ3TQJaoNqB2-Yjl4minQy8I2G61eTA-eywHb4SuZPae720jmYqz4hklNnLlEZDc31svFNbM04GBpyGZQWQA7hUZdmddLYNJ2MRdrTgG6URRIhpw_e3oZA" alt="SponsorMatch AI Logo" class="h-10 w-auto"><div class="text-lg font-bold text-primary">SponsorMatch AI</div></div>
+
+</div>
+<div class="flex-1 flex flex-col gap-2 mt-4">
+<!-- Active: Özet (mapped from Dashboard intent) -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg opacity-90 transition-all font-label-md text-label-md bg-primary-container text-on-primary" href="#"><span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">dashboard</span>Sayfam</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-secondary-fixed transition-colors rounded-lg font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+                Etkinliklerim
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-secondary-fixed transition-colors rounded-lg font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">chat</span>
+                Mesajlar
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-secondary-fixed transition-colors rounded-lg font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">settings</span>
+                Ayarlar
+            </a>
+</div>
+<div class="mt-auto border-t border-outline-variant pt-4">
+<div class="flex items-center gap-3 px-2 py-2">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="A professional headshot of a confident event organizer in a modern office setting. The lighting is soft and natural, emphasizing a clean, corporate light-mode aesthetic. Focus on high-quality details and a trustworthy expression." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYQMuR73srrdWyU_4PmgX1-rFbDY69ePFoVqWJg8tEy5dex0uJeGt3kOTivlOVAzy9fQggAafffrfw966bqZheZCQE_zO9pw9YPlFKHf_M8gl426MiXhQWQrAQdN1OLr_FFg9dmcgLRn2JeRxiudfJdLUVJlh3WUntsTOxvQofec2tmwcJEq-OICOd7prGPrIWn1NX7sqUbWfOypYDfX0MYEz9nM57sFKGyXkl-asn7WVgTNNv6rE_Io7Lma125UakKIEYS5UUgbo">
+<div>
+<p class="font-label-md text-label-md text-primary font-bold">Ayşe Yılmaz</p>
+<p class="font-label-sm text-label-sm text-secondary">Organizatör Admin</p>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col h-screen overflow-y-auto w-full">
+<!-- Mobile TopNavBar (from JSON - fallback for mobile) -->
+<header class="md:hidden flex justify-between items-center px-margin-mobile py-4 w-full bg-surface border-b border-outline-variant z-10 sticky top-0">
+<div class="flex items-center gap-2"><img src="https://lh3.googleusercontent.com/aida/AP1WRLsCZ2dpZ_qrg9x-iE0iF5FmmrlTFeZGoWAJsQcthGo7kCsmGQO9nTwDXdmFoBZeKmTVAhcG_1ydNJZdQc1MsgMlCTEgcYVMSRUcitOSixatzbrcf9nZVu0DSM8VsNgbQUnyvjMtmWUK-O3OSk-pINVU2148wYSNxP2Co8cui8WK2Abu0BOZVTGAmfmhy_1JGHsSoLGlG2hr2THHPbfljI8p4YCKzmvtxfmQySEnjvnth6zt9u40tJaWpKA" alt="SponsorMatch AI Logo" class="h-8 w-auto"><h1 class="font-headline-md text-headline-md font-bold text-primary">SponsorMatch AI</h1></div>
+<button class="text-primary hover:text-primary-fixed-dim transition-colors">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</header>
+<div class="max-w-container-max mx-auto w-full px-margin-mobile md:px-margin-desktop py-8 md:py-12 flex flex-col gap-8">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+<div>
+<h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary">Hoş Geldiniz, Organizatör</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-2 max-w-2xl">
+                        Etkinliklerinizi yönetin, gelen sponsorluk tekliflerini inceleyin ve AI eşleşmelerinizi tek bir yerden takip edin.
+                    </p>
+</div>
+<button class="bg-primary-container text-on-primary rounded-lg px-6 py-3 font-label-md text-label-md hover:opacity-90 transition-opacity flex items-center gap-2 whitespace-nowrap">
+<span class="material-symbols-outlined" style="font-size: 18px;">add</span>
+                    Yeni Etkinlik Ekle
+                </button>
+</div>
+<!-- Metrics Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-2xl p-6 shadow-soft flex flex-col gap-2">
+<div class="flex items-center gap-2 text-secondary font-label-md text-label-md mb-2">
+<span class="material-symbols-outlined text-primary-container">event</span>
+                        Aktif Etkinlikler
+                    </div>
+<div class="flex items-baseline gap-3">
+<span class="font-display-lg-mobile text-display-lg-mobile text-primary">24</span>
+<span class="text-success font-label-sm text-label-sm flex items-center bg-success-bg px-2 py-1 rounded-full">
+<span class="material-symbols-outlined" style="font-size: 14px;">trending_up</span> +12%
+                        </span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-2xl p-6 shadow-soft flex flex-col gap-2">
+<div class="flex items-center gap-2 text-secondary font-label-md text-label-md mb-2">
+<span class="material-symbols-outlined text-primary-container">pending_actions</span>
+                        Bekleyen Teklifler
+                    </div>
+<div class="flex items-baseline gap-3">
+<span class="font-display-lg-mobile text-display-lg-mobile text-primary">156</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-2xl p-6 shadow-soft flex flex-col gap-2">
+<div class="flex items-center gap-2 text-secondary font-label-md text-label-md mb-2">
+<span class="material-symbols-outlined text-primary-container">handshake</span>
+                        Temastaki Marka Sayısı
+                    </div>
+<div class="flex items-baseline gap-3">
+<span class="font-display-lg-mobile text-display-lg-mobile text-primary">42</span>
+</div>
+</div>
+</div>
+<!-- Data Table Section -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-2xl shadow-soft overflow-hidden">
+<div class="px-6 py-5 border-b border-surface-variant flex justify-between items-center bg-inverse-on-surface">
+<h3 class="font-headline-sm text-headline-sm text-primary">Son Sponsorluk Talepleri</h3>
+<a class="font-label-md text-label-md text-primary-container hover:underline flex items-center gap-1" href="#">
+                        Tümünü Gör
+                        <span class="material-symbols-outlined" style="font-size: 16px;">arrow_forward</span>
+</a>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-surface-variant bg-surface text-secondary font-label-sm text-label-sm">
+<th class="px-6 py-4 font-semibold">Sponsor Adı</th>
+<th class="px-6 py-4 font-semibold">Hedef Etkinlik</th>
+<th class="px-6 py-4 font-semibold">Bütçe</th>
+<th class="px-6 py-4 font-semibold">AI Skoru</th>
+<th class="px-6 py-4 font-semibold">Durum</th>
+<th class="px-6 py-4 font-semibold text-right">İşlem</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md text-on-surface">
+<!-- Row 1 -->
+<tr class="border-b border-surface-variant hover:bg-inverse-on-surface transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined" style="font-size: 18px;">business</span>
+</div>
+<span class="font-medium text-primary">TechCorp A.Ş.</span>
+</div>
+</td>
+<td class="px-6 py-4 text-on-surface-variant">Web3 Zirvesi 2024</td>
+<td class="px-6 py-4 font-medium">₺150.000</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1 bg-[#f0f4f8] text-primary-container font-label-sm text-label-sm px-2 py-1 rounded">
+<span class="material-symbols-outlined" style="font-size: 14px;">auto_awesome</span>
+                                        %92 Uyum
+                                    </span>
+</td>
+<td class="px-6 py-4"><select class="bg-surface-container-lowest border border-outline-variant text-primary-container font-label-sm text-label-sm rounded-lg px-3 py-1 focus:outline-none focus:ring-2 focus:ring-primary-container transition-all w-full">
+    <option value="pending" selected="">Beklemede</option>
+    <option value="approved">Onaylandı</option>
+    <option value="cancelled">İptal</option>
+</select></td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2"><button class="text-primary-container hover:bg-surface-variant p-1 rounded transition-colors" title="Görüntüle"><span class="material-symbols-outlined">visibility</span></button><button class="text-primary-container hover:bg-surface-variant p-1 rounded transition-colors" title="Mesaj Gönder"><span class="material-symbols-outlined">chat_bubble</span></button></div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="border-b border-surface-variant hover:bg-inverse-on-surface transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined" style="font-size: 18px;">storefront</span>
+</div>
+<span class="font-medium text-primary">Yeşil Enerji Ltd.</span>
+</div>
+</td>
+<td class="px-6 py-4 text-on-surface-variant">Sürdürülebilirlik Fuarı</td>
+<td class="px-6 py-4 font-medium">₺75.000</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1 bg-[#f0f4f8] text-primary-container font-label-sm text-label-sm px-2 py-1 rounded">
+<span class="material-symbols-outlined" style="font-size: 14px;">auto_awesome</span>
+                                        %85 Uyum
+                                    </span>
+</td>
+<td class="px-6 py-4"><select class="bg-surface-container-lowest border border-outline-variant text-primary-container font-label-sm text-label-sm rounded-lg px-3 py-1 focus:outline-none focus:ring-2 focus:ring-primary-container transition-all w-full">
+    <option value="approved" selected="">Onaylandı</option>
+    <option value="pending">Beklemede</option>
+    <option value="cancelled">İptal</option>
+</select></td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2"><button class="text-primary-container hover:bg-surface-variant p-1 rounded transition-colors" title="Görüntüle"><span class="material-symbols-outlined">visibility</span></button><button class="text-primary-container hover:bg-surface-variant p-1 rounded transition-colors" title="Mesaj Gönder"><span class="material-symbols-outlined">chat_bubble</span></button></div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-inverse-on-surface transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined" style="font-size: 18px;">corporate_fare</span>
+</div>
+<span class="font-medium text-primary">Global Finans</span>
+</div>
+</td>
+<td class="px-6 py-4 text-on-surface-variant">Girişimcilik Zirvesi</td>
+<td class="px-6 py-4 font-medium">₺250.000</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1 bg-[#f0f4f8] text-primary-container font-label-sm text-label-sm px-2 py-1 rounded">
+<span class="material-symbols-outlined" style="font-size: 14px;">auto_awesome</span>
+                                        %98 Uyum
+                                    </span>
+</td>
+<td class="px-6 py-4"><select class="bg-surface-container-lowest border border-outline-variant text-primary-container font-label-sm text-label-sm rounded-lg px-3 py-1 focus:outline-none focus:ring-2 focus:ring-primary-container transition-all w-full">
+    <option value="pending" selected="">Beklemede</option>
+    <option value="approved">Onaylandı</option>
+    <option value="cancelled">İptal</option>
+</select></td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2"><button class="text-primary-container hover:bg-surface-variant p-1 rounded transition-colors" title="Görüntüle"><span class="material-symbols-outlined">visibility</span></button><button class="text-primary-container hover:bg-surface-variant p-1 rounded transition-colors" title="Mesaj Gönder"><span class="material-symbols-outlined">chat_bubble</span></button></div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body></html>
