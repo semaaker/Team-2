@@ -1,1 +1,7 @@
 node_modules
+
+# Ortam değişkenleri — n8n webhook adresi ve paylaşılan sır burada durur,
+# asla depoya girmemelidir. Şablon için `.env.example` dosyasına bakın.
+.env
+.env.*
+!.env.example

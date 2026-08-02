@@ -114,6 +114,19 @@ const WEIGHTS = {
     budget: 15,
 };
 /**
+ * Skor kırılımının tek kaynağı.
+ *
+ * Hem yerel motor hem n8n akışı aynı dört kriteri kullanır; `key` alanı akışın
+ * `kriterler` nesnesinde döndürdüğü anahtarlarla eşleşir. Böylece hangi motor
+ * çalışırsa çalışsın arayüzdeki kırılım aynı etiket ve tavan değerleriyle gelir.
+ */
+const CRITERIA = [
+    { key: 'sektor', label: 'Sektör uyumu', max: WEIGHTS.sector },
+    { key: 'vizyon', label: 'Vizyon & ESG örtüşmesi', max: WEIGHTS.vision },
+    { key: 'katilimci', label: 'Katılımcı ölçeği', max: WEIGHTS.audience },
+    { key: 'butce', label: 'Bütçe uygunluğu', max: WEIGHTS.budget },
+];
+/**
  * Tek bir etkinliği sponsor kriterlerine göre puanlar.
  *
  * n8n akışındaki sistem mesajıyla aynı dört kriteri kullanır; böylece iki kip
@@ -143,12 +156,12 @@ export function scoreEvent(event, criteria) {
         const affordable = packagePrices.filter((price) => price >= min && price <= max).length;
         budgetScore = (affordable / packagePrices.length) * WEIGHTS.budget;
     }
-    const breakdown = [
-        { label: 'Sektör uyumu', earned: Math.round(sectorScore), max: WEIGHTS.sector },
-        { label: 'Vizyon & ESG örtüşmesi', earned: Math.round(visionScore), max: WEIGHTS.vision },
-        { label: 'Katılımcı ölçeği', earned: Math.round(audienceScore), max: WEIGHTS.audience },
-        { label: 'Bütçe uygunluğu', earned: Math.round(budgetScore), max: WEIGHTS.budget },
-    ];
+    const earned = [sectorScore, visionScore, audienceScore, budgetScore];
+    const breakdown = CRITERIA.map((criterion, index) => ({
+        label: criterion.label,
+        earned: Math.round(earned[index]),
+        max: criterion.max,
+    }));
     const score = clamp(breakdown.reduce((total, item) => total + item.earned, 0), 0, 100);
     return {
         eventId: event.id,
@@ -177,6 +190,43 @@ function readNumber(value) {
     const parsed = typeof value === 'string' ? Number.parseFloat(value) : value;
     return typeof parsed === 'number' && Number.isFinite(parsed) ? parsed : null;
 }
+/**
+ * Akışın gönderdiği skor kırılımını okur.
+ *
+ * Kırılım isteğe bağlıdır: eski sürüm bir akış yalnızca skor ve not döndürürse
+ * boş dizi döner ve arayüz kırılım bölümünü gizler. Böylece akış güncellenmeden
+ * de entegrasyon çalışmayı sürdürür.
+ */
+function parseBreakdown(row) {
+    if (Array.isArray(row.breakdown)) {
+        const items = row.breakdown.flatMap((item) => {
+            const earned = readNumber(item.earned);
+            const max = readNumber(item.max);
+            if (!item.label || earned === null || max === null || max <= 0)
+                return [];
+            return [{ label: item.label, earned: Math.round(clamp(earned, 0, max)), max }];
+        });
+        if (items.length)
+            return items;
+    }
+    if (row.kriterler) {
+        const items = CRITERIA.flatMap((criterion) => {
+            const value = readNumber(row.kriterler?.[criterion.key]);
+            if (value === null)
+                return [];
+            return [
+                {
+                    label: criterion.label,
+                    earned: Math.round(clamp(value, 0, criterion.max)),
+                    max: criterion.max,
+                },
+            ];
+        });
+        if (items.length)
+            return items;
+    }
+    return [];
+}
 /** n8n yanıtını `EventAnalysis` listesine indirger; tanınmayan kayıtları atar. */
 function parseWebhookResponse(payload, events) {
     // Akış `{ results: [...] }`, düz dizi ya da tek nesne döndürebilir.
@@ -202,39 +252,86 @@ function parseWebhookResponse(payload, events) {
             eventId: event.id,
             score: Math.round(clamp(score, 0, 100)),
             note: (row.yapay_zeka_notu ?? row.note ?? '').trim() || `Uyum oranı %${Math.round(score)}.`,
-            breakdown: [],
+            breakdown: parseBreakdown(row),
         });
     }
     return analyses;
 }
-async function scoreViaWebhook(events, criteria) {
+/**
+ * Yeniden denemeye değer hata sınıfı.
+ *
+ * Bağlantı kopması, 429 ve 5xx geçicidir; 4xx (yanlış adres, geçersiz token) ve
+ * bozuk gövde tekrar denemekle düzelmez, o yüzden doğrudan yerel motora düşülür.
+ */
+class TransientWebhookError extends Error {
+}
+const MAX_WEBHOOK_ATTEMPTS = 2;
+async function requestWebhook(body, timeoutMs) {
     const headers = { 'Content-Type': 'application/json' };
     if (env.AI_WEBHOOK_TOKEN)
         headers['X-SponsorMatch-Token'] = env.AI_WEBHOOK_TOKEN;
-    const response = await fetch(env.AI_WEBHOOK_URL, {
-        method: 'POST',
-        headers,
-        signal: AbortSignal.timeout(env.AI_TIMEOUT_MS),
-        body: JSON.stringify({
-            sponsor: criteria,
-            events: events.map((event) => ({
-                id: event.id,
-                name: event.name,
-                category: event.category,
-                description: event.description,
-                attendees: event.attendees,
-                packages: event.packages.map((pkg) => ({ tier: pkg.tier, priceLabel: pkg.priceLabel })),
-            })),
-        }),
-    });
+    let response;
+    try {
+        response = await fetch(env.AI_WEBHOOK_URL, {
+            method: 'POST',
+            headers,
+            signal: AbortSignal.timeout(timeoutMs),
+            body,
+        });
+    }
+    catch (error) {
+        // Bağlantı kurulamadı ya da süre doldu — ikisi de geçici sayılır.
+        throw new TransientWebhookError(error instanceof Error ? error.message : 'ağ hatası');
+    }
     if (!response.ok) {
-        throw new Error(`n8n akışı ${response.status} döndürdü.`);
+        const message = `n8n akışı ${response.status} döndürdü.`;
+        if (response.status === 429 || response.status >= 500) {
+            throw new TransientWebhookError(message);
+        }
+        throw new Error(message);
     }
-    const analyses = parseWebhookResponse(await response.json(), events);
-    if (analyses.length === 0) {
-        throw new Error('n8n akışından tanınabilir bir sonuç gelmedi.');
+    return response.json();
+}
+/**
+ * Akışı çağırır ve gerekirse bir kez yeniden dener.
+ *
+ * Yeniden deneme `AI_TIMEOUT_MS` ile belirlenen *toplam* bütçeyi paylaşır; ilk
+ * deneme zaman aşımına uğradıysa bütçe biter ve ikinci deneme yapılmaz. Böylece
+ * ek gecikme yalnızca hızlı başarısızlıklarda (bağlantı reddi, anlık 5xx)
+ * oluşur ve isteğin toplam süresi hiçbir zaman bütçeyi aşmaz.
+ */
+async function scoreViaWebhook(events, criteria) {
+    const body = JSON.stringify({
+        sponsor: criteria,
+        events: events.map((event) => ({
+            id: event.id,
+            name: event.name,
+            category: event.category,
+            description: event.description,
+            attendees: event.attendees,
+            packages: event.packages.map((pkg) => ({ tier: pkg.tier, priceLabel: pkg.priceLabel })),
+        })),
+    });
+    const deadline = Date.now() + env.AI_TIMEOUT_MS;
+    let lastError = new Error('n8n akışına ulaşılamadı.');
+    for (let attempt = 1; attempt <= MAX_WEBHOOK_ATTEMPTS; attempt += 1) {
+        const remaining = deadline - Date.now();
+        if (remaining <= 0)
+            break;
+        try {
+            const analyses = parseWebhookResponse(await requestWebhook(body, remaining), events);
+            if (analyses.length === 0) {
+                throw new Error('n8n akışından tanınabilir bir sonuç gelmedi.');
+            }
+            return analyses;
+        }
+        catch (error) {
+            lastError = error instanceof Error ? error : new Error(String(error));
+            if (!(error instanceof TransientWebhookError))
+                break;
+        }
     }
-    return analyses;
+    throw lastError;
 }
 /* -------------------------------------------------------------------------- */
 /* Genel API                                                                   */

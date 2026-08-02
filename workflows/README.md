@@ -20,11 +20,11 @@ Airtable tabanlı iç otomasyonlardır ve uygulamanın çalışması için gerek
 2. `Google Gemini Chat Model` düğümüne kendi Gemini API kimlik bilginizi bağlayın.
    (Dosyadaki `credentials.id` değeri yalnızca bir referanstır, sır içermez.)
 3. Akışı **Active** duruma alın ve üretim webhook adresini kopyalayın.
-4. Proje kökündeki `.env` dosyasına yazın:
+4. Proje kökündeki `.env` dosyasına yazın (`.env` git tarafından yok sayılır):
 
    ```bash
    AI_WEBHOOK_URL=https://<n8n-alan-adiniz>/webhook/sponsormatch-ai/score
-   AI_WEBHOOK_TOKEN=paylasilan-bir-sir   # isteğe bağlı
+   AI_WEBHOOK_TOKEN=paylasilan-bir-sir   # isteğe bağlı, aşağıya bakın
    AI_TIMEOUT_MS=8000
    ```
 
@@ -34,6 +34,22 @@ Airtable tabanlı iç otomasyonlardır ve uygulamanın çalışması için gerek
    curl http://localhost:4000/api/ai/status
    # {"provider":"n8n","configured":true,...}
    ```
+
+### Webhook'u koruma (isteğe bağlı ama önerilir)
+
+Üretim webhook adresi tahmin edilemez olsa da herkese açıktır. Akıştaki
+**Token Doğrula** düğümü bunu kapatır:
+
+- n8n tarafında `AI_WEBHOOK_TOKEN` **ortam değişkenini** tanımlayın ve `.env`
+  dosyasındaki değerle aynı yapın.
+- Bu değişken tanımlıysa akış, `X-SponsorMatch-Token` başlığını zorunlu kılar;
+  eşleşmeyen istekler ajana hiç ulaşmadan `401` alır (boşuna Gemini kotası
+  harcanmaz).
+- Değişken tanımlı değilse istekler eskisi gibi geçer — mevcut kurulumlar
+  bozulmaz.
+
+Sunucu, `.env` içinde `AI_WEBHOOK_TOKEN` doluysa bu başlığı zaten gönderir;
+ek bir kod değişikliği gerekmez.
 
 ### Sözleşme
 
@@ -71,6 +87,7 @@ Akıştan beklenen yanıt:
     {
       "eventId": "evt_fintech",
       "uyum_orani": 87,
+      "kriterler": { "sektor": 34, "vizyon": 20, "katilimci": 18, "butce": 15 },
       "yapay_zeka_notu": "Etkinliğin katılımcı profili marka hedefleriyle örtüşüyor."
     }
   ]
@@ -80,18 +97,29 @@ Akıştan beklenen yanıt:
 `eventId` alanı istekteki `id` ile birebir aynı olmalıdır; tanınmayan kayıtlar yok sayılır.
 Yanıt düz dizi (`[…]`) olarak da gelebilir, sunucu her iki biçimi kabul eder.
 
+`kriterler` **isteğe bağlıdır** ve eşleşme kartlarındaki skor kırılımını besler.
+Gönderilmezse kart yalnızca toplam skoru ve notu gösterir; entegrasyon yine çalışır.
+Tavan değerini aşan puanlar kırpılır, sayı olmayan alanlar atlanır. Alternatif olarak
+arayüzün beklediği biçim doğrudan gönderilebilir:
+`"breakdown": [{ "label": "Sektör uyumu", "earned": 34, "max": 40 }]`.
+
 ### Yedekleme davranışı
 
 `AI_WEBHOOK_URL` tanımsızsa **ya da** akış hata verirse (zaman aşımı, 5xx, tanınmayan
 gövde), sunucu `server/src/services/aiMatching.ts` içindeki deterministik kural
 motoruna düşer. Aynı dört kriteri puanlar:
 
-| Kriter                 | Ağırlık |
-| ---------------------- | ------- |
-| Sektör uyumu           | 40      |
-| Vizyon & ESG örtüşmesi | 25      |
-| Katılımcı ölçeği       | 20      |
-| Bütçe uygunluğu        | 15      |
+| Kriter                 | `kriterler` anahtarı | Ağırlık |
+| ---------------------- | -------------------- | ------- |
+| Sektör uyumu           | `sektor`             | 40      |
+| Vizyon & ESG örtüşmesi | `vizyon`             | 25      |
+| Katılımcı ölçeği       | `katilimci`          | 20      |
+| Bütçe uygunluğu        | `butce`              | 15      |
+
+Geçici hatalarda (bağlantı kopması, 429, 5xx) akış **bir kez** yeniden denenir.
+Yeniden deneme `AI_TIMEOUT_MS` ile belirlenen toplam süreyi paylaşır: ilk deneme
+zaman aşımına uğradıysa ikincisi yapılmaz, yani istek hiçbir zaman bu süreyi
+aşmaz. `4xx` yanıtları kalıcı kabul edilir ve tekrar denenmez.
 
 Bu sayede uygulama n8n olmadan da eksiksiz çalışır. Arayüzde hangi motorun
 kullanıldığı "Yapay Zeka Eşleşmeleri" ekranındaki rozette gösterilir.

@@ -18,7 +18,7 @@
     "start": "node dist-server/index.js",
     "preview": "vite preview",
     "lint": "eslint . --ext .ts,.tsx --max-warnings 0",
-    "typecheck": "tsc -b tsconfig.build.json --noEmit false --emitDeclarationOnly false && tsc -p server/tsconfig.json --noEmit",
+    "typecheck": "tsc -b tsconfig.build.json && tsc -p server/tsconfig.json --noEmit",
     "format": "prettier --write \"**/*.{ts,tsx,css,json,md}\""
   },
   "dependencies": {
